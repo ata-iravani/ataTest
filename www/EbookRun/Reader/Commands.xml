@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<seApi>
+  <!--Engine API-->
+  <system name="ebook">
+
+    <!--Book interface-->
+    <type name="Book" base="ISerializable" cg="-noinvoke -noparse">
+      <property name="id" type="string" mode="get" ></property>
+      <property name="culture" type="string" mode="get"></property>
+      <property name="title" type="string" mode="get"></property>
+      <property name="bookFileUrl" type="string" mode="get"></property>
+      <property name="iconSetsFolderUrl" type="string" mode="get"></property>
+      <property name="dataFolderUrl" type="string" mode="get"></property>
+      <property name="iconSets" type="IconSet,dictionary" mode="get"></property>
+    </type>
+
+    <!--DocumentInfo interface-->
+    <type name="DocumentInfo" base="ISerializable" cg="-noinvoke -noparse">
+      <property name="url" type="string" mode="get"></property>
+      <property name="link" type="string" mode="get"></property>
+      <property name="playerUrl" type="string" mode="get"></property>
+      <property name="poolName" type="string" mode="get"></property>
+    </type>
+
+    <!--IconSet interface-->
+    <type name="IconSet" base="ISerializable" cg="-noinvoke -noparse">
+      <property name="collapseUrl" type="string" mode="get"></property>
+      <property name="expandUrl" type="string" mode="get"></property>
+      <property name="singleUrl" type="string" mode="get"></property>
+    </type>
+
+    <!--SelectedItem interface-->
+    <type name="SelectedItem" base="ISerializable" cg="-noinvoke -noparse">
+      <property name="itemId" type="string" mode="get"></property>
+      <property name="propertySetId" type="string" mode="get"></property>
+      <property name="moduleEntityId" type="string" mode="get"></property>
+    </type>
+
+    <!--SelectedItem interface-->
+    <type name="PropertyBagItemProperty" base="ISerializable" cg="-noinvoke -noparse">
+      <property name="moduleEntityId" type="string" mode="get"></property>
+      <property name="propertySetId" type="string" mode="get"></property>
+      <property name="itemId" type="string" mode="get"></property>
+      <property name="propertyName" type="string" mode="get"></property>
+    </type>
+
+    <!--Topic interface-->
+    <type name="Topic" cg="-noinvoke -noparse">
+      <property name="iconSet" type="IconSet" mode="get"></property>
+      <property name="book" type="Book" mode="get"></property>
+      <property name="hasChild" type="boolean" mode="get"></property>
+      <property name="parent" type="Topic" mode="get"></property>
+      <property name="nextSibling" type="Topic" mode="get"></property>
+      <property name="prevSibling" type="Topic" mode="get"></property>
+      <property name="firstChild" type="Topic" mode="get"></property>
+      <property name="lastChild" type="Topic" mode="get"></property>
+      <property name="children" type="Topic,array" mode="get"></property>
+      <property name="iconSetId" type="number" mode="get"></property>
+      <property name="subBookId" type="string" mode="get"></property>
+      <property name="textColor" type="color" mode="get"></property>
+      <property name="addToIndex" type="boolean" mode="get"></property>
+      <property name="linkString" type="string" mode="get"></property>
+      <property name="id" type="string" mode="get"></property>
+      <property name="title" type="string" mode="get"></property>
+      <method name="findById" type="Topic">
+        <param name="id" type="string"/>
+      </method>
+    </type>
+
+    <!--PropertyBag-->
+    <type name="PropertyBag">
+      <method name="getProperty" type="object" cg="-noinvoke -noparse">
+        <param name="propertyName" type="string"/>
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+        <doc>return $$default if user select default</doc>
+      </method>
+      <method name="setProperty" type="void" cg="-noinvoke -noparse">
+        <param name="propertyName" type="string"/>
+        <param name="value" type="object"/>
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+      </method>
+      <method name="getProperties" type="object,dictionary" cg="-noinvoke -noparse">
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+      </method>
+      <method name="getItems" type="string,array">
+        <param name="propertySetId" type="string"/>
+      </method>
+      <method name="removeItem" type="void">
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+      </method>
+      <method name="getPropertySetSchema" type="xml">
+        <param name="propertySetId" type="string"/>
+      </method>
+      <property name="schema" type="xml" mode="get"/>
+      <method name="getPropertyRaw" type="xml">
+        <param name="propertyName" type="string"/>
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+      </method>
+      <method name="setPropertyRaw" type="void">
+        <param name="propertyName" type="string"/>
+        <param name="value" type="string"/>
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+      </method>
+      <method name="getPropertiesRaw" type="xml,dictionary">
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+      </method>
+      <method name="resetProperty" type="void">
+        <param name="propertyName" type="string"/>
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+      </method>
+      <method name="resetAllProperties" type="void">
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+      </method>
+    </type>
+
+    <!--Storage API-->
+    <type name="Storage">
+      <property name="canWrite" mode="get" type="boolean"/>
+      <method name="deleteFile" type="void">
+        <param name="fileName" type="string"/>
+        <param name="doneCallback" type="StorageCallback"/>
+      </method>
+      <method name="readBinaryFile" type="void">
+        <param name="fileName" type="string"/>
+        <param name="doneCallback" type="StorageCallback"/>
+      </method>
+      <method name="readTextFile" type="void">
+        <param name="fileName" type="string"/>
+        <param name="doneCallback" type="StorageCallback"/>
+      </method>
+      <method name="writeBinaryFile" type="void">
+        <param name="fileName" type="string"/>
+        <param name="data" type="byte,array"/>
+        <param name="doneCallback" type="StorageCallback"/>
+      </method>
+      <method name="writeTextFile" type="void">
+        <param name="fileName" type="string"/>
+        <param name="text" type="string" useCDATA="true"/>
+        <param name="doneCallback" type="StorageCallback"/>
+      </method>
+      <method name="getFileUrl" type="void">
+        <param name="fileName" type="string"/>
+        <param name="doneCallback" type="StorageCallback"/>
+      </method>
+    </type>
+
+    <!--Internal API-->
+    <type name="InternalCore">
+      <method name="getPropertyBagChangeSet" type="PropertyBagItemProperty,array">
+        <param name="moduleEntityId" type="string">
+          <doc>if null then changeSet of all module entity will be returned.</doc>
+        </param>
+        <param name="changeSetId" type="string"/>
+      </method>
+      <method name="activateModule" type="void">
+        <param name="value" type="boolean"/>
+      </method>
+      <method name="initializeModule" type="string">
+        <param name="agentVersion" type="string"/>
+        <param name="url" type="string"/>
+        <param name="parentInstanceId" type="string"/>
+        <param name="placeholderId" type="string"/>
+        <param name="sessionName" type="string"/>
+      </method>
+      <method name="uninitializeModule" type="void">
+      </method>
+      <method name="initializeCommandHandler" type="void">
+        <param name="interfaces" type="string,array"></param>
+      </method>
+      <method name="executeCommand" type="void">
+        <param name="commandName" type="string"/>
+      </method>
+      <method name="addModulePlaceholder" type="void">
+        <param name="placeholderId" type="string"/>
+      </method>
+      <method name="setProperty" type="void">
+        <param name="propertyName" type="string"/>
+        <param name="propertyValue" type="string"/>
+      </method>
+      <method name="getProperty" type="string">
+        <param name="propertyName" type="string"/>
+        <param name="testValue" type="string"/>
+      </method>
+      <method name="convertDeprecatedToken" type="string">
+        <param name="tokenName" type="string"/>
+      </method>
+      <property name="selectedItemsXml" type="xml" mode="getset"/>
+      <method name="getModulePropertyXml" type="xml">
+        <param name="propertyName" type="string"/>
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+        <param name="moduleEntityId" type="string"/>
+      </method>
+      <method name="getModulePropertiesXml" type="xml">
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+        <param name="moduleEntityId" type="string"/>
+      </method>
+    </type>
+
+    <!--Core API-->
+    <type name="Core">
+      <method name="getPropertyBag" type="void">
+        <param name="moduleEntityId" type="string"></param>
+        <param name="doneCallback" type="StorageCallback"></param>
+      </method>
+      <property name="isExternalPropertyBagNotificationEnabled" type="boolean" mode="getset" cg="-noinvoke -noparse"></property>
+      <property name="moduleInstanceId" type="string" mode="get" cg="-noinvoke -noparse"></property>
+      <property name="moduleEntityId" type="string" mode="get"></property>
+      <property name="canActive" type="boolean" mode="getset"></property>
+      <property name="isActiveModule" type="boolean" mode="get"></property>
+      <property name="isContainsActiveModule" type="boolean" mode="get"></property>
+      <property name="propertyBag" type="PropertyBag" mode="get" cg="-noinvoke -noparse"></property>
+      <property name="selectedItem" type="SelectedItem" mode="getset"/>
+      <property name="selectedItems" type="SelectedItem,array" mode="getset"/>
+      <property name="sessionStorage" type="Storage" mode="get" cg="-noinvoke -noparse" ></property>
+      <property name="localStorage" type="Storage" mode="get" cg="-noinvoke -noparse"></property>
+      <property name="moduleEntityStorage" type="Storage" mode="get" cg="-noinvoke -noparse"></property>
+      <property name="moduleStorage" type="Storage" mode="get" cg="-noinvoke -noparse"></property>
+      <property name="projectStorage" type="Storage" mode="get" cg="-noinvoke -noparse"></property>
+      <method name="setSelectedItem" type="void">
+        <param name="itemId" type="string"/>
+        <param name="propertySetId" type="string"/>
+      </method>
+      <method name="getDocumentInfoByLink" type="DocumentInfo">
+        <param name="link" type="string"></param>
+      </method>
+      <method name="getDocumentInfoByUrl" type="DocumentInfo">
+        <param name="url" type="string"></param>
+      </method>
+      <property name="projectBooksFolder" type="string" mode="get"></property>
+      <property name="projectUrl" type="string" mode="getset" creatorBlock="true"></property>
+      <property name="productName" type="string" mode="get" testValue="My Product Name"/>
+      <property name="productVersion" type="string" mode="get" testValue="1.0"></property>
+      <property name="productCompanyName" type="string" mode="get" testValue="My Corporation"></property>
+      <property name="productSupportEmail" type="string" mode="get" testValue="support@mydomain.com"></property>
+      <property name="productSupportUrl" type="string" mode="get" testValue="http://www.mydomain.com"></property>
+      <property name="productSupportPhone" type="string" mode="get" testValue="+1-222-333-4444"></property>
+      <property name="productCopyright" type="string" mode="get"
+                testValue="Copyright My Corporation. All rights reserved."></property>
+      <property name="productCulture" type="string" valueList="en-US|fa-IR|ar-SA" mode="getset"
+                testValue="en-us"></property>
+      <property name="shetabReaderVersion" type="string" mode="get" testValue="5.0.0"></property>
+      <property name="windowState" type="enum" valueList="normal|fullScreen|fullView|maximized|minimized|''"
+                mode="getset" creatorBlock="true" testValue="normal">
+        <doc>Empty string will restore the state</doc>
+      </property>
+      <property name="visible" type="boolean" mode="getset" creatorBlock="true" testValue="true"></property>
+      <property name="position" type="point" mode="getset" creatorBlock="true"></property>
+      <property name="size" type="size" mode="getset" creatorBlock="true" testValue="800,600"></property>
+      <property name="viewSize" type="size" mode="get" testValue="600,400"></property>
+      <property name="maxSize" type="size" mode="getset" creatorBlock="true" testValue="10000,10000">
+        <doc>Set 0,0 for default.</doc>
+      </property>
+      <property name="isShortcutMenuEnabled" type="boolean" mode="getset" creatorBlock="true"
+                testValue="true"></property>
+      <property name="minSize" type="size" mode="getset" creatorBlock="true">
+        <doc>Set 0,0 for default.</doc>
+      </property>
+      <property name="fullScreen" type="boolean" mode="getset"></property>
+      <property name="fullView" type="boolean" mode="getset"></property>
+      <property name="skinVisible" type="boolean" mode="getset" creatorBlock="true" testValue="true"></property>
+      <property name="readerSkins" type="xml" mode="getset"
+                valueList="&lt;Skins&gt;&lt;Skin Id=&quot;&quot; Name=&quot;&quot; FilePath=&quot;&quot; PreviewFilePath=&quot;&quot;/&gt;&lt;Skins&gt;"></property>
+      <property name="skinId" type="string" mode="getset" valueList="{GUID}" creatorBlock="true"></property>
+      <property name="navigationPanelVisible" type="boolean" mode="getset" creatorBlock="true" testValue="true">
+        <doc>Could not set in FullView Mode.</doc>
+      </property>
+      <property name="navigationPanelLock" type="boolean" mode="getset" creatorBlock="true">
+        <doc>Prevent resizing NavigationPanel by user.</doc>
+      </property>
+      <property name="navigationPanelWidth" type="number" mode="getset" creatorBlock="true" testValue="50"></property>
+      <property name="navigationPanelAutoHide" type="boolean" mode="getset" creatorBlock="true" testValue="false"></property>
+      <property name="markupWindowVisible" type="boolean" mode="getset" testValue="true"></property>
+      <property name="commentWindowVisible" type="boolean" mode="getset" testValue="true"></property>
+      <property name="isEffect3DEnabled" type="boolean" mode="getset" testValue="true"></property>
+      <property name="isEffect3DAvailable" type="boolean" mode="get" testValue="true"></property>
+      <property name="pageDisplay" type="enum" mode="getset" valueList="onePage|twoPage"
+                testValue="onePage"></property>
+      <property name="highlightSearch" type="boolean" mode="getset" testValue="true"></property>
+      <property name="skinClientLocation" type="point" mode="getset" creatorBlock="true"/>
+      <property name="skinClientSize" type="size" mode="getset" creatorBlock="true"/>
+      <property name="skinClientVisible" type="boolean" mode="getset" creatorBlock="true"/>
+      <property name="skinDesignSize" type="size" mode="getset" creatorBlock="true"/>
+      <property name="skinAutoZoom" type="boolean" mode="getset" creatorBlock="true"/>
+      <property name="skinFile" type="string" mode="getset"
+                valueList="&lt;Silverlight (xap)&gt; | &lt;Flash (swf)&gt; | &lt;WPF (dll)&gt;" creatorBlock="true">
+        <doc>file must exist in current skin folder, can be empty to remove from skin mode.</doc>
+      </property>
+      <method name="index" type="void">
+        <param name="queryString" type="string"/>
+        <param name="locateIndex" type="boolean"/>
+      </method>
+      <method name="openUrl" type="void">
+        <param name="url" type="string" valueList="&lt;FilePath&gt;|&lt;Url&gt;"/>
+        <param name="parameters" type="string"/>
+      </method>
+      <property name="contentsViewLink" type="string" mode="getset" valueList="$|{Link}"/>
+      <property name="defaultContentsViewLink" type="string" mode="getset" valueList="$|{Link}"/>
+      <method name="search" type="void">
+        <param name="queryString" type="string"></param>
+        <param name="startIndex" type="number" defaultValue="1"/>
+        <param name="resultCount" type="number" defaultValue="10"/>
+      </method>
+      <method name="getPromptFont" type="font" testValue="@initFont">
+        <param name="initFont" type="font"></param>
+        <doc>Return InitFont if user cancel the operation.</doc>
+      </method>
+      <method name="getPromptColor" type="color" testValue="@initColor">
+        <param name="initColor" type="color"></param>
+        <doc>Return RGB if user select a color and InitColor if user cancel the operation.</doc>
+      </method>
+      <property name="isDiagnosticsInfoEnabled" type="boolean" mode="getset"></property>
+      <command name="openShetabWebsite"/>
+      <command name="exit" blockByCreator="true"/>
+      <command name="unregisterSoftLock"></command>
+      <command name="showDocumentInfo" IsHidden="true"></command>
+      <command name="focusToCommentText"></command>
+      <command name="hideCommentWindow"></command>
+      <command name="showCommentListWindow" Image="commentList"></command>
+      <command name="showContentsWindow" Image="contents"></command>
+      <command name="showIndexWindow" Image="index"></command>
+      <command name="showFavoritesWindow" Image="favorites"></command>
+      <command name="showSearchWindow" Image="search"></command>
+      <command name="showHelpWindow" Image="help"></command>
+      <command name="showPageSetupWindow"></command>
+      <command name="showFindWindow" Image="find"></command>
+      <command name="showPrintPreview"></command>
+      <command name="showAboutWindow" Image="productIcon"></command>
+      <command name="showAboutEngineWindow" Image="shetabReader"></command>
+      <command name="showPrintWindow" Image="print"></command>
+      <command name="toggleCommentWindowVisible" Image="comment"></command>
+      <command name="toggleMarkupWindowVisible" Image="markupTools"></command>
+      <command name="toggleFullScreen" Image="fullScreen"></command>
+      <command name="toggleFullView" Image="fullView"></command>
+      <command name="toggleNavigationPanelVisible" Image="navigationPanel">
+        <doc>Could not set when NavigationPaneLock is true.</doc>
+      </command>
+      <command name="toggleNavigationPanelAutoHide" Image="autoHide" creatorBlock="true"></command>
+      <command name="showPropertiesWindow" Image="properties" RouteMainView="false"></command>
+      <command name="showOptionsWindow"></command>
+      <command name="zoomIn"></command>
+      <command name="zoomOut"></command>
+      <command name="zoomActualSize"></command>
+      <command name="zoomFitPage"></command>
+      <command name="zoomFitWidth"></command>
+      <command name="zoom200"></command>
+      <command name="zoom50"></command>
+      <command name="addToFavorites"></command>
+      <command name="copyAddress"></command>
+      <command name="displayOnePage" Image="onePage"></command>
+      <command name="displayTwoPage" Image="twoPage"></command>
+      <command name="exportFile"></command>
+      <command name="refresh"></command>
+      <command name="selectArrowTool" Image="arrow"></command>
+      <command name="selectHandTool" Image="hand"></command>
+      <command name="selectRectangleTool" Image="rectangle"></command>
+      <command name="selectTextBoxTool" Image="textBoxTool"></command>
+      <command name="selectPencilTool" Image="pencil"></command>
+      <command name="selectStickyNoteTool" Image="stickyNote"></command>
+      <command name="selectCrossOutTextTool" Image="crossOutTextTool"></command>
+      <command name="selectUnderlineTextTool" Image="underlineTextTool"></command>
+      <command name="selectHighlightTextTool" Image="highlightTextTool"></command>
+      <command name="selectHighlightTextRedTool" Image="highlightTextToolRed"></command>
+      <command name="selectHighlightTextGreenTool" Image="highlightTextToolGreen"></command>
+      <command name="selectTextTipTool" Image="textTipTool"></command>
+      <command name="sendSelectionToBack" Image="sendToBack" RouteMainView="false"></command>
+      <command name="bringSelectionToFront" Image="bringToFront" RouteMainView="false"></command>
+      <command name="minimize"></command>
+      <command name="maximize"></command>
+      <command name="navigatePreviousPage" Image="previousPage"></command>
+      <command name="navigateNextPage" Image="nextPage"></command>
+      <command name="navigatePreviousTopic" Image="previousTopic"></command>
+      <command name="navigateNextTopic" Image="nextTopic"></command>
+      <command name="navigateBack" Image="back"></command>
+      <command name="navigateForward" Image="forward"></command>
+      <command name="navigateHome" Image="home"></command>
+      <command name="navigateBlank"></command>
+      <command name="selectAll" RouteMainView="false"></command>
+      <command name="moveSelection" RouteMainView="false"></command>
+      <command name="copySelection" Image="copy" RouteMainView="false"></command>
+      <command name="cutSelection" Image="cut" RouteMainView="false"></command>
+      <command name="deleteSelection" Image="delete" RouteMainView="false"></command>
+      <command name="renameSelection" Image="rename" RouteMainView="false"></command>
+      <command name="paste" RouteMainView="false"></command>
+      <command name="openSelection" RouteMainView="false"></command>
+      <command name="newFolder" RouteMainView="false"></command>
+      <command name="moveToPreviousSibling" Image="moveUp" RouteMainView="false"></command>
+      <command name="moveToNextSibling" Image="moveDown" RouteMainView="false"></command>
+      <command name="stopMedia" RouteSoundView="true"></command>
+      <command name="playMedia" RouteSoundView="true"></command>
+      <command name="pauseMedia" RouteSoundView="true"></command>
+      <command name="nextMedia" RouteSoundView="true"></command>
+      <command name="previousMedia" RouteSoundView="true"></command>
+      <command name="togglePlayMedia" RouteSoundView="true"></command>
+      <command name="toggleMute" RouteSoundView="true"></command>
+      <command name="showDeveloperTools" RouteSoundView="true"/>
+      <command name="commentSubjectBox" idOnly="true"></command>
+      <command name="commentTextBox" idOnly="true"></command>
+      <command name="commentTimeBox" idOnly="true"></command>
+      <command name="commentAuthorBox" idOnly="true"></command>
+      <command name="mediaTimerBox" idOnly="true" RouteSoundView="true"></command>
+      <command name="mediaSlider" idOnly="true" RouteSoundView="true"></command>
+      <command name="volumeSlider" idOnly="true" RouteSoundView="true"></command>
+      <command name="pageNumberBox" idOnly="true"></command>
+      <command name="pageCountBox" idOnly="true"></command>
+      <command name="searchBox" idOnly="true"></command>
+      <command name="restart"></command>
+      <command name="test1"></command>
+      <command name="test2"></command>
+      <command name="closePopupWindow"/>
+      <method name="exportFiles" type="void">
+        <param name="links" type="xml"></param>
+      </method>
+      <method name="printFiles" type="void">
+        <param name="links" type="xml"></param>
+      </method>
+      <method name="navigateDocument" type="void">
+        <param name="link" type="string"></param>
+        <param name="keepSound" type="boolean"></param>
+        <param name="highlightKeywords" type="string">
+          <doc>"phrase 1" "phrase2" phrase3</doc>
+        </param>
+      </method>
+      <method name="navigatePageLabel" type="void">
+        <param name="label" type="string"></param>
+      </method>
+      <method name="playSound" type="void">
+        <param name="link" type="string"></param>
+        <param name="backgroundMode" type="boolean"></param>
+        <param name="loopSound" type="boolean"></param>
+      </method>
+      <method name="localizeText" type="string" testValue="@text">
+        <param name="text" type="string" useCDATA="true"></param>
+      </method>
+      <property name="soundVolume" type="number" valueList="0-100" mode="getset" testValue="70"></property>
+      <property name="mute" type="boolean" mode="getset"></property>
+      <property name="commentSubject" type="string" mode="getset"></property>
+      <property name="commentAuthor" type="string" mode="getset"></property>
+      <property name="commentText" type="string" mode="getset"></property>
+      <property name="commentTime" type="string" mode="getset"></property>
+      <property name="pageLabel" type="string" mode="getset"></property>
+      <property name="pageCount" type="number" mode="get"></property>
+      <property name="searchQuery" type="string" mode="getset"></property>
+      <property name="zoom" type="number" mode="getset"></property>
+      <property name="zoomMode" type="enum" mode="getset" valueList="custom|actualSize|fitPage|fitWidth" testValue="fitWidth"></property>
+      <property name="uiCulture" type="string" valueList="en-US|fa-IR|ar-SA" mode="getset" testValue="en-us"></property>
+      <property name="isCommentSubjectEnabled" type="boolean" testValue="true" mode="get"></property>
+      <property name="isCommentAuthorEnabled" type="boolean" testValue="true" mode="get"></property>
+      <property name="isCommentTextEnabled" type="boolean" testValue="true" mode="get"></property>
+      <property name="isCommentTimeEnabled" type="boolean" testValue="true" mode="get"></property>
+      <property name="isPageLabelEnabled" type="boolean" testValue="true" mode="get"></property>
+      <property name="isPageCountEnabled" type="boolean" testValue="true" mode="get"></property>
+      <property name="isSearchQueryEnabled" type="boolean" testValue="true" mode="get"></property>
+      <property name="topics" type="xml" mode="get"></property>
+      <property name="currentTopicId" type="string" valueList="{GUID}" mode="getset"></property>
+      <property name="selectedTopicId" type="string" valueList="{GUID}" mode="get"></property>
+      <property name="currentRootTopicId" type="string" valueList="$|{GUID}" mode="getset" creatorBlock="true"></property>
+      <method name="getUrlFromLink" type="string">
+        <param name="link" type="string"></param>
+        <doc>Return absolute path to file or empty string if not found.</doc>
+      </method>
+      <method name="getLinkFromUrl" type="string">
+        <param name="link" type="string"></param>
+        <doc>Return link from url</doc>
+      </method>
+      <method name="getResource" type="string">
+        <param name="resourceFile" type="string"/>
+        <param name="resourceKey" type="string"/>
+        <doc>Return string from application string table depending to current culture.</doc>
+      </method>
+      <property name="documentUrl" type="string" mode="get"></property>
+      <property name="documentLink" type="string" valueList="{Link}" mode="getset"></property>
+      <property name="mediaPosition" type="number" mode="getset"></property>
+      <property name="mediaState" type="enum" valueList="play|pause|stop" mode="getset"></property>
+      <property name="mediaLength" type="number" valueList="{Millisecond}" mode="get" testValue="5400000">
+        <doc>Media Length in Millisecond. Zero if no media present.</doc>
+      </property>
+      <property name="isMediaOpen" type="boolean" mode="get" testValue="true"/>
+      <property name="isMediaPlaying" type="boolean" mode="getset">
+        <doc>Set only available in test preview. Set will not effect when module run in Shetab eBook.</doc>
+      </property>
+      <property name="isMediaPaused" type="boolean" mode="get"/>
+      <property name="isMediaStopped" type="boolean" mode="get" testValue="true"/>
+      <method name="getPromptFolder" type="string" valueList="{Folder}">
+        <param name="initFolder" type="string"></param>
+        <param name="rootFolder" type="string"></param>
+        <param name="title" type="string"></param>
+        <doc>Return empty string if user cancel the operation.</doc>
+      </method>
+      <method name="getPromptFileOpen" type="string" valueList="{File}">
+        <param name="fileName" type="string"></param>
+        <param name="filter" type="string">
+          <doc>Sample Value: HTML Files|*.htm,*.html|Image Files(*.png)|*.png</doc>
+        </param>
+      </method>
+      <method name="sendCustomNotify" type="string">
+        <param name="customNotifyName" type="string"></param>
+        <param name="customNotifyValue" type="string"></param>
+      </method>
+      <property name="showAboutEngineMenu" type="boolean" mode="getset"></property>
+      <!--Module-->
+      <property name="flowDirection" valueList="ltr|rtl" type="enum" mode="get" testValue="ltr">
+        <doc>Contents flow direction, such as documents, navigation page, text.</doc>
+      </property>
+      <property name="uiFlowDirection" valueList="ltr|rtl" type="enum" mode="get" testValue="ltr">
+        <doc>Application flow direction, such as menu and skin layout.</doc>
+      </property>
+      <property name="isShetabEbookHost" type="boolean" mode="get" testValue="false" ></property>
+      <property name="isTestMode" type="boolean" mode="get" testValue="true" ></property>
+      <property name="moduleFile" type="string" mode="get"></property>
+      <property name="moduleFolder" type="string" mode="get"></property>
+      <property name="enableUpdateView" type="boolean" mode="getset"></property>
+      <property name="enableFocus" type="boolean" mode="getset" testValue="true">
+        <doc>Available only in flash modules.</doc>
+      </property>
+      <property name="isDesignMode" type="boolean" mode="get" testValue="true"></property>
+      <property name="plugins" type="xml" mode="get"
+                valueList="&lt;Plugins&gt;&lt;Plugin Id=&quot;&quot; Name=&quot;&quot; Description=&quot;&quot; Category=&quot;&quot; CategoryName=&quot;&quot; FilePath=&quot;&quot; PreviewFilePath=&quot;&quot; EnabledOn=&quot;&quot; AutoSetToTopic=&quot;&quot;/&gt;&lt;/Plugins&gt;"></property>
+      <property name="selectedBookId" type="string" mode="get" valueList="{GUID}">
+        <doc>Return selected book id depending to current selection; return empty if not found.</doc>
+      </property>
+      <property name="rootBookId" type="string" mode="getset" valueList="{GUID}"/>
+      <method name="getTopicIdBookOwner" type="string" valueList="&lt;BookId&gt;">
+        <param name="topicId" type="string" valueList="{GUID}"></param>
+        <doc>Return BookId that is owner of specified TopicId.</doc>
+      </method>
+      <method name="getTopic" type="xml" valueList="">
+        <param name="topicId" type="string" valueList="{GUID}"/>
+      </method>
+      <method name="findTopic" type="string" valueList="iD>ID>ID">
+        <param name="startTopicId" type="string" valueList="{GUID}"/>
+        <param name="topicId" type="string" valueList="{GUID}"/>
+        <doc>Return the path of topic.</doc>
+      </method>
+      <property name="books" type="xml"
+                valueList="&lt;Books&gt;&#xD;&#xA;&#x9;&lt;Book Id=&quot;&quot; DataFolderUrl=&quot;&quot; IconSetsFolderUrl=&quot;&quot;/&gt;&#xD;&#xA;&#x9;&lt;Book Id=&quot;&quot; DataFolderUrl=&quot;&quot; IconSetsFolderUrl=&quot;&quot;/&gt;&#xD;&#xA;&lt;/Books&gt;"
+                mode="get">
+        <doc>Return books xml.</doc>
+      </property>
+      <property name="shetabWebSiteUrl" type="string" mode="get"/>
+      <property name="mediaPositionGrabMode" type="boolean" mode="getset"></property>
+      <property name="contentsRoot" type="string" mode="set" valueList="$|{Link}" IsHidden="true"
+                creatorBlock="true" deprecated="true"></property>
+      <method name="getCommandStatus" type="boolean" deprecated="true">
+        <param name="commandName" type="string"/>
+        <param name="checkedState" type="boolean"/>
+      </method>
+      <method name="canExecuteCommand" type="boolean" testValue="true">
+        <param name="commandName" type="string"></param>
+      </method>
+      <method name="executeCommand" type="void">
+        <param name="commandName" type="string"></param>
+      </method>
+      <method name="canGetProperty" type="boolean" testValue="true">
+        <param name="propertyName" type="string"/>
+      </method>
+      <method name="canSetProperty" type="boolean" testValue="true">
+        <param name="propertyName" type="string"/>
+        <param name="value" type="string"/>
+      </method>
+    </type>
+  </system>
+
+  <!--Agent API-->
+  <system name="agent">
+    <type name="Agent">
+      <method name="isModuleInstanceExists" type="boolean">
+        <param name="moduleInstanceId" type="string"/>
+      </method>
+
+      <method name="fireUpdateUI" type="void"/>
+
+      <method name="firePropertyBagChanged" type="void">
+        <param name="moduleEntities" type="string,array"/>
+        <param name="changeSetId" type="string"/>
+      </method>
+
+      <method name="firePropertiesChanged" type="void">
+        <param name="properties" type="string,array"/>
+      </method>
+
+      <method name="fireRefreshTopics" type="void"/>
+
+      <method name="fireCustomNotify" type="void">
+        <param name="notifyName" type="string"/>
+        <param name="notifyValue" type="string"/>
+      </method>
+
+      <method name="initializeModulePlaceholder" type="void">
+        <param name="placeholderId" type="string"/>
+        <param name="url" type="string"/>
+      </method>
+
+      <method name="invokeStorageCallback" type="void">
+        <param name="callbackId" type="string"/>
+        <param name="success" type="boolean"/>
+        <param name="statusText" type="string"/>
+        <param name="responseText" type="string" useCDATA="true"/>
+        <param name="responseByteArray" type="byte,array"/>
+        <param name="type" type="string"/>
+      </method>
+
+    </type>
+
+    <!--DocumentCommandHandler-->
+    <type name="DocumentCommandHandler">
+      <property name="currentBookmark" type="string" mode="get"/>
+      <property name="isOpen" type="boolean" mode="get"/>
+      <method name="open" type="void">
+        <param name="url" type="string"/>
+        <param name="pageNumber" type="number"/>
+        <param name="bookmark" type="string"/>
+      </method>
+      <method name="goToBookmark" type="void">
+        <param name="bookmark" type="string"/>
+      </method>
+    </type>
+
+    <!--EditCommandHandler-->
+    <type name="EditCommandHandler">
+      <property name="canCopy" type="boolean" mode="get"/>
+      <property name="canCut" type="boolean" mode="get"/>
+      <property name="canPaste" type="boolean" mode="get"/>
+      <property name="canDel" type="boolean" mode="get"/>
+      <property name="canSelectAll" type="boolean" mode="get"/>
+      <method name="copy" type="void"/>
+      <method name="cut" type="void"/>
+      <method name="paste" type="void"/>
+      <method name="del" type="void"/>
+      <method name="selectAll" type="void"/>
+      <method name="clearSelection" type="void"/>
+    </type>
+
+    <!--MediaCommandHandler-->
+    <type name="MediaCommandHandler">
+      <property name="mediaState" type="enum" valueList="play|pause|stop" mode="getset"></property>
+      <method name="canSetMediaState" type="boolean">
+        <param name="state" valueList="play|pause|stop" type="enum"></param>
+      </method>
+      <property name="canNextMedia" type="boolean" mode="get"/>
+      <property name="canPreviousMedia" type="boolean" mode="get"/>
+      <property name="mediaPosition" type="number" mode="getset"/>
+      <property name="mediaLength" type="number" mode="get"/>
+      <property name="loopMedia" type="number" mode="getset"/>
+      <method name="nextMedia" type="void"/>
+      <method name="previousMedia" type="void"/>
+    </type>
+
+    <!--PageCommandHandler-->
+    <type name="PageCommandHandler">
+      <property name="pageNumber" type="number" mode="getset"/>
+      <property name="pageCount" type="number" mode="get"/>
+      <property name="pageViewCount" type="number" mode="getset"/>
+      <method name="canSetPageViewCount" type="boolean">
+        <param name="value" type="number"/>
+      </method>
+      <method name="getPageLabelFromPageNumber" type="string">
+        <param name="value" type="number"/>
+        <doc>return: empty string if page has not label</doc>
+      </method>
+      <method name="getPageNumberFromPageLabel" type="number">
+        <param name="value" type="string"/>
+        <doc>//@return: -1 if not found</doc>
+      </method>
+    </type>
+
+    <!--PrintCommandHandler-->
+    <type name="PrintCommandHandler">
+      <property name="canPrint" type="boolean" mode="get"/>
+      <property name="canPrintPreview" type="boolean" mode="get"/>
+      <property name="canPrintSetup" type="boolean" mode="get"/>
+      <method name="print" type="boolean">
+        <doc>return true to prevent engine do default work</doc>
+      </method>
+      <method name="printPreview" type="boolean">
+        <doc>return true to prevent engine do default work</doc>
+      </method>
+      <method name="printSetup" type="boolean">
+        <doc>return true to prevent engine do default work</doc>
+      </method>
+    </type>
+
+    <!--TextCommandHandler-->
+    <type name="TextCommandHandler">
+      <property name="selectedText" type="boolean" mode="get"/>
+      <property name="canHighlightTexts" type="boolean" mode="get"/>
+      <method name="highlightTexts" type="void">
+        <param name="value" type="string"/>
+      </method>
+    </type>
+
+    <!--ZoomCommandHandler-->
+    <type name="ZoomCommandHandler">
+      <!--Can call doDefault-->
+      <property name="canZoomIn" type="boolean" mode="get"/>
+      <!--Can call doDefault-->
+      <property name="canZoomOut" type="boolean" mode="get"/>
+      <property name="zoom" type="number" mode="getset"/>
+      <property name="zoomMode" type="enum" valueList="custom|actualSize|fitPage|fitWidth" mode="getset"/>
+      <method name="canSetZoomMode" type="boolean">
+        <param name="value" type="enum" valueList="custom|actualSize|fitPage|fitWidth"/>
+      </method>
+      <method name="canSetZoom" type="boolean">
+        <param name="value" type="number"/>
+      </method>
+      <!--Can call doDefault-->
+      <method name="zoomIn" type="void"/>
+      <!--Can call doDefault-->
+      <method name="zoomOut" type="void"/>
+    </type>
+  </system>
+
+</seApi>

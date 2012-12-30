@@ -1,0 +1,209 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML dir=rtl><HEAD><TITLE>نتیجه جستجو در {ProductName}</TITLE>
+<META http-equiv=Content-Language content=fa>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<STYLE type="text/css">
+
+SPAN.PageLocation {
+	COLOR: #008000
+}
+SPAN.PageTitle {
+	
+}
+SPAN.ResultPages {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+SPAN.PageStats {
+	COLOR: #ff00ff
+}
+SPAN.TotalStats {
+	COLOR: #808000
+}
+SPAN.PageSentences {
+	COLOR: #555555
+}
+SPAN.SearchQuery {
+	FONT-WEIGHT: bold
+}
+BODY {
+	; FONT-FAMILY: Tahoma
+}
+.Left {
+	width: 659px;
+	height: 159px;
+	white-space: nowrap;
+	text-align: left;
+}
+.Tile {
+	background-image: url('Search_files/Tile.png');
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+.BottomTile {
+	background-image: url('Search_files/BottomTile.png');
+	background-repeat: repeat-x;
+	background-position: right bottom;
+}
+.style1 {
+	font-size: x-small;
+	color: #FFFFFF;
+}
+</STYLE>
+
+<SCRIPT type="text/jscript" language=javascript>
+function DoSearch()
+{
+	//update highlisgt command
+	UpdateHighlighSearch();
+	
+	//update search query
+	var query = SearchQuery.value;
+	if (MatchWholeWorld.checked==true)
+	{
+		var doubleQ = RegExp('"', "g");
+		query = query.replace(doubleQ,'');
+		query = '"' + query + '"';
+	}
+	
+	//send search command to ShetabEbook
+	var command = "shetabebook://Command=Search;SearchQuery=%1;";
+	command = command.replace(/%1/g,query);
+	navigate(command);
+}
+
+function SearchQueryKeyDown()
+{
+	if (window.event.keyCode==13)
+	{
+		DoSearch();
+	}
+}
+
+function OnLoadBody()
+{
+	SetSearchQueryFocus();
+}
+
+function SetSearchQueryFocus()
+{
+	SearchQuery.focus();
+}
+
+function UpdateHighlighSearch()
+{
+	var command = "shetabebook://HighlightSearch=%1;";
+	var value = HighlighSearch.checked ? 1 : 0;
+	command = command.replace(/%1/g,value);
+	navigate(command);
+}
+
+function HighlighSearchChanged()
+{
+	UpdateHighlighSearch();
+}
+
+
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.3020" name=GENERATOR></HEAD>
+<BODY bottomMargin=0 leftMargin=0 topMargin=0 onload=OnLoadBody(); rightMargin=0 style="background-color: #A9DDF5">
+<table height="20" align="center" cellpadding="0" cellspacing="0" style="width: 80%"><tr>
+	<td style="height: 50"></td></tr></table>
+
+<TABLE id=table3 cellSpacing=0 cellPadding=0 border=0 style="font-family: tahoma; font-size: x-small; height: 159; width: 80%;" align="center" class="Tile">
+  <TBODY>
+  <TR>
+    <TD>
+	<img alt="" height="159" src="Search_files/Right.png" width="39"></TD>
+    <TD width=263 height="100%" style="padding-right: 5px">
+	<INPUT onkeypress=SearchQueryKeyDown(); 
+      style="FONT-SIZE: x-small; FONT-FAMILY: Tahoma" tabIndex=0 size=40 
+      value="{SearchQuery}" name=SearchQuery><br><br>
+		<span lang="AR-SA" dir="RTL" style="font-size: 12.0pt; font-family: Tahoma">
+		<FONT face=Tahoma>
+		<INPUT style="FONT-SIZE: x-small; FONT-FAMILY: Tahoma; width: 55px;" onclick=DoSearch(); type=button value=بحث name=SearchButton></FONT></span></TD>
+    <TD noWrap style="padding-right: 10px; width: 100%; vertical-align: middle;"><FONT face=Tahoma><SPAN style="FONT-SIZE: x-small"><INPUT 
+      type=checkbox value=ON name=MatchWholeWorld><span class="style1" dir="RTL" lang="AR-SA">نفس 
+	العبارة</span><BR><FONT color=#ffffff><INPUT 
+      onclick=HighlighSearchChanged(); type=checkbox value=ON 
+      name=HighlighSearch {HighlightSearchValue}><span class="style1" dir="RTL" lang="AR-SA">أشير 
+	الكلمات في النص</span></FONT></SPAN></FONT></TD>
+    <TD class="Left" style="width: 659; height: 159" dir="ltr">
+	<img alt="" height="159" src="Search_files/Left.png" width="659"></TD></TR>
+  <TR>
+    <TD colspan="4">
+
+<table id=NoResultSection style="display:{NoResultSectionDisplay}; width: 100%; font-family: tahoma; font-size: x-small; background-color: #FFFFFF;" cellpadding="0" align="center" cellspacing="0">
+	<tr>
+		<td colspan="3" style="padding-right: 20px; height: 200;">
+
+		<P><B>
+		<strong>
+		<span lang="AR-SA" dir="RTL">
+		النتيجة في</span></strong>{ProductName}</B><P>
+		<B>
+		<span lang="AR-SA" dir="RTL">
+		<strong>العبارة غير موجودة</strong></span> - {SearchQuery} -<span lang="en-us">.</span></B></td>
+	</tr>
+	<tr class="BottomTile">
+		<td style="width: 39; height: 159">
+
+		<img alt="" height="159" src="Search_files/RightBottom.png" width="39"></td>
+		<td style="width: 90%; height: 159">
+
+		&nbsp;</td>
+		<td style="border-width: 0; width: 39; height: 159; text-align: left;" dir="ltr" valign="bottom">
+
+		<img alt="" height="159" src="Search_files/LeftBottom.png" width="39"></td>
+	</tr>
+</table>
+
+	  </TD>
+      </TR>
+  <TR>
+    <TD colspan="4">
+
+<table id=ResultSection style="display:{ResultSectionDisplay}; width: 100%; font-family: tahoma; font-size: x-small; background-color: #FFFFFF; " cellpadding="0" align="center" cellspacing="0">
+	<tr style="padding-right: 10px; padding-left: 10px">
+		<td style="border-width: 0" colspan="3">
+
+<P><span dir="RTL" lang="AR-SA">نتيجة البحث في</span> <B>
+<span style="">{ProductName}</span></B></P>
+<P style=""><B>ebook_totalstats</B></P>
+<TABLE id=table2 cellSpacing=0 width="100%" style="border: 1px solid #0066CC; font-family: tahoma; font-size: x-small;">
+  <TBODY>
+  <TR>
+    <TD style="border: 0 solid #0066CC;" bgColor=#eaeaff height=25>
+      <P align=left><span dir="RTL" lang="AR-SA">نتيجة</span>  
+      <B>ebook_startpage - ebook_endpage</B><SPAN lang=fa> <span dir="RTL" lang="AR-SA">من</span> 
+      </SPAN><B>ebook_totalcount</B> <span dir="RTL" lang="AR-SA">صفحة لاجل</span><SPAN lang=fa> </SPAN><SPAN 
+      class=SearchQuery>ebook_searchquery</SPAN></P></TD></TR></TBODY></TABLE>
+<P style="">ebook_resultset</P>
+<P><span dir="RTL" lang="AR-SA">صفحات نتيجة البحث</span><span style="">:&nbsp;</span>ebook_prevpage<FONT color=#800000><span style="">
+</span> </FONT><FONT 
+color=#cc3300><SPAN style="font-size: x-small" >ebook_resultpages</SPAN></FONT><FONT 
+color=#800000><span > </span> </FONT>
+ebook_nextpage</P>
+<P dir=ltr>&nbsp;</P></td>
+	</tr>
+	<tr class="BottomTile">
+		<td style="border-width: 0; width: 39px; height: 159;">
+
+		<img alt="" height="159" src="Search_files/RightBottom.png" width="39"></td>
+		<td style="width: 90%; height: 159;">
+
+		&nbsp;</td>
+		<td style="border-width: 0; width: 39; height: 159; text-align: left;" dir="ltr" valign="bottom">
+
+		<img alt="" height="159" src="Search_files/LeftBottom.png" width="39"></td>
+	</tr>
+</table>
+
+	  </TD>
+      </TR>
+  <TR>
+    <TD colspan="4" style="height: 20">
+	&nbsp;</TD>
+      </TR></TBODY></TABLE>
+
+</BODY></HTML>

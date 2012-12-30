@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/ShetabEbookAgent.js"></script>
+    <script>
+        var buttons = {btn_searchPanelContainer:'se_placeholder_searchPanelContainer',
+            btn_indexPanelContainer:'se_placeholder_indexPanelContainer',
+            btn_contentsPanelContainer:'se_placeholder_contentsPanelContainer',
+            btn_favoritesPanelContainer:'se_placeholder_favoritesPanelContainer',
+            btn_projectPanelContainer:'se_placeholder_projectPanelContainer'};
+
+        function pageLoad() {
+            seApp.init('shetab.navigationPanel');
+        }
+
+        function showPanel(btnId) {
+            for (var buttonName in buttons) {
+                document.getElementById(buttons[buttonName]).style.display = 'none';
+                document.getElementById(buttonName).classList.remove('clicked');
+            }
+
+            document.getElementById(buttons[btnId]).style.display = 'block';
+            document.getElementById(btnId).classList.add('clicked');
+
+        }
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        iframe {
+            border: none;
+            padding: 0;
+            margin: 0;
+            float: left;
+        }
+
+        #monitor {
+            position: absolute;
+            top: 0;
+            bottom: 30px;
+            width: 100%;
+            background-color: blue;
+        }
+
+        #buttons {
+            position: absolute;
+            height: 35px;
+            bottom: 0;
+            width: 100%;
+            background-color: #8b0000;
+            cursor: pointer;
+            text-align: center;
+
+            /*-----IE10-----*/
+            display: -ms-flexbox;
+            -ms-flex-align: center;
+            -ms-flex-pack: center;
+            -ms-flex-direction: row;
+            -ms-flex-wrap: nowrap;
+
+            /*-----FireFox-----*/
+            -moz-box-pack: center;
+            display: -moz-box;
+
+            /*-----Webkit-----*/
+            display: -webkit-box;
+            display: -webkit-flexbox;
+            -webkit-box-pack: center;
+            -webkit-flex-pack: center;
+        }
+
+        #monitor > iframe {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+        #buttons > div {
+            position: relative;
+            height: 100%;
+            padding-left: 5px;
+            padding-right: 5px;
+            direction: ltr;
+
+            /*-----IE10-----*/
+            -ms-flex-negative: 0;
+            -ms-flex-positive: 0;
+            -ms-flex-preferred-size: auto;
+            display: -ms-flexbox;
+            -ms-flex-align: center;
+            -ms-flex-pack: center;
+            -ms-flex-direction: row;
+            -ms-flex-wrap: nowrap;
+
+            /*-----FireFox-----*/
+            -moz-box-pack: center;
+            display: -moz-box;
+
+            /*-----Webkit-----*/
+            display: -webkit-box;
+            display: -webkit-flexbox;
+            -webkit-box-pack: center;
+            -webkit-flex-pack: center;
+        }
+
+        .icon {
+            height: 100%;
+            width: 30px;
+            background-color: #7fff00;
+        }
+
+        .label {
+            height: 100%;
+            line-height: 30px;
+            padding-left: 2px;
+            padding-right: 2px;
+            font-size: 10pt;
+        }
+
+        .clicked {
+            color: white;
+            font-weight: bold;
+        }
+
+        .clicked .icon {
+            background-color: #1e90ff;
+        }
+
+    </style>
+
+    <style>
+        #monitor > iframe:nth-child(1) {
+            background-color: #faebd7;
+        }
+
+        #monitor > iframe:nth-child(2) {
+            background-color: #8a2be2;
+        }
+
+        #monitor > iframe:nth-child(3) {
+            background-color: #a52a2a;
+        }
+
+        #monitor > iframe:nth-child(4) {
+            background-color: #b8860b;
+        }
+
+        #monitor > iframe:nth-child(5) {
+            background-color: #adff2f;
+        }
+    </style>
+</head>
+<body onload="pageLoad()">
+<div id="monitor">
+    <iframe id="se_placeholder_searchPanelContainer" frameborder="0"></iframe>
+    <iframe id="se_placeholder_indexPanelContainer" frameborder="0"></iframe>
+    <iframe id="se_placeholder_contentsPanelContainer" frameborder="0"></iframe>
+    <iframe id="se_placeholder_favoritesPanelContainer" frameborder="0"></iframe>
+    <iframe id="se_placeholder_projectPanelContainer" frameborder="0"></iframe>
+</div>
+<div id="buttons">
+    <div id="btn_searchPanelContainer" onclick="showPanel('btn_searchPanelContainer')">
+        <div class="icon"></div>
+        <div class="label">Search</div>
+    </div>
+    <div id="btn_indexPanelContainer" onclick="showPanel('btn_indexPanelContainer')">
+        <div class="icon"></div>
+        <div class="label">Index</div>
+    </div>
+    <div id="btn_contentsPanelContainer" onclick="showPanel('btn_contentsPanelContainer')">
+        <div class="icon"></div>
+        <div class="label">Contents</div>
+    </div>
+    <div id="btn_favoritesPanelContainer" onclick="showPanel('btn_favoritesPanelContainer')">
+        <div class="icon"></div>
+        <div class="label">Favorites</div>
+    </div>
+    <div id="btn_projectPanelContainer" onclick="showPanel('btn_projectPanelContainer')">
+        <div class="icon"></div>
+        <div class="label">Project</div>
+    </div>
+</div>
+
+</body>
+</html>

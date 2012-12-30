@@ -1,0 +1,11 @@
+<seModule id="{e3b9495e-dbd3-4f3c-8547-49fdf7b86db3}"
+          title="Video Player"
+          category="Player"
+          description=""
+          fileUrl="default.html"
+          previewUrl=""
+          resourcesUrl=""
+          iconUrl=""
+          type="player"
+          playerFileTypes="mp4">
+</seModule>

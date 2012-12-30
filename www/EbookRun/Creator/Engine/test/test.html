@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../ShetabEbookCreatorAgent.js"></script>
+    <script>
+        function documentLoaded(){
+            seCreatorApp.init('shetab.creator.test');
+        }
+
+        function nav1()
+        {
+            seCreatorApp.navigateDocument("/Run/Debug/Creator/Engine/test/test.png", "1", "1", "1", "1","1","1","1");
+        }
+		
+		function nav2()
+        {
+            seCreatorApp.navigateDocument("/Run/Debug/Creator/Engine/test/test.jpg", "1", "1", "1", "1","1","1","1");
+        }
+		
+		function nav3()
+        {
+            seCreatorApp.navigateDocument("/Run/Debug/Creator/Engine/test/test.pdf", "1", "1", "1", "1","1","1","1");
+        }
+
+        function nav4()
+        {
+            seCreatorApp.navigateDocument("/Run/Debug/Creator/Engine/test/test.mp4", "1", "1", "1", "1","1","1","1");
+        }
+    </script>
+</head>
+<body onload="documentLoaded()">
+    <a href="javascript:nav1()">Image1</a>
+	<br>
+	<a href="javascript:nav2()">Image2</a>
+	<br>
+	<a href="javascript:nav3()">PDF1</a>
+    <br>
+    <a href="javascript:nav4()">Video1</a>
+</body>
+</html>

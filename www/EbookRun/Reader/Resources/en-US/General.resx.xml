@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IndexDelimiter" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="CantLoadAnySkin" xml:space="preserve">
+    <value>Could not open any skin.</value>
+  </data>
+  <data name="DirectxNotInstalled" xml:space="preserve">
+    <value>DirectX 9 is not installed. Please install DirectX 9 or newer version.</value>
+  </data>
+  <data name="ShetabEbookReader" xml:space="preserve">
+    <value>Shetab Reader</value>
+  </data>
+  <data name="TextBox" xml:space="preserve">
+    <value>Text Box</value>
+  </data>
+  <data name="PageNo" xml:space="preserve">
+    <value>Page %1</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Contents" xml:space="preserve">
+    <value>Contents</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="UnregisterSoftLockSuccess" xml:space="preserve">
+    <value>Unregister Successfully ژomplete.</value>
+  </data>
+  <data name="UnregisterSoftLockFailed" xml:space="preserve">
+    <value>Unregister Failed. This operation may be done before.</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Incorrect Password!</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>Bookmarks</value>
+  </data>
+  <data name="UserCancelTheOperation" xml:space="preserve">
+    <value>User cancel the operation.</value>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="AboutCaption" xml:space="preserve">
+    <value>About %1</value>
+  </data>
+  <data name="ColumnName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ApplyNow" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>&lt; &amp;Back</value>
+  </data>
+  <data name="NextButton" xml:space="preserve">
+    <value>&amp;Next &gt;</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="IndexResultCaption" xml:space="preserve">
+    <value>Index Results</value>
+  </data>
+  <data name="IndexNotCreated" xml:space="preserve">
+    <value>Search is not possible because the index is not created yet.</value>
+  </data>
+  <data name="ColumnTitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="ColumnLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="CantInitEffect" xml:space="preserve">
+    <value>3D effects is turned off due to a problem.
+You can turn it on again from the menu when the problem is resolved.
+
+Error: %1</value>
+  </data>
+  <data name="BookNotLoaded" xml:space="preserve">
+    <value>%1 (Book is removed from the project)</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File not found: ‪%1</value>
+  </data>
+  <data name="Report_ErrorCount" xml:space="preserve">
+    <value>Errors: %1</value>
+  </data>
+  <data name="Report_WarningCount" xml:space="preserve">
+    <value>Warnings: %1</value>
+  </data>
+  <data name="Report_Divider" xml:space="preserve">
+    <value>
+-------------------------------</value>
+  </data>
+  <data name="CantCopyFile" xml:space="preserve">
+    <value>Could not copy "%1" to "%2".
+
+Error: %3</value>
+  </data>
+  <data name="CDLG_Filename" xml:space="preserve">
+    <value>File name:</value>
+  </data>
+  <data name="CDLG_FilesOfType" xml:space="preserve">
+    <value>Files of type:</value>
+  </data>
+  <data name="CDLG_Lookin" xml:space="preserve">
+    <value>Look in:</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CantFindProjectFile" xml:space="preserve">
+    <value>Could not find project file.</value>
+  </data>
+  <data name="IndexReport_FileIndexed" xml:space="preserve">
+    <value>File indexed (%2 Page, %3 Word): %1</value>
+  </data>
+  <data name="IndexReport_Finished" xml:space="preserve">
+    <value>End of creating the Index - %1 Errors, %2 Warnings</value>
+  </data>
+  <data name="IndexReport_RecreateType" xml:space="preserve">
+    <value>Create Type: All Files</value>
+  </data>
+  <data name="IndexReport_Start" xml:space="preserve">
+    <value>Start creating Index...</value>
+  </data>
+  <data name="IndexReport_UpdateType" xml:space="preserve">
+    <value>Create Type: Modified Files</value>
+  </data>
+  <data name="IndexStatus_COMPACTING" xml:space="preserve">
+    <value>Compacting the Index...</value>
+  </data>
+  <data name="IndexStatus_File" xml:space="preserve">
+    <value>Indexing %1</value>
+  </data>
+  <data name="IndexStatus_Updating" xml:space="preserve">
+    <value>Updating Index...</value>
+  </data>
+  <data name="IndexStatus_Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="IndexStatus_FilePage" xml:space="preserve">
+    <value>Indexing %1 - Page %2</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Window" xml:space="preserve">
+    <value>Window</value>
+  </data>
+  <data name="Project" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>Go To</value>
+  </data>
+  <data name="NewTopic" xml:space="preserve">
+    <value>New Topic</value>
+  </data>
+  <data name="Rectangle" xml:space="preserve">
+    <value>Rectangle</value>
+  </data>
+  <data name="PageDisplay" xml:space="preserve">
+    <value>Page Display</value>
+  </data>
+  <data name="DoYouWantRemoveItem" xml:space="preserve">
+    <value>Are you sure you want to remove selected Item?</value>
+  </data>
+  <data name="PageNote" xml:space="preserve">
+    <value>Page Note</value>
+  </data>
+  <data name="PageCountFormat" xml:space="preserve">
+    <value>of PageCount</value>
+  </data>
+  <data name="PageCountFormat2" xml:space="preserve">
+    <value>(PageNumber of PageCount)</value>
+  </data>
+  <data name="PropetriesWindowCaption" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="Pencil" xml:space="preserve">
+    <value>Pencil</value>
+  </data>
+  <data name="StickyNote" xml:space="preserve">
+    <value>Sticky Note</value>
+  </data>
+  <data name="HighlighText" xml:space="preserve">
+    <value>Highlight Text</value>
+  </data>
+  <data name="CantFindMediaInCD" xml:space="preserve">
+    <value>Could not find any Shetab eBook product from your CD/DVD.</value>
+  </data>
+  <data name="LookFor" xml:space="preserve">
+    <value>Look for:</value>
+  </data>
+  <data name="NewFolder" xml:space="preserve">
+    <value>New Folder</value>
+  </data>
+  <data name="RestartNeeded" xml:space="preserve">
+    <value>You need to restart the application to take effects.</value>
+  </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Please Wait...</value>
+  </data>
+  <data name="TextTip" xml:space="preserve">
+    <value>Text Tip</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="CloseButtonLable" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone:</value>
+  </data>
+  <data name="Web" xml:space="preserve">
+    <value>Web:</value>
+  </data>
+</root>

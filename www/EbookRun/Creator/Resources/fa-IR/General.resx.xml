@@ -1,0 +1,740 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LicenseInfo" xml:space="preserve">
+    <value>‫%3 - شناسه‌ی جواز: %1 - مالکیت: %2</value>
+  </data>
+  <data name="FileHasError" xml:space="preserve">
+    <value>** فایل باز نشد **</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>هیچ فایلی انتخاب نشده است.‏</value>
+  </data>
+  <data name="ColumnWord" xml:space="preserve">
+    <value>کلمه</value>
+  </data>
+  <data name="PdfPageItem" xml:space="preserve">
+    <value>‫صفحه %1</value>
+  </data>
+  <data name="PdfPageItemTitle" xml:space="preserve">
+    <value>‫صفحه %1 (%2)</value>
+  </data>
+  <data name="InvalidImageSize" xml:space="preserve">
+    <value>اندازه تصویر باید [1] در [2] باشد، اندازه تصویر شما [3] در [4] است.‏</value>
+  </data>
+  <data name="Nothing" xml:space="preserve">
+    <value>ندارد</value>
+  </data>
+  <data name="ShetabEbookCreatorTitle" xml:space="preserve">
+    <value>‫شتاب چندرسانه‌ساز</value>
+  </data>
+  <data name="KeyNotFound" xml:space="preserve">
+    <value>قفل شتاب چندرسانه‌ساز پیدا نشد، لطفا قفل شتاب چندرسانه‌ساز را به کامپیوتر وصل کنید و دوباره سعی کنید.‏‏</value>
+  </data>
+  <data name="ShetabEbookCreatorTitleParam" xml:space="preserve">
+    <value>‫%1 - شتاب چندرسانه‌ساز</value>
+  </data>
+  <data name="StandardEdition" xml:space="preserve">
+    <value>استاندارد</value>
+  </data>
+  <data name="ProfessionalEdition" xml:space="preserve">
+    <value>حرفه‌ای</value>
+  </data>
+  <data name="ExeModeEnum" xml:space="preserve">
+    <value>فایل اجرایی ساخته نشود.;تک فایل اجرایی ساخته شود.;فایل اجرایی در کنار فایل اصلی رسانه ساخته شود.</value>
+  </data>
+  <data name="Random" xml:space="preserve">
+    <value>تصادفی</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>پیش‌فرض</value>
+  </data>
+  <data name="Calculating" xml:space="preserve">
+    <value>در حال محاسبه...‏</value>
+  </data>
+  <data name="DoYouWantConvertProject" xml:space="preserve">
+    <value>پروژه انتخاب شده، یک پروژه شتاب چندرسانه‌ساز نسخه پایین تر است، آیا می‌خواهید یک پروژه جدید از روی آن بسازید؟</value>
+  </data>
+  <data name="MediaWiz_SoftLockTitle" xml:space="preserve">
+    <value>محافظت و  کنترل</value>
+  </data>
+  <data name="MediaWiz_SoftLockTitle2" xml:space="preserve">
+    <value>چگونگی محافظت و کنترل پخش محصولتان را مشخص کنید.‏</value>
+  </data>
+  <data name="MediaWiz_SoftLockLicenseTitle" xml:space="preserve">
+    <value>فایل جواز قفل گذاری</value>
+  </data>
+  <data name="MediaWiz_SoftLockLicenseTitle2" xml:space="preserve">
+    <value>‫فایل جواز قفل گذاری ویژه‌ی این محصول را وارد کنید.</value>
+  </data>
+  <data name="InvalidGuidFormat" xml:space="preserve">
+    <value>شناسه شما صحیح نمی باشد.‏</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>کتاب</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>صفحه</value>
+  </data>
+  <data name="PromptSaveProject" xml:space="preserve">
+    <value>پروژه "%1" تغییر یافته است.‏ آیا می خواهید تغییرات را ذخیره کنید؟</value>
+  </data>
+  <data name="Topic" xml:space="preserve">
+    <value>موضوع</value>
+  </data>
+  <data name="DoYouWantRemoveItem2" xml:space="preserve">
+    <value>آیا مطمئن هستید که می خواهید گزینه "%1" را حذف کنید؟</value>
+  </data>
+  <data name="ItemNotShowNotSelect" xml:space="preserve">
+    <value>هشدار: این گزینه هیچوقت نصب نخواهد شد چون شما انتخاب کرده اید که این گزینه به کاربر نمایش داده نشود.‏ همچنین شما انتخاب پیش فرض این گزینه را خاموش کرده اید.‏
+
+آیا می خواهید ادامه دهید؟</value>
+  </data>
+  <data name="MediaWiz_OptionsTitle" xml:space="preserve">
+    <value>نوع رسانه</value>
+  </data>
+  <data name="MediaWiz_OptionsTitle2" xml:space="preserve">
+    <value>ویژگی‌های رسانه خروجی را مشخص کنید.‏</value>
+  </data>
+  <data name="MediaWiz_RedistTitle" xml:space="preserve">
+    <value>کامپوننت‌ها</value>
+  </data>
+  <data name="MediaWiz_RedistTitle2" xml:space="preserve">
+    <value>کامپوننت‌هایی را که می‌خواهید همراه رسانه خود نصب کنید انتخاب کنید.‏</value>
+  </data>
+  <data name="MediaWiz_ProgressTitle" xml:space="preserve">
+    <value>در حال ساختن رسانه</value>
+  </data>
+  <data name="MediaWiz_ProgressTitle2" xml:space="preserve">
+    <value>رسانه شما در حال ساخته شدن است. لطفا صبر کنید...‏</value>
+  </data>
+  <data name="MediaWiz_FolderTitle" xml:space="preserve">
+    <value>پوشه رسانه</value>
+  </data>
+  <data name="MediaWiz_FolderTitle2" xml:space="preserve">
+    <value>پوشه رسانه را مشخص کنید.‏</value>
+  </data>
+  <data name="MediaWiz_MediaLabelTitle" xml:space="preserve">
+    <value>نام رسانه</value>
+  </data>
+  <data name="MediaWiz_MediaLabelTitle2" xml:space="preserve">
+    <value>نام رسانه را مشخص کنید.‏</value>
+  </data>
+  <data name="ShiftPageNumberTitle" xml:space="preserve">
+    <value>تصحیح شماره صفحه</value>
+  </data>
+  <data name="OutOfRange" xml:space="preserve">
+    <value>خارج از محدوده</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>فرایندها</value>
+  </data>
+  <data name="ColumnTime" xml:space="preserve">
+    <value>زمان</value>
+  </data>
+  <data name="SplashTypes" xml:space="preserve">
+    <value>هیچ‌کدام
+استاندارد
+فایل (تصویر، فلش، سیلورلایت، HTML، WPF)
+</value>
+  </data>
+  <data name="DoYouWantRemoveAll" xml:space="preserve">
+    <value>آیا می‌خواهید تمام گزینه‌ها را حذف کنید؟‏</value>
+  </data>
+  <data name="IndexModeEnum" xml:space="preserve">
+    <value>ندارد.
+از ابتدا بساز.
+از فایل‌های جدید یا تغییر یافته.</value>
+  </data>
+  <data name="BuildTypeEnum" xml:space="preserve">
+    <value>(تک فایل)  - فایل‌های پروژه در یک فایل قرار گرفته و رمزنگاری می‌شوند.
+(چند فایل) - هر کتاب یک فایل مستقل می‌شود.
+(فایل‌های جدا) - فایل‌های پروژه به صورت باز و بدون رمزنگاری قرار می‌گیرند.</value>
+  </data>
+  <data name="IconSetSelectorCaption" xml:space="preserve">
+    <value>انتخاب شکلک</value>
+  </data>
+  <data name="EncryptionMethodEnum" xml:space="preserve">
+    <value>رمزنگاری نشود;AES 128-bit WinZip;AES 192-bit WinZip;AES 256-bit WinZip;Shetab Internal</value>
+  </data>
+  <data name="ProtectionMethodEnum" xml:space="preserve">
+    <value>ندارد;درخواست کلمه رمز از کاربر;قفل نرم‌افزاری شتاب</value>
+  </data>
+  <data name="ShetabLcLicensePageCaption" xml:space="preserve">
+    <value>تنظیم‌های کنترل جواز شتاب</value>
+  </data>
+  <data name="ColumnDescription" xml:space="preserve">
+    <value>توضیحات</value>
+  </data>
+  <data name="ProjectPropertiesCaption" xml:space="preserve">
+    <value>مشخصات پروژه</value>
+  </data>
+  <data name="BookAlreadyExist" xml:space="preserve">
+    <value>‫کتاب انتخاب شده در پروژه موجود است.
+
+نام کتاب: %1
+شناسه‌ی کتاب: %2
+File=%3</value>
+  </data>
+  <data name="BookAlreadyExistsInContents" xml:space="preserve">
+    <value>‫کتاب '%1' قبلا در محتویات وارد شده است.</value>
+  </data>
+  <data name="ItemMustSet" xml:space="preserve">
+    <value>گزینه نمی‌تواند خالی باشد.‏</value>
+  </data>
+  <data name="FileNotExistInAnyBook" xml:space="preserve">
+    <value>مسیر انتخاب شده در هیچ کتابی موجود نیست. لطفا فایل یا پوشه انتخاب شده را در یک کتاب از پروژه کپی کنید و دوباره سعی کنید.
+مسیر: ‪%1</value>
+  </data>
+  <data name="DemoExceeded" xml:space="preserve">
+    <value>‫‫تعداد فایل‌ها یا تعداد صفحه‌های یکی از فایل‌‌های پروژه شما بیشتر از %1 است.
+‫محصول ساخته شده توسط نسخه نمایشی نمی‌تواند بیش از %1 فایل و هر فایل آن نمی‌تواند بیش از %1 صفحه داشته باشد.
+‫لطفا تعداد فایل‌های پروژه را کمتر از %1 کنید و فایل‌هایی را که تعداد صفحه‌های آن بیشتر از %1 صفحه است از پروژه حذف کنید.</value>
+  </data>
+  <data name="CantCopyItemHere" xml:space="preserve">
+    <value>شما نمی‌توانید گزینه را در اینجا قرار دهید.‏</value>
+  </data>
+  <data name="InvalidIconFile" xml:space="preserve">
+    <value>فایل آیکون نا معتبر است.‏</value>
+  </data>
+  <data name="PromptCancelMediaBuilder" xml:space="preserve">
+    <value>آیا مطمئن هستید که می خواهید از ساختن رسانه صرف نظر کنید؟ </value>
+  </data>
+  <data name="CantRemoveCriticalRedist" xml:space="preserve">
+    <value>"%1" یک کامپوننت ضروری و مورد نیاز شتاب چندرسانه‌ساز است. آیا مطمئن هستید که می خواهید آنرا پاک کنید؟</value>
+  </data>
+  <data name="CantDeleteFile" xml:space="preserve">
+    <value>نمی‌توانم فایل را پاک کنم.
+نام فایل: ‪%1
+پیغام: %2</value>
+  </data>
+  <data name="NotSameBookId" xml:space="preserve">
+    <value>‫شناسه کتاب انتخاب شده متفاوت است. لطفا کتاب صحیح را انتخاب کنید.
+File=%1</value>
+  </data>
+  <data name="FolderNotEmpty" xml:space="preserve">
+    <value>‫پوشه خالی نیست. لطفاً یک پوشه خالی را انتخاب کنید.
+
+‪%1</value>
+  </data>
+  <data name="DefaultSkinNotSelected" xml:space="preserve">
+    <value>شما باید یک پوسته پیش فرض انتخاب کنید.‏</value>
+  </data>
+  <data name="EventTypeEnum" xml:space="preserve">
+    <value>معمولی
+باز شدن صفحه
+بسته شدن صفحه
+پایان رسانه</value>
+  </data>
+  <data name="ReleaseTimeEnum" xml:space="preserve">
+    <value>0;1;2;3;4;5;6;7;8;9;10;</value>
+  </data>
+  <data name="DoYouWantDeleteFonts" xml:space="preserve">
+    <value>آیا اطمینان دارید که می خواهید %1 قلم را از پروژه خود حذف کنید؟</value>
+  </data>
+  <data name="DoYouWantRemoveBook" xml:space="preserve">
+    <value>‫آیا می‌خواهید کتاب "%1" را از پروژه حذف کنید؟</value>
+  </data>
+  <data name="MultipleBookSelected" xml:space="preserve">
+    <value>(چند کتاب انتخاب شده)</value>
+  </data>
+  <data name="NavigationPanePositionEnum" xml:space="preserve">
+    <value>ابتدا;انتها</value>
+  </data>
+  <data name="DefaultTopic" xml:space="preserve">
+    <value>موضوع جدید</value>
+  </data>
+  <data name="ContentsLayoutEnum" xml:space="preserve">
+    <value>برحسب زبان;چپ به راست;راست به چپ</value>
+  </data>
+  <data name="OverwritePageTitle" xml:space="preserve">
+    <value>عنوان صفحه انتخاب شده "%2" است. آیا می‌خواهید عنوان این صفحه را به "%1" تغییر دهید؟‏</value>
+  </data>
+  <data name="MediaBuilderReport_UnicodeFlash" xml:space="preserve">
+    <value>فایل فلش زیر شامل حرف یونیکد است، ممکن است این فایل در ویندوز XP پخش نشود.‏
+	فایل: ‪"%1"</value>
+  </data>
+  <data name="NewProject_NameTitle" xml:space="preserve">
+    <value>اطلاعات پروژه</value>
+  </data>
+  <data name="NewProject_NameTitle2" xml:space="preserve">
+    <value>اطلاعات پروژه را وارد کنید.‏</value>
+  </data>
+  <data name="NewProjectWiz_FolderTitle" xml:space="preserve">
+    <value>مسیر پوشه پروژه</value>
+  </data>
+  <data name="NewProjectWiz_FolderTitle2" xml:space="preserve">
+    <value>پوشه‌ای را که می‌خواهید پروژه جدید در آن ساخته شود، مشخص کنید.‏</value>
+  </data>
+  <data name="DefaultProjectName" xml:space="preserve">
+    <value>نام محصول من</value>
+  </data>
+  <data name="DefaultCompanyName" xml:space="preserve">
+    <value>نام شرکت من</value>
+  </data>
+  <data name="DefaultBookName" xml:space="preserve">
+    <value>نام کتاب من</value>
+  </data>
+  <data name="CantCopyToAnotherBook" xml:space="preserve">
+    <value>گزینه را نمی‌تواند از یک کتاب به کتاب دیگر ببرید.‏</value>
+  </data>
+  <data name="ProjectPage_GeneralFolder" xml:space="preserve">
+    <value>کلی</value>
+  </data>
+  <data name="ProjectPage_Security" xml:space="preserve">
+    <value>امنیت</value>
+  </data>
+  <data name="PlayersEnum" xml:space="preserve">
+    <value>Default
+General Browser
+Image Viewer
+Media Player
+PDF Viewer
+WPF Player</value>
+  </data>
+  <data name="ProjectPage_Logo" xml:space="preserve">
+    <value>صفحه‌ی قبل از شروع</value>
+  </data>
+  <data name="ProjectPage_About" xml:space="preserve">
+    <value>درباره</value>
+  </data>
+  <data name="CantMoveFile" xml:space="preserve">
+    <value>فایل منتقل نشد.
+مبدا:‪ %1
+مقصد:‪ %2
+پیغام:‪ %3</value>
+  </data>
+  <data name="ProjectPage_TreeFormat" xml:space="preserve">
+    <value>محتویات</value>
+  </data>
+  <data name="ProjectPage_InterfaceFolder" xml:space="preserve">
+    <value>محیط</value>
+  </data>
+  <data name="BookFileBrowserTitle" xml:space="preserve">
+    <value>لطفاً محل فایل زیر را در رسانه خود مشخص کنید.‏
+%1</value>
+  </data>
+  <data name="SelectMediaFolder" xml:space="preserve">
+    <value>لطفاً پوشه رسانه را انتخاب کنید.‏</value>
+  </data>
+  <data name="ProjectPage_Mainframe" xml:space="preserve">
+    <value>پنجره اصلی</value>
+  </data>
+  <data name="ProjectPage_Fonts" xml:space="preserve">
+    <value>قلم‌ها</value>
+  </data>
+  <data name="TotalErrorWarning" xml:space="preserve">
+    <value>نتیجه نهایی: %1 خطا، %2 هشدار</value>
+  </data>
+  <data name="ProjectPage_ReadMe" xml:space="preserve">
+    <value>مرا بخوان</value>
+  </data>
+  <data name="ProjectPage_CommandLine" xml:space="preserve">
+    <value>خط فرمان</value>
+  </data>
+  <data name="ProjectPage_Misc" xml:space="preserve">
+    <value>متفرقه</value>
+  </data>
+  <data name="ProjectPage_License" xml:space="preserve">
+    <value>جواز استفاده</value>
+  </data>
+  <data name="ProjectPage_Skins" xml:space="preserve">
+    <value>پوسته‌ها</value>
+  </data>
+  <data name="ColumnRedistribute" xml:space="preserve">
+    <value>کامپوننت‏ها</value>
+  </data>
+  <data name="MediaBuilderReport_CommitFinished" xml:space="preserve">
+    <value>پایان کپی فایل‌های رسانه.‏</value>
+  </data>
+  <data name="ProjectPage_Advanced" xml:space="preserve">
+    <value>پیش‌رفته</value>
+  </data>
+  <data name="ProjectPage_CustomCommands" xml:space="preserve">
+    <value>فرمان‌های دست‌ساز</value>
+  </data>
+  <data name="ItemPropertiesCaption" xml:space="preserve">
+    <value>مشخصات</value>
+  </data>
+  <data name="MultipleItemPropertiesCaption" xml:space="preserve">
+    <value>‫مشخصات (%1)</value>
+  </data>
+  <data name="CommandBuilderPageTitle" xml:space="preserve">
+    <value>ساختن فرمان</value>
+  </data>
+  <data name="RedistAdvancedCaption" xml:space="preserve">
+    <value>تنظیمات پیشرفته برای کامپوننت‏ها</value>
+  </data>
+  <data name="NewBookPageTitle" xml:space="preserve">
+    <value>اضافه کردن کتاب جدید</value>
+  </data>
+  <data name="LinkNotFound" xml:space="preserve">
+    <value>(آدرس پیدا نشد)</value>
+  </data>
+  <data name="MediaBuilderReport_CopyError" xml:space="preserve">
+    <value>فایل کپی نشد.‏
+	‪"%1" :مبدا
+	‪"%2" :مقصد
+	%3 :پیغام</value>
+  </data>
+  <data name="MediaBuilderReport_BookAdded" xml:space="preserve">
+    <value>کتاب "%1" به رسانه اضافه شد.‏</value>
+  </data>
+  <data name="MediaBuilderReport_BookNotAdded" xml:space="preserve">
+    <value>کتاب "%1" به رسانه اضافه نشد.‏</value>
+  </data>
+  <data name="MediaBuilderReport_SkinAdded" xml:space="preserve">
+    <value>‫پوسته‌ "%1‎" با موفقیت اضافه شد.‏</value>
+  </data>
+  <data name="MediaBuilderReport_BuildStarted" xml:space="preserve">
+    <value>‫شروع به ساختن رسانه "%1"...</value>
+  </data>
+  <data name="MediaBuilderReport_IndexError" xml:space="preserve">
+    <value>‫در هنگام ساختن شاخص جستجو خطا رخ داد.</value>
+  </data>
+  <data name="MediaBuilderReport_LabelTooLong" xml:space="preserve">
+    <value>نام رسانه شما بیشتر از 32 حرف است، فقط 32 حرف اول آن در ویندوز نشان داده خواهد شد.‏</value>
+  </data>
+  <data name="PublicSerialNumberNotSet" xml:space="preserve">
+    <value>شما باید یک شماره سریال همگانی که به تعداد نامحدود قابل ثبت باشد، مشخص کنید.</value>
+  </data>
+  <data name="MediaBuilderReport_CopyFile" xml:space="preserve">
+    <value>‫فایل کپی شد: ‪%1</value>
+  </data>
+  <data name="SoftLockLicenseNotSet" xml:space="preserve">
+    <value>‫فایل جواز قفل گذاری پیدا نشد! لطفا یک فایل جواز قفل گذاری مشخص کنید.</value>
+  </data>
+  <data name="MediaBuilderReport_SoftLock" xml:space="preserve">
+    <value>اعمال قفل نرم‌افزاری شتاب...</value>
+  </data>
+  <data name="MediaBuilderReport_CreateHtml" xml:space="preserve">
+    <value>‫فایل‌های Html برای وب ساخته شدند.</value>
+  </data>
+  <data name="MediaBuilderReport_RemoveFolder" xml:space="preserve">
+    <value>‪‫پوشه رسانه پاک شد: ‪"%1"</value>
+  </data>
+  <data name="MediaBuilderReport_CantRemoveFolder" xml:space="preserve">
+    <value>پوشه پاک نشد.‏
+	‪"%1" :مسیر پوشه
+	پیغام: %3</value>
+  </data>
+  <data name="MediaBuilderReport_Demo" xml:space="preserve">
+    <value>‫شما اجازه‌ی پخش و انتشار محصول توسط نسخه نمایشی را ندارید.</value>
+  </data>
+  <data name="MediaBuilderReport_CopyFiles" xml:space="preserve">
+    <value>کپی فایل‌ها...‏</value>
+  </data>
+  <data name="MediaBuilderReport_EffectNotSupported" xml:space="preserve">
+    <value>فایل مشخص شده دارای جلوه‌های ویژه است، ولی شتاب چندرسانه‌ساز شما نسخه حرفه‌ای نیست و شما نمی‌توانید از این جلوه‌ها استفاده کنید.
+	فایل: %1</value>
+  </data>
+  <data name="MediaBuilderStatus_COPYFILE" xml:space="preserve">
+    <value>کپی کردن ‪%1</value>
+  </data>
+  <data name="MediaBuilderReport_AddSkins" xml:space="preserve">
+    <value>پوسته‌های زیر به رسانه اضافه شد:‏</value>
+  </data>
+  <data name="MediaBuilderReport_ArabicNotSupported" xml:space="preserve">
+    <value>‫پروژه‌ی شما زبان عربی است ولی نسخه شتاب چندرسانه‌ساز شما عربی نیست، برای خرید نسخه‌‌ای با پشتی‌بانس عربی با شرکت شتاب تماس بگیرید.</value>
+  </data>
+  <data name="MediaBuilderStatus_DeleteFolder" xml:space="preserve">
+    <value>پاک کردن پوشه ‪%1</value>
+  </data>
+  <data name="MediaBuilderStatus_Finish" xml:space="preserve">
+    <value>پایان</value>
+  </data>
+  <data name="MediaBuilderStatus_CreateHtmlFile" xml:space="preserve">
+    <value>‫ساختن فایل‌های Html برای وب...</value>
+  </data>
+  <data name="MediaBuilderStatus_BuildExe" xml:space="preserve">
+    <value>ساختن فایل اجرایی ...‏</value>
+  </data>
+  <data name="MediaBuilderReport_BuildAppExe" xml:space="preserve">
+    <value>فایل اجرایی محصول ساخته شد.‏</value>
+  </data>
+  <data name="ColumnFileName" xml:space="preserve">
+    <value>نام فایل</value>
+  </data>
+  <data name="ColumnId" xml:space="preserve">
+    <value>شناسه</value>
+  </data>
+  <data name="ProjectExplorer" xml:space="preserve">
+    <value>پروژه</value>
+  </data>
+  <data name="ColumnCommand" xml:space="preserve">
+    <value>فرمان</value>
+  </data>
+  <data name="ContentsFormatSample" xml:space="preserve">
+    <value>نمونه 12345</value>
+  </data>
+  <data name="DocumentMenu" xml:space="preserve">
+    <value>محتوا</value>
+  </data>
+  <data name="SkinMenu" xml:space="preserve">
+    <value>پوسته‌</value>
+  </data>
+  <data name="StartupMenu" xml:space="preserve">
+    <value>بازکردن پروژه</value>
+  </data>
+  <data name="WindowsMenu" xml:space="preserve">
+    <value>پنجره‌ها</value>
+  </data>
+  <data name="MediaMenu" xml:space="preserve">
+    <value>‫رسانه (صدا و فیلم)</value>
+  </data>
+  <data name="MiscMenu" xml:space="preserve">
+    <value>متفرقه</value>
+  </data>
+  <data name="ZoomMenu" xml:space="preserve">
+    <value>بزرگ‌نمایی</value>
+  </data>
+  <data name="NavigationMenu" xml:space="preserve">
+    <value>عوض کردن محتوا</value>
+  </data>
+  <data name="SelectionMenu" xml:space="preserve">
+    <value>گزینه‌ی انتخاب شده</value>
+  </data>
+  <data name="CommentingMenu" xml:space="preserve">
+    <value>یادداشت و علامت‌گذاری</value>
+  </data>
+  <data name="MainFrameMenu" xml:space="preserve">
+    <value>پنجره‌ی اصلی</value>
+  </data>
+  <data name="ContentsRoot" xml:space="preserve">
+    <value>‫ریشه‌ی درخت محتویات</value>
+  </data>
+  <data name="Parametric" xml:space="preserve">
+    <value>پارامتری</value>
+  </data>
+  <data name="Property" xml:space="preserve">
+    <value>مشخصه</value>
+  </data>
+  <data name="MediaBuilderReport_AddPlugins" xml:space="preserve">
+    <value>پلاگین‌های زیر به رسانه اضافه شد:‏</value>
+  </data>
+  <data name="MediaBuilderReport_PluginAdded" xml:space="preserve">
+    <value>‫پلاگین‌ "%1‎" با موفقیت اضافه شد.‏</value>
+  </data>
+  <data name="DefaultBookDataFolder" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>ندارد</value>
+  </data>
+  <data name="Standard" xml:space="preserve">
+    <value>استاندارد</value>
+  </data>
+  <data name="HelpUrl" xml:space="preserve">
+    <value>http://www.shetab.com/farsi/multimediamaker/DocLib/راهنمای استفاده.aspx</value>
+  </data>
+  <data name="CantApplyOnThisItem" xml:space="preserve">
+    <value>این کار بر روی گزینه‌های انتخاب شده قابل انجام نیست.</value>
+  </data>
+  <data name="ShetabCopyright" xml:space="preserve">
+    <value>حق کپی © 2001-2011 شرکت شتاب. تمامی حقوق محفوظ است.</value>
+  </data>
+  <data name="ShetabSkinCreatorUrl" xml:space="preserve">
+    <value>http://apps.shetab.com/ebookSkinCreator4/SkinCreator.xbap</value>
+  </data>
+  <data name="VisibilityEnum" xml:space="preserve">
+    <value>پیش‌فرض
+نمایش
+پنهان</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>نام شرکت:</value>
+  </data>
+  <data name="CustomerNumber" xml:space="preserve">
+    <value>شماره مشتری:</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>شماره سریال:</value>
+  </data>
+  <data name="DemoEdition" xml:space="preserve">
+    <value>رایگان</value>
+  </data>
+  <data name="SimpleEdition" xml:space="preserve">
+    <value>ساده</value>
+  </data>
+  <data name="CreatorLicenseeEdition" xml:space="preserve">
+    <value>نسخه:</value>
+  </data>
+  <data name="CreatorLicenseeId" xml:space="preserve">
+    <value>شماره مشتری:</value>
+  </data>
+  <data name="CreatorLicenseeName" xml:space="preserve">
+    <value>نام مشتری:</value>
+  </data>
+  <data name="CreatorLicenseeTokenId" xml:space="preserve">
+    <value>شماره سریال:</value>
+  </data>
+  <data name="CreatorVersion" xml:space="preserve">
+    <value>نگارش:</value>
+  </data>
+  <data name="RecentProjects" xml:space="preserve">
+    <value>آخرین پروژه‌ها</value>
+  </data>
+  <data name="GeneralSection" xml:space="preserve">
+    <value>کلی</value>
+  </data>
+  <data name="UpdateText" xml:space="preserve">
+    <value>لطفا آخرین نگارش را دریافت کنید</value>
+  </data>
+  <data name="DownloadPageUrl" xml:space="preserve">
+    <value>http://www.shetab.com/farsi/multimediamaker/DocLib/دریافت‌ها/دریافت نسخه‌ی کامل نگارش 4.aspx</value>
+  </data>
+  <data name="DownloadPageUrlTrial" xml:space="preserve">
+    <value>http://www.shetab.com/farsi/multimediamaker/DocLib/دریافت‌ها/دریافت نسخه‌ی رایگان نگارش4.aspx</value>
+  </data>
+  <data name="PadFileUrl" xml:space="preserve">
+    <value>http://www.shetab.com/farsi/_layouts/shetab/shetabsite/padview.aspx?ProductId=5&amp;Program_Type=Commercial&amp;VersionInfoUrl=http://www.shetab.com/downloads/ebookcreator/ShetabEbookCreator.VersionInfo.xml</value>
+  </data>
+  <data name="PadFileUrlTrial" xml:space="preserve">
+    <value>http://www.shetab.com/farsi/_layouts/shetab/shetabsite/padview.aspx?ProductId=5</value>
+  </data>
+  <data name="DoYouWantRemoveProjectLink" xml:space="preserve">
+    <value>فایل این پروژه پیدا نشد، آیا می‌خواهید لینک این پروژه از فهرست آخرین پروژه‌ها حذف شود؟
+فایل پروژه: {0}</value>
+  </data>
+  <data name="IconSizeEnum" xml:space="preserve">
+    <value>بزرگ
+کوچک</value>
+  </data>
+  <data name="NoneTree" xml:space="preserve">
+    <value>ندارد</value>
+  </data>
+  <data name="StandardTree" xml:space="preserve">
+    <value>استاندارد</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>دلخواه</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>خیر</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>بله</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>( انتخاب... )</value>
+  </data>
+  <data name="Build" xml:space="preserve">
+    <value>ساختن</value>
+  </data>
+</root>

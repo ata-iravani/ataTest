@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script src="js/jquery-1.8.2.js"></script>
+<script src="js/ShetabEbookAgent.js"></script>
+<script>
+CommandHandler = function () {
+    this._zoomMode = null;
+    this._zoom = 1;
+    this._status = null;
+    this._duration = null;
+    this._loop = null;
+    this._currentTime = null;
+    this._videoWidth = 0;
+    this._videoHeight = 0;
+    this._isFirstRequest = true;
+};
+
+
+CommandHandler.prototype = {
+    get currentBookmark() {
+        return null;
+    },
+    get isOpen() {
+        return null;
+    },
+    goToBookmark:function (bookmark) {
+
+    },
+    open:function (url, pageNumber, bookmark) {
+        if (!this._isFirstRequest) {
+            seApp.doDefault();
+            return;
+        }
+        this._isFirstRequest = false;
+        var video = new VideoPlayer(url);
+    },
+    get canPrint() {
+        return false;
+    },
+    get canPrintPreview() {
+
+    },
+    get canPrintSetup() {
+
+    },
+    print:function () {
+
+    },
+    printPreview:function () {
+
+    },
+    printSetup:function () {
+
+    },
+    get canZoomIn() {
+        if (this._getNextAutoZoom() == 3)
+            return false;
+        if (willNotBeLargerThanViewPort(this._getNextAutoZoom()))
+            return getMaximumPossibleZoom() > this.zoom;
+        return true;
+    },
+    get canZoomOut() {
+        return this._getPrevAutoZoom() != 0;
+    },
+    get zoom() {
+        return this._zoom;
+    },
+    set zoom(value) {
+        this._zoom = value;
+        this.zoomMode = 'custom';
+        updateView();
+    },
+    get zoomMode() {
+        return this._zoomMode;
+    },
+    set zoomMode(value) {
+        this._zoomMode = value;
+        if (value == 'actualSize'){
+            if(willNotBeLargerThanViewPort(1)){
+                this._zoom = 1;
+            }
+            else{
+                this._zoom = getMaximumPossibleZoom();
+            }
+        }
+        updateView();
+    },
+    canSetZoomMode:function (value) {
+        switch (value) {
+            case 'fitPage':
+            case 'actualSize':
+            case 'custom':
+                return true;
+            default:
+                return false;
+        }
+    },
+    zoomIn:function () {
+        if (this._getNextAutoZoom() == 3 && (getMaximumPossibleZoom() > this.zoom)) {
+            this.zoom = getMaximumPossibleZoom();
+        }
+        else {
+            this.zoom = this._getNextAutoZoom();
+        }
+    },
+    zoomOut:function () {
+        if (this._getPrevAutoZoom() != 0)
+            this.zoom = this._getPrevAutoZoom();
+    },
+    _getNextAutoZoom:function () {
+        if (this.zoom < 0.5)
+            return 0.5;
+        if (this.zoom >= 0.5 && this.zoom < 1)
+            return 1;
+        if (this.zoom >= 1 && this.zoom < 2)
+            return 2;
+        if (this.zoom >= 2)
+            return 3;
+    },
+    _getPrevAutoZoom:function () {
+        if (this.zoom <= 0.5)
+            return 0;
+        if (this.zoom > 0.5 && this.zoom <= 1)
+            return 0.5;
+        if (this.zoom > 1 && this.zoom <= 2)
+            return 1;
+        if (this.zoom > 2)
+            return 2;
+    },
+    canNextMedia:function () {
+        return false;
+    },
+    canPreviousMedia:function () {
+        return false;
+    },
+    get loopMedia() {
+        return this._loop;
+    },
+    set loopMedia(value) {
+        this._loop = value;
+        var elem = document.getElementById('video1');
+        if (value)
+            elem.setAttribute('loop', 'loop');
+        else
+            elem.removeAttribute('loop');
+    },
+    get mediaLength() {
+        return this._duration;
+    },
+    get mediaPosition() {
+        return this._currentTime;
+    },
+    set mediaPosition(value) {
+        this._currentTime = value;
+    },
+    get mediaState() {
+        return this._status;
+    },
+    set mediaState(value) {
+        this._status = value;
+        var videoElement = null;
+
+        if (value.toLowerCase() == 'play') {
+            videoElement = document.getElementById('video1');
+            videoElement.play();
+        }
+
+        if (value.toLowerCase() == 'pause') {
+            videoElement = document.getElementById('video1');
+            videoElement.pause();
+        }
+
+        if (value.toLowerCase() == 'stop') {
+            videoElement = document.getElementById('video1');
+            videoElement.pause();
+            videoElement.currentTime = 0;
+        }
+
+    },
+    canSetMediaState:function (state) {
+        var videoElement = null;
+        switch (state) {
+            case 'play' :
+            {
+                if (commandHandler.mediaState == 'play')
+                    return false;
+                return true;
+            }
+            case 'pause' :
+            {
+                if (commandHandler.mediaState == 'pause')
+                    return false;
+                return true;
+            }
+            case 'stop' :
+            {
+                if (commandHandler.mediaState == 'stop')
+                    return false;
+                return true;
+            }
+            default :
+                return false;
+        }
+    },
+    nextMedia:function () {
+
+    },
+    previousMedia:function () {
+
+    },
+    set videoHeight(value) {
+        this._videoHeight = value;
+    },
+    get videoHeight() {
+        return this._videoHeight;
+    },
+    set videoWidth(value) {
+        this._videoWidth = value;
+    },
+    get videoWidth() {
+        return this._videoWidth;
+    }
+};
+
+var VideoPlayer = function (url) {
+    $('#container1').append(' <video id="video1" controls>' +
+            '<source type="video/mp4">' +
+            'Your browser does not support the video tag.' +
+            '</video>');
+    var jq = $('#video1');
+
+    currentVideo = jq;
+
+    jq.bind('play', function () {
+        commandHandler.mediaState = 'play';
+    });
+
+    jq.bind('pause', function () {
+        commandHandler.mediaState = 'pause';
+    });
+
+    jq.bind('ended', function () {
+        commandHandler.mediaState = 'stop';
+    });
+
+
+    jq.bind('error', function (e) {
+        throw new Error('File: "' + $(e.target).find('source').attr("src") + '" can not be played');
+    });
+
+    $("source").error(function (e) {
+        throw new Error('File: "' + e.target.src + '" can not be played');
+    });
+    jq.bind('loadedmetadata', function () {
+        commandHandler.videoWidth = this.videoWidth;
+        commandHandler.videoHeight = this.videoHeight;
+        var wWidth = window.innerWidth;
+        var wHeight = window.innerHeight;
+        var vWidth = commandHandler.videoWidth;
+        var vHeight = commandHandler.videoHeight;
+
+        var isActual = wWidth >= vWidth && wHeight >= vHeight;
+
+        if (this.readyState == 1 || this.readyState == 3)
+            commandHandler.isOpen = true;
+
+        commandHandler.zoomMode = isActual ? 'actualSize' : 'fitPage';
+        commandHandler.mediaState = 'pause';
+    });
+
+    jq.bind('loadeddata', function () {
+        //commandHandler.mediaState = 'pause';
+    });
+
+    jq.bind('timeupdate', function () {
+        commandHandler.mediaPosition = jq[0].currentTime;
+    });
+
+    jq.find('source').attr('src', url);
+};
+
+function willNotBeLargerThanViewPort(zoom) {
+    var videoElement = document.getElementById('video1');
+    var targetWidth = videoElement.videoWidth * zoom;
+    var targetHeight = videoElement.videoHeight * zoom;
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+
+    if (targetWidth >= windowWidth || targetHeight >= windowHeight)
+        return false;
+    return true;
+}
+
+function getMaximumPossibleZoom() {
+    var videoElement = document.getElementById('video1');
+    var currentZoom = commandHandler.zoom;
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var currentVideoWidth = videoElement.videoWidth * currentZoom;
+    var currentVideoHeight = videoElement.videoHeight * currentZoom;
+
+    return Math.min((windowWidth / currentVideoWidth), (windowHeight / currentVideoHeight));
+}
+
+function updateView() {
+    var container = $('#container1');
+
+    if (commandHandler.zoomMode == 'fitPage') {
+        container.css({width:'100%', height:'100%', top:0, left:0});
+        commandHandler._zoom = getFitPageZoomValueFromCalculatedStyle();
+        return;
+    }
+
+    var result = calculate(currentVideo[0].videoWidth, currentVideo[0].videoHeight,
+            window.innerWidth, window.innerHeight, commandHandler.zoom);
+
+    container.css({height:result.height, width:result.width, top:result.top, left:result.left});
+
+}
+
+function calculate(actualSizeWidth, actualSizeHeight, windowSizeWidth, windowSizeHeight, zoom) {
+    var ret = {};
+
+    ret.width = actualSizeWidth * zoom;
+    ret.height = actualSizeHeight * zoom;
+    ret.left = 0;
+    ret.top = 0;
+
+    if (windowSizeWidth >= ret.width && windowSizeHeight >= ret.height) {
+        ret.left = (windowSizeWidth - ret.width) / 2;
+        ret.top = (windowSizeHeight - ret.height) / 2;
+        return ret;
+    }
+
+    ret.width = ret.height = '100%';
+    return ret;
+
+
+    /*var widthScale = windowSizeWidth / ret.width;
+     var heightScale = windowSizeHeight / ret.height;
+
+     if (widthScale <= heightScale)
+     ret.top = (windowSizeHeight - ret.height) / 2;
+     else
+     ret.left = (windowSizeWidth - ret.width) / 2;
+
+     return ret;*/
+}
+
+function getFitPageZoomValueFromCalculatedStyle() {
+    var video = currentVideo[0];
+    var widthScale = window.innerWidth / video.videoWidth;
+    var heightScale = window.innerHeight / video.videoHeight;
+    return Math.min(widthScale, heightScale);
+}
+
+function VideoFailed(e) {
+    alert(11);
+    switch (e.target.error.code) {
+        case e.target.error.MEDIA_ERR_ABORTED:
+            alert('You aborted the video playback.');
+            break;
+        case e.target.error.MEDIA_ERR_NETWORK:
+            alert('A network error caused the video download to fail part-way.');
+            break;
+        case e.target.error.MEDIA_ERR_DECODE:
+            alert('The video playback was aborted due to a corruption problem or because the video used features your browser did not support.');
+            break;
+        case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+            alert('The video could not be loaded, either because the server or network failed or because the format is not supported.');
+            break;
+        default:
+            alert('An unknown error occurred.');
+            break;
+    }
+}
+
+
+var pendingRequest = null;
+var commandHandler = new CommandHandler();
+var currentVideo = null;
+
+$(document).ready(function () {
+    //test();
+
+    seApp.init('VideoPlayer');
+    if (!seApp.isTestMode) {
+        $('#controls').css({display:'none'});
+        $('#container0').css({top:0});
+    }
+    seApp.commandHandler = commandHandler;
+    seApp.add_propertyChanged(function (arg) {
+        if (arg.propertyName != "soundVolume")
+            return;
+        document.getElementById('video1').volume = seApp.soundVolume;
+    });
+
+    $(window).resize(function () {
+        if (document.getElementById('video1') != null)
+            updateView();
+    });
+
+
+});
+
+
+</script>
+<style>
+    ::selection {
+        background: transparent;
+    }
+
+    ::-moz-selection {
+        background: transparent;
+    }
+
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    #container0 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 34px;
+        /*top: 0;*/
+        background-color: black;
+    }
+
+    #container1 {
+        /*top: 0;*/
+    }
+
+    #container1.fit {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+
+    #video1 {
+        width: 100%;
+        height: 100%;
+    }
+
+    .current {
+        z-index: 2;
+    }
+
+    .next {
+        z-index: 3;
+    }
+
+    .invisible {
+        z-index: 10;
+        opacity: 0;
+        display: none;
+    }
+
+    #controls {
+        display: block;
+        position: absolute;
+        z-index: 2000;
+        background-color: #75abff;
+    }
+
+    #controls >  div {
+        display: inline-block;
+        margin-left: 25px;
+        border-right: 5px ridge cyan;
+        padding-right: 25px;
+        border-bottom: 3px solid gray;
+        padding-bottom: 5px;
+    }
+
+    .printImage {
+        display: none;
+    }
+
+</style>
+</head>
+<body>
+<div id="controls">
+    <div>
+        <button onclick="commandHandler.open('testFiles/test.mp4', 0, '')">Open1</button>
+        <button onclick="commandHandler.open('testFiles/test2.mp4', 0, '')">Open2</button>
+        <button onclick="commandHandler.mediaState = 'Play'">Play</button>
+        <button onclick="commandHandler.mediaState = 'Pause'">Pause</button>
+        <button onclick="commandHandler.mediaState = 'Stop'">Stop</button>
+        <button onclick="commandHandler.loopMedia = true; ">loop</button>
+        <button onclick="commandHandler.loopMedia = false; ">No loop</button>
+        <button onclick="commandHandler.zoomMode = 'actualSize'">Actual Size</button>
+        <button onclick="commandHandler.zoomMode = 'fitPage'">Fit Page</button>
+        <button onclick="commandHandler.zoomIn()">Zoom In</button>
+        <button onclick="commandHandler.zoomOut()">Zoom Out</button>
+    </div>
+</div>
+
+<div id="container0">
+    <div id="container1">
+
+    </div>
+</div>
+<!--<div class="imageElement"></div>-->
+</body>
+</html>

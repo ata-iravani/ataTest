@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/jquery-1.7.2.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/ShetabEbookCreatorAgent.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            //shetab.Html.setDocumentDirectionAndMirror('rtl');
+            $('#se_soundVolume').slider({range:'min'});
+            $('#se_mediaPosition').slider({range:'min'});
+            $('#startMenu').hover(function () {
+                $(this).addClass('hover');
+            }, function () {
+                $(this).removeClass('hover');
+            });
+            $('#startMenu').click(function (e) {
+                e.stopPropagation();
+                if ($(this).attr('class').indexOf('checked') != -1) {
+                    $(this).removeClass('checked');
+                    $('#startMenuPlaceHolder').removeClass('show');
+                }
+                else {
+                    $(this).addClass('checked');
+                    $('#startMenuPlaceHolder').addClass('show');
+                }
+            });
+            $('body').click(function () {
+                $('#startMenu').removeClass('checked');
+                $('#startMenuPlaceHolder').removeClass('show');
+
+            });
+
+            seCreatorApp.init("shetab.creator.skin");
+            
+            $('#tabs-data').find('[id^="se_"]').each(function () {
+                var inlineStyle = '';
+                if ($(this).hasClass('middleLight')) {
+                    inlineStyle = 'style="-webkit-box-align:center"';
+                }
+                var hoverHtmlStr = '<div id="hover_' + $(this).attr('id') + '" ' + inlineStyle + ' class="se-disabled"><div class="hoverEffect"></div></div>';
+                $('body').append(hoverHtmlStr);
+                $('#hover_' + $(this).attr('id')).wrap('<svg />');
+                $(this).hover(function () {
+                    if (this.className.indexOf('se-disabled') != -1) {
+                        return;
+                    }
+                    var rect = this.getBoundingClientRect();
+                    var hoverParent = $('#hover_' + $(this).attr('id'));
+                    hoverParent.css(
+                            {   width:rect.width,
+                                height:rect.height,
+                                top:rect.top,
+                                left:rect.left
+                            });
+                    hoverParent.children('div').addClass('isHovered');
+                }, function () {
+                    if (this.className.indexOf('se-disabled') != -1) {
+                        return;
+                    }
+                    var hoverParent = $('#hover_' + $(this).attr('id'));
+                    hoverParent.children('div').removeClass('isHovered');
+                    hoverParent.children('div').removeClass('isPressed');
+                    setTimeout(function () {
+                        hoverParent.css(
+                                {   width:0,
+                                    height:0,
+                                    top:0,
+                                    left:0
+                                });
+                    }, 300);
+                });
+                $(this).mousedown(function () {
+                    var hoverParent = $('#hover_' + $(this).attr('id'));
+                    hoverParent.children('div').addClass('isPressed');
+                });
+                $(this).mouseup(function () {
+                    var hoverParent = $('#hover_' + $(this).attr('id'));
+                    hoverParent.children('div').removeClass('isPressed');
+                });
+            });
+            $('#tabs ul li').hover(function () {
+                        $('#tabs ul li').removeClass('hover');
+                        $(this).addClass('hover');
+                    },
+                    function () {
+                        $(this).removeClass('hover');
+                    });
+            $('#tabs ul li').click(function () {
+                $('#tabs ul li').removeClass('selected');
+                $(this).addClass('selected');
+                $('#tabs-data > div').removeClass('show');
+                $('#' + $(this).attr('id') + '-data').addClass('show');
+                setTimeout(function () {
+                    $("#tabs-data > div:not('.show')").addClass('lowerIndex');
+                    $('#tabs-data > div.show').removeClass('lowerIndex');
+                }, 700);
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+<div id="wrapper">
+<div id="upperSection">
+<div id="tabs">
+<div id="tabs-data">
+<div id="home-data" class="show">
+    <div id="ClipBoard">
+        <div class='segmentBackground'></div>
+        <div class='segmentData'>
+            <div id='se_paste' class="middleLight">
+                <div id="pasteImage"></div>
+                <div id="pasteText">Paste</div>
+            </div>
+            <div class="segmentCul">
+                <div id='se_CutSelection'>
+                    <div id="cutSelectionImage"></div>
+                    <div id="cutSelectionText">Cut</div>
+                </div>
+                <div id='se_CopySelection'>
+                    <div id="copySelectionImage"></div>
+                    <div id="copySelectionText">Copy</div>
+                </div>
+                <div id='se_DeleteSelection'>
+                    <div id="deleteSelectionImage"></div>
+                    <div id="deleteSelectionText">Delete</div>
+                </div>
+            </div>
+        </div>
+        <div class="segmentTitle">Clip Board</div>
+    </div>
+    <div id="Edit">
+        <div class='segmentBackground'></div>
+        <div class='segmentData'>
+            <div id='se_ShowPropertiesWindow' class="middleLight">
+                <div id="showPropertiesWindowImage"></div>
+                <div id="showPropertiesWindowText">Properties</div>
+            </div>
+            <div id='se_ShowRecursivePropertiesWindow' class="middleLight">
+                <div id="showRecursivePropertiesWindowImage"></div>
+                <div id="showRecursivePropertiesWindowText">All Subitem Properties</div>
+            </div>
+            <div class="segmentCul">
+                <div id='se_Refresh'>
+                    <div id="refreshImage"></div>
+                    <div id="refreshText">Refresh</div>
+                </div>
+                <div id='se_RenameSelection'>
+                    <div id="renameSelectionImage"></div>
+                    <div id="renameSelectionText">Rename</div>
+                </div>
+                <div id='se_EditFile'>
+                    <div id="editFileImage"></div>
+                    <div id="editFileText">Edit File</div>
+                </div>
+            </div>
+        </div>
+        <div class="segmentTitle">Edit</div>
+    </div>
+    <div id="FileLocation">
+        <div class='segmentBackground'></div>
+        <div class='segmentData'>
+            <div class="segmentCul">
+                <div id='se_CopyAddress'>
+                    <div id="copyAddressImage"></div>
+                    <div id="copyAddressText">Copy Address</div>
+                </div>
+                <div id='se_LocateFile'>
+                    <div id="locateFileImage"></div>
+                    <div id="locateFileText">Open Containing Folder</div>
+                </div>
+            </div>
+        </div>
+        <div class="segmentTitle">File Location</div>
+    </div>
+    <div id="ProjectProperties">
+        <div class='segmentBackground'></div>
+        <div class='segmentData'>
+            <div class="segmentCul">
+                <div id='se_ShowProjectPropertiesWindow'>
+                    <div id="showProjectPropertiesWindowImage"></div>
+                    <div id="showProjectPropertiesWindowText">Project Properties</div>
+                </div>
+                <div id='se_OpenProjectFolder'>
+                    <div id="openProjectFolderImage"></div>
+                    <div id="openProjectFolderText">Open Project Folder...</div>
+                </div>
+            </div>
+        </div>
+        <div class="segmentTitle">Project Properties</div>
+    </div>
+    <div id="Export">
+        <div class='segmentBackground'></div>
+        <div class='segmentData'>
+            <div id='se_RunProject' class="middleLight">
+                <div id="runProjectImage"></div>
+                <div id="runProjectText">Run</div>
+            </div>
+            <div id='se_ShowBuildMediaWindow' class="middleLight">
+                <div id="showBuildMediaWindowImage"></div>
+                <div id="showBuildMediaWindowText">Publish Wizard</div>
+            </div>
+        </div>
+        <div class="segmentTitle">Export</div>
+    </div>
+</div>
+<div id="add-data" class="lowerIndex">
+    <div id="SubTopic">
+        <div class='segmentBackground'></div>
+        <div class='segmentData'>
+            <div id="subTopicUpperPart" class="segmentCul">
+                <div id='se_NewSubTopic'>
+                    <div id="newSubTopicImage"></div>
+                    <div id="newSubTopicText">New Sub Topic</div>
+                </div>
+            </div>
+            <div id="subTopicLowerPart" class="segmentCul">
+                <div id='se_NewSubTopicFromFolder'>
+                    <div id="newSubTopicFromFolderText">From Folder...</div>
+                </div>
+                <div id='se_NewSubTopicFromCurrentPage'>
+                    <div id="newSubTopicFromCurrentPageText">From Page...</div>
+                </div>
+                <div id='se_NewSubTopicFromFile'>
+                    <div id="newSubTopicFromFileText">From Files...</div>
+                </div>
+            </div>
+        </div>
+        <div class="segmentTitle">Sub Topic</div>
+    </div>
+    <div id="Topic">
+        <div class='segmentBackground'></div>
+        <div class='segmentData'>
+            <div id="topicUpperPart" class="segmentCul">
+                <div id='se_NewTopic'>
+                    <div id="newTopicImage"></div>
+                    <div id="newTopicText">New Sub Topic</div>
+                </div>
+            </div>
+            <div id="topicLowerPart" class="segmentCul">
+                <div id='se_NewTopicFromCurrentPage'>
+                    <div id="newTopicFromPageText">From Page...</div>
+                </div>
+                <div id='se_NewTopicFromFile'>
+                    <div id="newTopicFromFileText">From File...</div>
+                </div>
+            </div>
+        </div>
+        <div class="segmentTitle">Topic</div>
+    </div>
+    <div id="Book">
+        <div class='segmentBackground'></div>
+        <div class='segmentData'>
+            <div class="segmentCul">
+                <div id='se_ShowAddNewBookWindow'>
+                    <div id="showAddNewBookWindowImage"></div>
+                    <div id="showAddNewBookWindowText">Add New Book...</div>
+                </div>
+                <div id='se_ShowAddExistingBookWindow'>
+                    <div id="showAddExistingBookWindowImage"></div>
+                    <div id="showAddExistingBookWindowText">Add Existing Book...</div>
+                </div>
+            </div>
+            <div class="segmentCul">
+                <div id='se_NewSubTopicFromBook'>
+                    <div id="newSubTopicFromBookImage"></div>
+                    <div id="newSubTopicFromBookText">Subtopic From Book...</div>
+                </div>
+                <div id='se_ReloadBook'>
+                    <div id="reloadBookImage"></div>
+                    <div id="reloadBookText">Reload Book</div>
+                </div>
+            </div>
+        </div>
+        <div class="segmentTitle">Book</div>
+    </div>
+    <div id="Other">
+        <div class='segmentBackground'></div>
+        <div class='segmentData'>
+            <div class="segmentCul">
+                <div id='se_AddFile'>
+                    <div id="addFileImage"></div>
+                    <div id="addFileText">Add File</div>
+                </div>
+                <div id='se_AddFolder'>
+                    <div id="addFolderImage"></div>
+                    <div id="addFolderText">Add Folder</div>
+                </div>
+            </div>
+        </div>
+        <div class="segmentTitle">Other</div>
+    </div>
+</div>
+<div id="advanced-data" class="lowerIndex">
+    <div id="Advanced_">
+        <div class='segmentBackground'></div>
+        <div class='segmentData'>
+            <div id='se_ShowCommandBuilderWindow' class="middleLight">
+                <div id="showCommandBuilderWindowImage"></div>
+                <div id="showCommandBuilderWindowText">Create Command</div>
+            </div>
+            <div id='se_StartShetabQuizCreator' class="middleLight">
+                <div id="startShetabQuizImage"></div>
+                <div id="startShetabQuizText">Shetab Quiz Creator</div>
+            </div>
+            <div id='se_StartShetabSkinCreator' class="middleLight">
+                <div id="startShetabSkinCreatorImage"></div>
+                <div id="startShetabSkinCreatorText">Shetab Skin Creator</div>
+            </div>
+            <div id='se_UnregisterSoftLock' class="middleLight">
+                <div id="unregisterSoftLockImage"></div>
+                <div id="unregisterSoftLockText">Unregister Softlock</div>
+            </div>
+        </div>
+        <div class="segmentTitle">Advanced</div>
+    </div>
+</div>
+</div>
+<ul>
+    <li id='home' class="selected">Home</li>
+    <li id='add'>Add</li>
+    <li id='advanced'>Advanced</li>
+</ul>
+<div id="se_SaveProject">
+    <div class="hover"></div>
+    <div class="background"></div>
+</div>
+<div id="startMenu">
+    <div class="background"></div>
+    <div class="hover"></div>
+    <div class="checked"></div>
+</div>
+<div id="se_OpenShetabEbookCreatorHelp">
+    <div class="background"></div>
+    <div class="hover"></div>
+</div>
+<img id="logo" src="images/ShetabTech.en.png" height="12">
+</div>
+<div id="toolbar">
+    <div id="se_navigationPanelVisible">
+        <div class="hover"></div>
+        <div class="background"></div>
+    </div>
+    <div id="se_NavigateBack">
+        <div class="hover"></div>
+        <div class="background"></div>
+        <div class="press"></div>
+    </div>
+    <div id="navigateSeparator"></div>
+    <div id="se_NavigateForward">
+        <div class="hover"></div>
+        <div class="background"></div>
+        <div class="press"></div>
+    </div>
+    <div id="se_ZoomOut">
+        <div class="hover"></div>
+        <div class="background"></div>
+        <div class="press"></div>
+    </div>
+    <div id="zoomSeparator"></div>
+    <div id="se_ZoomIn">
+        <div class="hover"></div>
+        <div class="background"></div>
+        <div class="press"></div>
+    </div>
+    <div id="se_commonTaskPanelVisible">
+        <div class="hover"></div>
+        <div class="background"></div>
+    </div>
+    <div id="se_zoomMode_actualSize">
+        <div class="hover"></div>
+        <div class="background"></div>
+    </div>
+    <div id="se_zoomMode_fitWidth">
+        <div class="hover"></div>
+        <div class="background"></div>
+    </div>
+    <div id="se_zoomMode_fitPage">
+        <div class="hover"></div>
+        <div class="background"></div>
+    </div>
+    <div id="se_windowState_fullView">
+        <div class="hover"></div>
+        <div class="background"></div>
+    </div>
+    <input id="se_SearchBox" type="text">
+
+    <div id="se_ShowSearchWindow">
+        <div class="hover"></div>
+        <div class="background"></div>
+    </div>
+</div>
+<!--<iframe src="startMenu.html" id="startMenuPlaceHolder"></iframe>-->
+<iframe id="startMenuPlaceHolder" src="startMenu.html"></iframe>
+</div>
+<div id="middleSection">
+    <iframe id="se_placeholder_clientBox" frameborder="0"></iframe>
+</div>
+<div id="lowerSection">
+
+    <div id="mediaControls">
+        <div id="se_playPauseMedia">
+            <div id="toggleMediaHover" class="toggleMediaButtons"></div>
+            <div id="toggleMediaChecked" class="toggleMediaButtons"></div>
+            <div id="toggleMediaCheckedHover" class="toggleMediaButtons"></div>
+            <div id="toggleMediaDisabled" class="toggleMediaButtons"></div>
+            <div id="toggleMediaPress" class="toggleMediaButtons"></div>
+            <div id="toggleMediaCheckedPress" class="toggleMediaButtons"></div>
+        </div>
+        <div id="se_stopMedia">
+            <div id="stopMediaHover" class="toggleMediaButtons"></div>
+            <div id="stopMediaDisabled" class="toggleMediaButtons"></div>
+            <div id="stopMediaPress" class="toggleMediaButtons"></div>
+        </div>
+        <div id="se_mute">
+            <div id="toggleMuteHover" class="toggleMediaButtons"></div>
+            <div id="toggleMuteChecked" class="toggleMediaButtons"></div>
+            <div id="toggleMuteCheckedHover" class="toggleMediaButtons"></div>
+            <div id="toggleMutePress" class="toggleMediaButtons"></div>
+            <div id="toggleMuteCheckedPress" class="toggleMediaButtons"></div>
+        </div>
+        <input type="text" id="se_MediaTimerBox" readonly="readonly"/>
+
+        <div id="se_soundVolume"></div>
+    </div>
+    <div id="se_mediaPosition"></div>
+
+</div>
+</div>
+</body>
+</html>

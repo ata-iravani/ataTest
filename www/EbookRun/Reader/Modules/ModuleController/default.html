@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<script src="js/jquery-1.8.0.js"></script>
+<script src="js/ShetabEbookAgent.js"></script>
+<script src="js/effects/ShetabEffects_Simple.js"></script>
+<script>
+/*----- Global Functions that exists in System -----*/
+getPool = function (url) {
+    for (var i = 0; i < pages.length; i++) {
+        if (pages[i].url == url)
+            return pages[i].pool;
+    }
+    return null;
+};
+
+getPlayer = function (url) {
+    for (var i = 0; i < pages.length; i++) {
+        if (pages[i].url == url)
+            return pages[i].player;
+    }
+    return null;
+};
+
+/*----- Module Controller -----*/
+/**
+ *
+ * @param player
+ * @param url
+ * @param [pageNumber]
+ * @param [bookmark]
+ * @constructor
+ */
+MCView = function (player, url, pageNumber, bookmark) {
+    this.player = player;
+    this.url = url;
+    this.domElement = null;
+};
+/**
+ *
+ * @param url
+ * @param [pageNumber]
+ * @return {*}
+ */
+findPoolByUrl = function (url, pageNumber) {
+    if (typeof (pageNumber) == 'undefined ')
+        pageNumber = 1;
+    for (var b in pools)
+        if (pools[b].url == url)
+            return b;
+    return null;
+};
+
+findPoolByPlayer = function (player, pageNumber) {
+    if (typeof (pageNumber) == 'undefined ')
+        pageNumber = 1;
+    for (var b in pools)
+        if (pools[b].player == player)
+            return b;
+    return null;
+};
+
+var pools = {};
+var MaxPoolCount = 15;
+var openingView = null;
+var currentView = new MCView('', '');
+var effectLock = false;
+var pendingRequest = null;
+
+/*var pages = [
+ {url:"imageViewer.html?address=http://download.shetabtech.com/baby/testfiles/f1.jpg", pool:"$Empty", player:"21"},
+ {url:"imageViewer.html?address=http://download.shetabtech.com/baby/testfiles/f2.jpg", pool:"$Empty", player:"22"},
+ {url:"imageViewer.html?address=http://download.shetabtech.com/baby/testfiles/f3.jpg", pool:"$Empty", player:"21"},
+ {url:"imageViewer.html?address=http://download.shetabtech.com/baby/testfiles/f4.jpg", pool:"$Empty", player:"22"},
+ {url:"imageViewer.html?address=http://download.shetabtech.com/baby/testfiles/f5.jpg", pool:"12", player:"21"},
+ {url:"imageViewer.html?address=http://download.shetabtech.com/baby/testfiles/f6.jpg", pool:"12", player:"22"},
+ {url:"imageViewer.html?address=http://download.shetabtech.com/baby/testfiles/f7.jpg", pool:"12", player:"21"},
+ {url:"imageViewer.html?address=http://download.shetabtech.com/baby/testfiles/f8.jpg", pool:"12", player:"22"},
+ {url:"imageViewer.html?address=http://download.shetabtech.com/baby/testfiles/f9.jpg", pool:"13", player:"21"},
+ {url:"imageViewer.html?address=http://download.shetabtech.com/baby/testfiles/f10.jpg", pool:"13", player:"21"}
+
+ ];*/
+
+var pages = [
+    {url:"imageViewer.html?address=http://192.168.0.23:777/testfiles/blue.jpg", pool:"$Empty", player:"21"},
+    {url:"imageViewer.html?address=http://192.168.0.23:777/testfiles/red.jpg", pool:"$Empty", player:"22"},
+    {url:"imageViewer.html?address=http://192.168.0.23:777/testfiles/f3.jpg", pool:"$Empty", player:"21"},
+    {url:"imageViewer.html?address=http://192.168.0.23:777/testfiles/f4.jpg", pool:"$Empty", player:"22"},
+    {url:"imageViewer.html?address=http://192.168.0.23:777/testfiles/f5.jpg", pool:"12", player:"21"},
+    {url:"imageViewer.html?address=http://192.168.0.23:777/testfiles/f6.jpg", pool:"12", player:"22"},
+    {url:"imageViewer.html?address=http://192.168.0.23:777/testfiles/f7.jpg", pool:"12", player:"21"},
+    {url:"imageViewer.html?address=http://192.168.0.23:777/testfiles/f8.jpg", pool:"12", player:"22"},
+    {url:"imageViewer.html?address=http://192.168.0.23:777/testfiles/f9.jpg", pool:"13", player:"21"},
+    {url:"imageViewer.html?address=http://192.168.0.23:777/testfiles/f10.jpg", pool:"13", player:"21"}
+
+];
+
+/*
+ * We need to have MCCache class
+ * which consists of:
+ * caching : Array of Ajax/MCView Objects
+ * cached : Array of MCView objects
+ * addUrl : function
+ * cancel : function
+ * */
+
+var MCCache = function () {
+    this.cached = new Array();
+    this.ajaxcaching = new Array();
+    this.mCViewcaching = new Array();
+};
+
+MCCache.prototype = {
+    /**
+     * adds the url to cached list.
+     * @param url
+     */
+    addUrl:function (url) {
+        this.cached.push(url);
+    },
+
+    /**
+     * Cancels caching of documents.
+     */
+    cancel:function () {
+        for (var i = 0; i < this.ajaxcaching.length; i++) {
+            this.ajaxcaching[i].abort();
+        }
+
+        for (var j = 0; j < this.mCViewcaching.length; j++) {
+            this.mCViewcaching[j].contentWindow.stop();
+            $(this.mCViewcaching[j]).remove();
+        }
+    },
+
+    cacheDocument:function (url, type) {
+        if (type == 1) {
+            $('*').ajaxStart(function () {
+                $(this).html("<img src='demo_wait.gif' />");
+            });
+
+            $.ajax({
+                url:url
+            }).done(function () {
+                        this.cached.push(url);
+                    });
+        }
+        else {
+
+        }
+    }
+};
+
+$(document).ready(function () {
+    seApp.init('shetab.moduleController');
+    $('#showPools').click(function () {
+        console.log(pools);
+    });
+    $('#showLockStatus').click(function () {
+        console.log('pendingRequest: ' + pendingRequest);
+        console.log('effectLock: ' + effectLock);
+    });
+});
+/**
+ *
+ * @param url
+ * @param [pageNumber]
+ */
+function openDocument(url, pageNumber) {
+    if (effectLock == false) {
+        if (typeof (pageNumber) == 'undefined ')
+            pageNumber = 1;
+        var playerName = getPlayer(url);
+        var poolName = getPool(url);
+
+        openingView = new MCView(playerName, url);
+
+
+        if (currentView.url == openingView.url) {
+            console.log('1');
+            console.log('Current document should keep running');
+        }
+
+        else if (findPoolByUrl(url, pageNumber) != null && findPoolByUrl(url, pageNumber) != '$Empty') {
+            console.log('2');
+            console.log('opening document exists in background pools, the document that exists in' +
+                    ' background pool, should be used.');
+            if (findPoolByUrl(currentView.url) == '$Empty') {
+                trash.push(currentView);
+            }
+            openingView = pools[findPoolByUrl(url, pageNumber)];
+            preLoad(currentView, openingView);
+            currentView = openingView;
+            pools[getPool(openingView.url)] = currentView;
+        }
+
+        else if (getPool(currentView.url) == poolName) {
+            console.log('3');
+            console.log('current document and new document have the same Pool then the current document ' +
+                    'will be disposed.');
+            trash.push(currentView);
+            preLoad(currentView, openingView);
+            currentView = openingView;
+            pools[getPool(openingView.url)] = currentView;
+        }
+
+        else if (getPool(currentView.url) == '$Empty') {
+            console.log('4');
+            console.log('current document has empty Pool, then it always will be disposed, and opening document must be shown .');
+            trash.push(currentView);
+            delete pools['$Empty'];
+            if (typeof pools[poolName] != 'undefined') {
+                trash.push(pools[poolName]);
+            }
+            preLoad(currentView, openingView);
+            currentView = openingView;
+            pools[getPool(openingView.url)] = currentView;
+        }
+
+        else if (poolName != getPool(currentView.url)) {
+            console.log('5');
+            console.log('current document does have Pool, but the opening document has different Pool.');
+            if (typeof(pools[poolName]) != 'undefined') {
+                trash.push(pools[poolName]);
+            }
+            preLoad(currentView, openingView);
+            currentView = openingView;
+            pools[poolName] = currentView;
+        }
+    }
+    else {
+        pendingRequest = url;
+    }
+
+}
+
+var cached = new Array();
+var caching = {};
+var readyStateEvent = null;
+var trash = new Array();
+
+function isDomElementAvailable(url) {
+    var isInPool = false;
+    var isInTrash = false;
+    for (var i in pools) {
+        if (pools[i].url == url && pools[i].domElement != null) {
+            isInPool = true;
+            break;
+        }
+    }
+
+    for (var j = 0; j < trash.length; j++) {
+        if (trash[j].url == url) {
+            isInTrash = true;
+            break;
+        }
+    }
+    if (isInPool == true && isInTrash == false)
+        return true;
+    return false;
+}
+
+function releaseLockAndExecPending() {
+    effectLock = false;
+    if (pendingRequest != null) {
+        openDocument(pendingRequest);
+        pendingRequest = null;
+    }
+}
+
+function isPreLoadable(url) {
+    return true;
+}
+
+function preLoad(cur, nxt) {
+    effectLock = true;
+    var effect = new shetabEffect.Cube();
+    if (isPreLoadable(cur.url)) {
+        if (isDomElementAvailable(nxt.url)) {
+            effect.applyEffect(cur.domElement, nxt.domElement, cleanUp);
+        } else {
+            $('#container1').append('<iframe src="' + nxt.url + '" class="invisible  ' + getPool(nxt.url) + '  "></iframe>');
+            nxt.domElement = $('iframe[src*="' + nxt.url + '"]').last()[0];
+            caching[nxt.url] = nxt.domElement;
+            readyStateEvent = setInterval(function () {
+                $('#loadingImage').css({'display':'block'});
+                console.log(nxt.domElement.contentWindow.document.readyState);
+                if (nxt.domElement.contentWindow.document.readyState == 'complete') {
+                    clearInterval(readyStateEvent);
+                    cached.push(nxt.url);
+                    $('#loadingImage').css({'display':'none'});
+                    for (var i in caching) {
+                        if (i == nxt.url) {
+                            delete caching[i];
+                        }
+                    }
+                    effect.applyEffect(cur.domElement, nxt.domElement, cleanUp);
+                }
+            }, 1000);
+
+        }
+    }
+    else {
+        effect.applyEffect(cur.domElement, nxt.domElement, cleanUp);
+    }
+}
+
+function cleanUp() {
+    console.log('cleanup starts');
+    for (var i = 0; i < trash.length; i++) {
+        console.log('This will be removed');
+        console.log(trash[i].domElement);
+        $(trash[i].domElement).remove();
+    }
+    trash = new Array();
+    console.log('releaseLockAndExecPending');
+    releaseLockAndExecPending();
+}
+
+</script>
+<style>
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+    }
+
+    #loadingImage {
+        position: fixed;
+        top: 50px;
+        right: 50px;
+        z-index: 1000;
+    }
+
+    iframe {
+        top: 0;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .invisible {
+        z-index: 10;
+        opacity: 0;
+        display: none;
+    }
+
+    #container0, #container1 {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 86px;
+    }
+
+    #container1 {
+        top: 0;
+    }
+
+    #controls {
+        display: block;
+        background-color: #75abff;
+    }
+
+    #controls >  div {
+        display: inline-block;
+        margin-left: 25px;
+        border-right: 5px dashed cyan;
+        padding-right: 25px;
+        border-bottom: 3px solid gray;
+        padding-bottom: 5px;
+    }
+</style>
+</head>
+<body>
+<div id="controls">
+    <div>
+        <p>pool: Empty</p>
+        <button onclick="openDocument(pages[0].url)">1 - player : 21</button>
+        <button onclick="openDocument(pages[1].url)">2 - player : 22</button>
+        <button onclick="openDocument(pages[2].url)">3 - player : 21</button>
+        <button onclick="openDocument(pages[3].url)">4 - player : 22</button>
+    </div>
+    <div>
+        <p>pool: 12</p>
+        <button onclick="openDocument(pages[4].url)">5 - player : 21</button>
+        <button onclick="openDocument(pages[5].url)">6 - player : 22</button>
+        <button onclick="openDocument(pages[6].url)">7 - player : 21</button>
+        <button onclick="openDocument(pages[7].url)">8 - player : 22</button>
+    </div>
+    <div>
+        <p>pool: 13 </p>
+        <button onclick="openDocument(pages[8].url)">9 - player : 21</button>
+        <button onclick="openDocument(pages[9].url)">10 - player : 21</button>
+        <button id="showPools">showPools</button>
+        <button id="showLockStatus">showLockStatus</button>
+    </div>
+
+
+</div>
+<!--<img id="imagePlaceHolder1" class="active" width="40%">
+<img id="imagePlaceHolder2" class="inactive" width="40%">-->
+<img id="loadingImage" src="testFiles/loading.gif" style="display: none;">
+
+<div id="container0">
+    <div id="container1">
+    </div>
+</div>
+</body>
+</html>

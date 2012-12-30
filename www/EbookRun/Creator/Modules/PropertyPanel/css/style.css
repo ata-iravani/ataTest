@@ -1,0 +1,563 @@
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('fontawesome-webfont.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+::selection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: #bab9b9;
+    overflow-x: hidden;
+}
+
+#propertiesData {
+    height: 100%;
+    width: 100%;
+}
+
+#dragHandle {
+    position: absolute;
+    top: 0;
+    left: 150px;
+    width: 5px;
+    height: 100%;
+    cursor: e-resize;
+    z-index: 3;
+}
+
+.propertySet {
+    background-color: #EDEDED;
+    border-radius: 5px;
+    float: left;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.propertySetTitle {
+    cursor: pointer;
+}
+
+.propertySetTitle.open:before {
+    content: "";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    font-size: 11pt;
+    line-height: 25px;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.propertySetTitle.close:before {
+    content: "";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    font-size: 11pt;
+    line-height: 25px;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.propertySetContents {
+    float: left;
+    width: 100%;
+}
+
+.propertySetTitle {
+    width: 100%;
+    height: 25px;
+    color: #222;
+    text-shadow: 0 1px 3px white;
+    font-family: sans-serif;
+    font-size: 16pt;
+    text-indent: 5px;
+    padding-top: 5px;
+}
+
+.category {
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 10pt;
+    text-align: left;
+    clear: both;
+    float: left;
+    border-radius: 7px;
+    margin-bottom: 3px;
+    background-color: #d9d9d9;
+    padding-bottom: 2px;
+}
+
+.categoryTitle {
+    text-align: left;
+    color: #222;
+    height: 25px;
+    width: 100%;
+    float: left;
+    clear: both;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.categoryTitle .text {
+    margin-left: 12px;
+    height: 25px;
+    padding-left: 4px;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.categoryTitle .text:before {
+    content: "";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    padding-right: 5px;
+}
+
+.categoryTitle.open .text:before {
+    content: "";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    padding-right: 5px;
+}
+
+.items {
+    clear: both;
+}
+
+.item {
+    padding-right: 3px;
+    margin-bottom: 5px;
+}
+
+.item .titleValueWrapper {
+    height: 25px;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+
+.item .title, .item .value {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+}
+
+.item .value > input[type="text"] {
+    height: 100%;
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-indent: 3px;
+}
+
+.titleValueWrapper .title {
+    width: 250px;
+    max-width: 150px;
+    min-width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 27px;
+    line-height: 27px;
+    -webkit-transition: line-height 0.3s, height 0.3s;
+    text-align: right;
+    padding-right: 6px;
+    color: #222;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.titleValueWrapper > .value {
+    white-space: nowrap;
+    height: 25px;
+    line-height: 25px;
+    -webkit-transition: line-height 0.3s, height 0.3s;
+}
+
+.titleValueWrapper.font .title:before {
+    content: "";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    padding-right: 5px;
+}
+
+/*body[dir="rtl"] .item .titleValueWrapper.font .title:before{
+    content:"";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    padding-left:5px ;
+}*/
+
+.item.open .titleValueWrapper.font .title:before {
+    content: "";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    padding-right: 5px;
+}
+
+.item.open {
+    border-radius: 5px;
+    background-color: #BAB9B9;
+}
+
+select {
+    width: 100%;
+    border: none;
+    margin: 0;
+    height: 100%;
+}
+
+input {
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    white-space: nowrap;
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
+.comboBox {
+    position: relative;
+    width: 100%;
+    height: 25px;
+}
+
+.comboBox input[type="text"] {
+    position: absolute;
+    left: 0;
+    right: 20px;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    text-indent: 7px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-box-shadow: inset 0px 1px 4px rgba(0, 0, 0, .2);
+    border: 1px solid #999;
+    background: #f3f3f3;
+    color: #222;
+    text-shadow: 0 1px 0 #fff;
+    border-right: none;
+}
+
+.comboBox .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5f9cc5), to(#396b9e));
+    border: 1px solid #044062;
+    border-left: 1px solid #585757;
+    font-family: FontAwesome;
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px 0 #000;
+}
+
+.comboBox.hover .icon {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#6facd5), to(#4272a4));
+}
+
+.comboBox.canCustom input[type="text"]:focus {
+    -webkit-box-shadow: 0px 0px 12px #387bbe
+}
+
+.comboBox .list {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    display: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 0;
+    max-height: 210px;
+    background-color: #F3F3F3;
+    border: 1px solid #999;
+    color: #000;
+    z-index: 5;
+}
+
+.comboBox .list::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+.comboBox .list::-webkit-scrollbar-track {
+    opacity: 0.5;
+    background-color: #D9D9D9;
+}
+
+/* Handle */
+.comboBox .list::-webkit-scrollbar-thumb {
+    background-color: #396b9e;
+}
+
+.comboBox .list::-webkit-scrollbar-thumb:hover {
+    background-color: #00BFFF;
+}
+
+.listItem {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    line-height: normal;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.listItem.hover {
+    color: black;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #6facd5;
+}
+
+.listItem.selectedItem {
+    color: white;
+    text-shadow: 0 1px 0 #000;
+    border: 1px solid #044062;
+    background-color: #4272a4;
+}
+
+.listItemTitle {
+    margin-left: -5px;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    white-space: nowrap;
+    overflow-x: hidden;
+    padding-top: 2px;
+    padding-bottom: 4px;
+}
+
+.listItem img {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    margin: 5px;
+}
+
+.comboBox.color img {
+    height: 20px;
+    width: 20px;
+    background-size: 20px 20px;
+    background-position: center center;
+}
+
+.comboBox.color input[type="text"] {
+    text-indent: 30px;
+}
+
+.comboBox.color .listItemTitle {
+    margin-left: 0;
+}
+
+.fontPropertiesWrapper {
+    height: 80px;
+    position: relative;
+    display: none;
+    margin-left: 3px;
+    margin-top: 5px;
+    margin-bottom: -3px;
+}
+
+.fontPropertyNameTitle {
+    text-align: right;
+    position: absolute;
+    height: 25px;
+    line-height: 25px;
+    top: 10px;
+    left: 10px;
+    width: 35px;
+}
+
+.fontPropertyNameValue {
+    position: absolute;
+    height: 25px;
+    line-height: 25px;
+    top: 10px;
+    left: 50px;
+    right: 10px;
+}
+
+.fontPropertySizeTitle {
+    text-align: right;
+    position: absolute;
+    height: 25px;
+    line-height: 25px;
+    top: 40px;
+    left: 10px;
+    width: 35px;
+}
+
+.fontPropertySizeValue {
+    position: absolute;
+    height: 25px;
+    line-height: 25px;
+    top: 40px;
+    left: 50px;
+    right: 50%;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.fontPropertyBold {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.fontPropertyBold input[type="checkbox"] + label {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.fontPropertyUnderline input[type="checkbox"] + label {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-decoration: underline;
+
+}
+
+.fontPropertiesWrapper input[type="checkbox"] + label {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5F9CC5), to(#396B9E));
+    border: 1px solid #044062;
+    color: white;
+    text-shadow: 0 1px 0 #000;
+}
+
+.fontPropertiesWrapper input[type="checkbox"]+ label:hover {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#6facd5), to(#4272a4));
+}
+
+.fontPropertiesWrapper input[type="checkbox"]:checked + label {
+    background-image: -webkit-gradient(linear, left bottom, left top, from(#6facd5), to(#4272a4));
+}
+
+.fontPropertyItalic {
+    position: absolute;
+    top: 40px;
+    right: 35px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    font-style: italic;
+    text-transform: capitalize;
+}
+
+.fontPropertyUnderline {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    text-transform: capitalize;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+input[type="checkbox"]+ label {
+    display: inline-block;
+    left: 0;
+    position: absolute;
+    height: 25px;
+    width: 25px;
+}
+
+.colourPlaceHolder {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    left: 5px;
+    top: 2px;
+    pointer-events: none;
+}
+
+.item.readonly .comboBox input[type="text"] {
+    position: absolute;
+    left: 0;
+    right: 20px;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    text-indent: 7px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-box-shadow: inset 0px 1px 4px rgba(0, 0, 0, .2);
+    border: 1px solid #999;
+    background: rgba(0, 0, 0, 0.05);
+    color: #222;
+    text-shadow: 0 1px 0 white;
+    border-right: none;
+}
+
+.item.readonly .comboBox .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    font-family: FontAwesome;
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px 0 #000;
+}
+
+.item.readonly .comboBox.hover .icon {
+    background: rgba(0, 0, 0, 0.05);
+
+}
+
+.item.readonly .comboBox.canCustom input[type="text"]:focus {
+    -webkit-box-shadow: 0px 0px 5px #fff;
+}

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script src="js/jquery-1.8.2.js"></script>
+<script src="js/ShetabEbookAgent.js"></script>
+<script>
+CommandHandler = function () {
+    this._isFirstTime = true;
+};
+
+CommandHandler.prototype = {
+    get currentBookmark() {
+        var currentSettings = document.getElementById('pdfViewer').contentWindow.document.getElementById('viewBookmark').href;
+        return currentSettings.substring(currentSettings.indexOf('#'));
+    },
+    get isOpen() {
+        return null;
+    },
+    goToBookmark:function (bookmark) {
+        var currentSettings = document.getElementById('pdfViewer').contentWindow.document.getElementById('viewBookmark').href;
+        var urlString = currentSettings.substring(0, currentSettings.indexOf('#')) + bookmark;
+        $('#pdfViewer').attr('src', urlString);
+    },
+    open:function (url, pageNumber, bookmark) {
+        if (this._isFirstTime) {
+            initPDFViewer(url, pageNumber);
+            this._isFirstTime = false;
+        }
+    },
+    get canPrint() {
+        return false;
+    },
+    get canPrintPreview() {
+        return false;
+    },
+    get canPrintSetup() {
+        return false;
+    },
+    print:function () {
+        PDFViewWindow.print();
+    },
+    printPreview:function () {
+
+    },
+    printSetup:function () {
+
+    },
+    get canZoomIn() {
+        seApp.doDefault();
+    },
+    get canZoomOut() {
+        seApp.doDefault();
+    },
+    canSetZoom:function (value) {
+        if (jQuery.type(PDFView) === "null") {
+            return false;
+        }
+        return true;
+    },
+    get zoom() {
+        if (jQuery.type(PDFView) === "null") {
+            return false;
+        }
+        return PDFView.currentScale;
+    },
+    set zoom(value) {
+        if (jQuery.type(PDFView) === "null") {
+            return false;
+        }
+        PDFView.setScale(value, true, false);
+    },
+    get zoomMode() {
+        if (jQuery.type(PDFView) === "null") {
+            return false;
+        }
+        var currentSettings = document.getElementById('pdfViewer').contentWindow.document.getElementById('viewBookmark').href;
+        var currentZoom = currentSettings.substring(currentSettings.indexOf('zoom=')).replace('zoom=', '');
+        var curZoom = currentZoom.split(',')[0];
+
+        if ($.type(curZoom) === 'number') {
+            return 'custom';
+        }
+
+        switch (curZoom) {
+            case 'page-actual':
+                return 'actualSize';
+            case  'page-fit':
+                return 'fitPage';
+            case  'page-width':
+                return'fitWidth';
+            default :
+                return 'custom';
+        }
+    },
+    set zoomMode(value) {
+        if (jQuery.type(PDFView) === "null") {
+            return false;
+        }
+        switch (value) {
+            case 'actualSize':
+                value = 'page-actual';
+                break;
+            case  'fitPage':
+                value = 'page-fit';
+                break;
+            case  'fitWidth':
+                value = 'page-width';
+                break;
+            default :
+                value = 'auto';
+                break;
+        }
+        var jq = $('#pdfViewer');
+        var iframeSrcStr = jq.attr('src').substring(0, jq.attr('src').indexOf('#'));
+        var currentSettings = jq[0].contentWindow.document.getElementById('viewBookmark').href;
+
+        var currentZoom = currentSettings.substring(currentSettings.indexOf('zoom=')).replace('zoom=', '');
+        var currentPage = currentSettings.substring(currentSettings.indexOf('page='), currentSettings.indexOf('&zoom=')).replace('page=', '');
+
+        var currentScrollData = currentZoom.split(',');
+        var curZoom = currentScrollData[0];
+
+        var hashStr = '#page=' + currentPage + '&zoom=' + value;
+
+        for (var i = 1; i < currentScrollData.length; i++) {
+            hashStr += ',' + currentScrollData[i];
+        }
+
+        jq.attr('src', iframeSrcStr + hashStr);
+    },
+    canSetZoomMode:function (value) {
+        switch (value) {
+            case 'custom':
+            case 'actualSize':
+            case 'fitPage':
+            case 'fitWidth':
+                return true;
+            default:
+                return false;
+        }
+    },
+    zoomIn:function () {
+        if (!seApp.isTestMode) {
+            seApp.doDefault();
+        }
+    },
+    zoomOut:function () {
+        if (!seApp.isTestMode) {
+            seApp.doDefault();
+        }
+    },
+    canNextMedia:function () {
+        return false;
+    },
+    canPreviousMedia:function () {
+        return false;
+    }
+};
+
+var PDFViewer = function (url, pageNumber) {
+    var iframeStr = '<iframe id="pdfViewer" src="js/viewer.html?file=' + url +
+            '#page=' + pageNumber + '&zoom=100" seamless onload="PDFViewerLoaded()"></iframe>';
+    $('#container1').append(iframeStr);
+};
+
+var pendingRequest = null;
+var commandHandler = new CommandHandler();
+
+$(document).ready(function () {
+    //test();
+    seApp.init('PDFViewer');
+    seApp.commandHandler = commandHandler;
+    if (!seApp.isTestMode) {
+        $('#controls').css({display:'none'});
+        $('#container0').css({top:'0'});
+    }
+});
+
+var PDFView = null;
+var PDFViewWindow = null;
+
+function PDFViewerLoaded() {
+    PDFViewWindow = document.getElementById('pdfViewer').contentWindow;
+    PDFView = PDFViewWindow.PDFView;
+    commandHandler.isOpen = true;
+}
+
+function initPDFViewer(url, pageNumber) {
+    pageNumber++;
+    var iframeStr = '<iframe id="pdfViewer" src="js/viewer.html?file=' + url +
+            '#page=' + pageNumber + '" seamless onload="PDFViewerLoaded()"></iframe>';
+    $('#container1').append(iframeStr);
+}
+
+function changeZoomMode(mode) {
+    commandHandler.zoomMode = mode;
+    if (mode == 'actualSize')
+        commandHandler.zoom = 1;
+}
+
+
+function zoomIn() {
+    commandHandler.zoom += 0.1;
+}
+function zoomOut() {
+    commandHandler.zoom -= 0.1;
+}
+</script>
+<style>
+    ::selection {
+        background: transparent;
+    }
+
+    ::-moz-selection {
+        background: transparent;
+    }
+
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #container0, #container1 {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 34px;
+        /*top: 0;*/
+    }
+
+    #container1 {
+        top: 0;
+    }
+
+    #pdfViewer {
+        width: 100%;
+        height: 100%;
+    }
+
+    .current {
+        z-index: 2;
+    }
+
+    .next {
+        z-index: 3;
+    }
+
+    .invisible {
+        z-index: 10;
+        opacity: 0;
+        display: none;
+    }
+
+    #controls {
+        display: block;
+        position: absolute;
+        z-index: 2000;
+        background-color: #75abff;
+    }
+
+    #controls >  div {
+        display: inline-block;
+        margin-left: 25px;
+        border-right: 5px ridge cyan;
+        padding-right: 25px;
+        border-bottom: 3px solid gray;
+        padding-bottom: 5px;
+    }
+
+    .printImage {
+        display: none;
+    }
+
+</style>
+</head>
+<body>
+<div id="controls">
+    <div>
+        <button onclick="commandHandler.open('../testFiles/test.pdf', 3, '')">Open</button>
+        <button onclick="zoomIn()">Zoom In</button>
+        <button onclick="zoomOut()">Zoom Out</button>
+        <button onclick="commandHandler.zoomMode = 'fitPage'">Fit Page</button>
+        <button onclick="commandHandler.zoomMode = 'actualSize'">Actual Size</button>
+        <button onclick="commandHandler.zoomMode = 'fitWidth'">Page Width</button>
+        <button onclick="document.getElementById('bookmark').value = commandHandler.currentBookmark">Bookmark</button>
+        <button onclick="commandHandler.goToBookmark(document.getElementById('bookmark').value)">Goto Bookmark</button>
+        <input type="text" id="bookmark">
+        <button onclick="commandHandler.print()">Print</button>
+    </div>
+</div>
+<div id=" container0
+        ">
+        <div id="container1">
+        </div>
+    </div>
+    <!--<div class="imageElement"></div>-->
+</body>
+</html>

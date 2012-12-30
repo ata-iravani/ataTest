@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/jquery-1.8.2.js"></script>
+    <script src="js/ShetabEbookAgent.js"></script>
+    <script>
+        $(document).ready(function () {
+            seApp.init('shetab.SampleModule');
+            var ctrlPressed = false;
+            $(window).keydown(function (evt) {
+                if (evt.which == 17) { // ctrl
+                    ctrlPressed = true;
+                }
+            }).keyup(function (evt) {
+                        if (evt.which == 17) { // ctrl
+                            ctrlPressed = false;
+                        }
+                    });
+
+            $('div').click(function (e) {
+                e.stopPropagation();
+                if (ctrlPressed) {
+                    $(this).toggleClass('selected');
+                }
+                else {
+                    $('.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+
+                var selectedItems = [];
+                $('.selected').each(function () {
+                    var selectedItem = new shetab.ebook.agent.SESelectedItem();
+                    selectedItem.itemId = $(this).attr('id');
+                    selectedItem.propertySetId = (this.className.indexOf('rectangle') != -1 ? 'rectangle' : 'circle');
+                    selectedItems.push(selectedItem);
+                });
+
+                seApp.selectedItems = selectedItems;
+            });
+
+            $('body').click(function () {
+                $('.selected').removeClass('selected');
+                seApp.selectedItems = null;
+            });
+
+            refreshProperties();
+
+            seApp.add_propertyBagChanged(function (arg) {
+                refreshProperties();
+            });
+        });
+
+        function refreshProperties() {
+            var box1Properties = seApp.propertyBag.getProperties('box1', 'rectangle');
+            var box2Properties = seApp.propertyBag.getProperties('box2', 'rectangle');
+            var box3Properties = seApp.propertyBag.getProperties('box3', 'circle');
+            var box4Properties = seApp.propertyBag.getProperties('box4', 'circle');
+
+            $('#box1').css({backgroundColor:box1Properties['backgroundColor']});
+            $('#box2').css({backgroundColor:box2Properties['backgroundColor']});
+            $('#box3').css({backgroundColor:box3Properties['backgroundColor']});
+            $('#box4').css({backgroundColor:box4Properties['backgroundColor']});
+        }
+    </script>
+    <style>
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+        }
+
+        #box1 {
+            background-color: #8a2be2;
+        }
+
+        #box2 {
+            background-color: #daa520;
+            margin-left: 25px;
+        }
+
+        #box3 {
+            background-color: #7fff00;
+        }
+
+        #box4 {
+            background-color: #00bfff;
+            margin-left: 25px;
+        }
+
+        .rectangle {
+            float: left;
+        }
+
+        .circle {
+            border-radius: 50px;
+            float: left;
+        }
+
+        .selected {
+            border: 5px dashed red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box1" class="rectangle"></div>
+<div id="box2" class="rectangle"></div>
+<hr style="clear: both">
+<div id="box3" class="circle"></div>
+<div id="box4" class="circle"></div>
+
+</body>
+</html>

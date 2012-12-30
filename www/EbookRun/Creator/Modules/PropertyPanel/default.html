@@ -1,0 +1,681 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link href="css/style.css" rel="stylesheet">
+<script src="js/jquery-1.8.2.js"></script>
+<script src="js/ShetabEbookCreatorAgent.js"></script>
+<script src="js/jquery.hotkeys-0.7.9.js"></script>
+<script src="js/jscolor.js"></script>
+<script>
+
+var MyProperty = function () {
+    this.category = null;
+    this.name = null;
+    this.htmlStr = null;
+    this.prefix = null;
+    this.type = null;
+};
+var properties = [];
+
+var categories = [];
+
+var prefixes = [];
+
+var colors = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque",
+    "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse",
+    "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan",
+    "DarkGoldenRod", "DarkGray", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen",
+    "Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray",
+    "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey",
+    "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold",
+    "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo",
+    "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral",
+    "LightCyan", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon",
+    "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow",
+    "Lime", "LimeGreen", "Linen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid",
+    "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise",
+    "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy",
+    "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen",
+    "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue",
+    "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen",
+    "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen",
+    "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke",
+    "Yellow", "YellowGreen "];
+
+var fonts = ["Verdana, Geneva, sans-serif", "Georgia, 'Times New Roman', Times, serif",
+    "'Courier New', Courier, monospace", "Arial, Helvetica, sans-serif", "Tahoma, Geneva, sans-serif",
+    "'Trebuchet MS', Arial, Helvetica, sans-serif", "'Arial Black', Gadget, sans-serif",
+    "'Times New Roman', Times, serif", "'Palatino Linotype', 'Book Antiqua', Palatino, serif",
+    "'Lucida Sans Unicode','Lucida Grande', sans-serif", "'MS Serif', 'New York', serif",
+    "'Lucida Console', Monaco, monospace", "'Comic Sans MS', cursive"];
+
+
+var fontSizes = ["6pt", "7pt", "8pt", "9pt", "10pt", "11pt", "12pt", "14pt", "16pt", "18pt", "20pt", "22pt", "24pt", "26pt", "28pt", "36pt", "48pt", "72pt"];
+
+var localFonts = [];
+
+var curSelectedItem = null;
+
+var curPropertyBag = null;
+
+var defaultValueTitle = 'Default';
+
+function htmlEncode(value) {
+    return shetab.common.Convert.htmlEncode(value);
+}
+
+function htmlDecode(value) {
+    return shetab.common.Convert.htmlDecode(value);
+}
+
+
+function setColorProperty(element) {
+    var propertyName = shetab.common.Convert.htmlDecode($(element).closest('.item').attr('id'));
+    setPropertyValue(propertyName, getPropertyValueFromTextValue(element));
+}
+
+function setPropertyValue(propertyName, value) {
+    curPropertyBag.setProperty(propertyName, value, curSelectedItem.itemId, curSelectedItem.propertySetId);
+}
+
+function getPropertyValueFromTextValue(element) {
+    var value = null;
+    var elementValue = element.value;
+    if (typeof elementValue == 'undefined')
+        elementValue = element.dataset.value;
+
+    if (elementValue.trim() == "")
+        return value;
+
+    if (element.classList.contains('customableFont')) {
+        value = new shetab.common.Font();
+        var fontProperties = element.value.toLowerCase().split(';');
+        value.name = fontProperties[0].trim();
+        if (value.name == '')
+            value.name = "Verdana, Geneva, sans-serif";
+        value.size = fontProperties.length == 0 ? "12px" : fontProperties[1];
+        value.bold = fontProperties.indexOf('bold') != -1;
+        value.italic = fontProperties.indexOf('italic') != -1;
+        value.underline = fontProperties.indexOf('underline') != -1;
+        return value;
+    }
+
+    if (typeof ($(element).closest('.extendSection')[0]) != 'undefined' &&
+            $(element).closest('.extendSection')[0].classList.contains('fontPropertiesWrapper')) {
+        var extendSection = $(element).closest('.extendSection');
+        value = new shetab.common.Font;
+        value.name = extendSection.find('.fontName')[0].value;
+        value.size = extendSection.find('.fontSize')[0].value;
+        value.bold = extendSection.find('.bold')[0].checked;
+        value.italic = extendSection.find('.italic')[0].checked;
+        value.underline = extendSection.find('.underline')[0].checked;
+        return value;
+    }
+    value = elementValue;
+    return value;
+}
+
+$(document).ready(function () {
+    seCreatorApp.init('shetab.creator.propertyPanel');
+    seCreatorApp.isExternalPropertyBagNotificationEnabled = true;
+    seCreatorApp.canActive = false;
+    localFonts = seCreatorApp.localFontNames;
+
+    // Refresh property panel when selectedItem changes.
+    seCreatorApp.add_propertyChanged(function (arg) {
+        if (arg.propertyName != "selectedItem")
+            return;
+        var selectedItem = seCreatorApp.selectedItem;
+        if (selectedItem == null) {
+            cleanUp();
+            return;
+        }
+
+        seCreatorApp.getPropertyBag(selectedItem.moduleEntityId, function (param) {
+            var propertyBag = param.response;
+            var propertySetSchema = propertyBag.getPropertySetSchema(selectedItem.propertySetId);
+            curPropertyBag = propertyBag;
+
+            curSelectedItem = selectedItem;
+            fillPropertiesFromXml(shetab.common.Xml.loadXmlString(propertySetSchema));
+            updateValues(propertyBag.getProperties(selectedItem.itemId, selectedItem.propertySetId));
+        });
+    });
+
+    seCreatorApp.add_propertyBagChanged(function (arg) {
+        if (curSelectedItem == null)
+            return;
+        var isChanged = false;
+        for (var i = 0; i < arg.items.length && !isChanged; i++) {
+            var item = arg.items[i];
+            isChanged = (item.moduleEntityId == null || item.moduleEntityId == curSelectedItem.moduleEntityId) &&
+                    (item.propertySetId == null || item.propertySetId == curSelectedItem.propertySetId);
+        }
+        if (isChanged) {
+            updateValues(curPropertyBag.getProperties(curSelectedItem.itemId, curSelectedItem.propertySetId));
+        }
+    });
+
+    function getTextValueFromPropertyValue(value) {
+        if (value == '$$default')
+            return defaultValueTitle;
+        if (value == null)
+            return '';
+        return htmlDecode(value.toString());
+    }
+
+
+    function updateValues(propertiesOFSelectedItems) {
+        for (var propertyName in propertiesOFSelectedItems)
+            if (propertiesOFSelectedItems.hasOwnProperty(propertyName)) {
+
+                var type = null;
+                for (var i = 0; i < properties.length; i++) {
+                    if (properties[i].name == propertyName) {
+                        type = properties[i].type;
+                        break;
+                    }
+                }
+
+                var jq = $('#' + htmlEncode(propertyName));
+                var propertyValue = propertiesOFSelectedItems[propertyName];
+
+                if (type == 'font') {
+                    var itemText = '';
+                    jq.find('.fontName').attr('value',
+                            getTextValueFromPropertyValue((propertyValue != null) ? propertyValue.name : null));
+
+                    itemText += getTextValueFromPropertyValue((propertyValue != null) ? propertyValue.name : null) + ';';
+
+                    jq.find('.fontSize').attr('value',
+                            getTextValueFromPropertyValue((propertyValue != null) ? propertyValue.size : null));
+                    itemText += getTextValueFromPropertyValue((propertyValue != null) ? propertyValue.size : null) + ';';
+
+                    if ((propertyValue != null) ? propertyValue.bold : false) {
+                        jq.find('.bold').attr('checked', 'checked');
+                        itemText += 'Bold;';
+                    }
+                    else {
+                        jq.find('.bold').removeAttr('checked');
+                    }
+
+                    if ((propertyValue != null) ? propertyValue.italic : false) {
+                        jq.find('.italic').attr('checked', 'checked');
+                        itemText += 'Italic;';
+                    }
+                    else {
+                        jq.find('.italic').removeAttr('checked');
+                    }
+
+                    if ((propertyValue != null) ? propertyValue.underline : false) {
+                        jq.find('.underline').attr('checked', 'checked');
+                        itemText += 'Underline;';
+                    }
+                    else {
+                        jq.find('.underline').removeAttr('checked');
+                    }
+
+                    jq.find('.itemInputText').attr('value', itemText);
+                }
+
+                else if (type == 'color') {
+
+                    if (propertyValue == null) {
+                        jq.find('.colourPlaceHolder').css({backgroundColor:''});
+                        jq.find('input[type="text"].color').attr('value', null);
+                    }
+                    else {
+                        jq.find('.colourPlaceHolder').css({backgroundColor:propertyValue.toString()});
+                        jq.find('input[type="text"].color').attr('value', propertyValue.toString());
+                    }
+                }
+
+                else {
+                    jq.find('.itemInputText').attr('value', getTextValueFromPropertyValue(propertiesOFSelectedItems[propertyName]));
+                }
+
+            }
+    }
+
+
+    $("body").click(function (e) {
+        closeAllTempSliders(e.target);
+    });
+
+    $(window).blur(function (e) {
+        closeAllTempSliders(null);
+    });
+
+    if (seCreatorApp.isTestMode) {
+        $.ajax({
+            url:"foo.xml"
+        }).done(function (data) {
+                    fillPropertiesFromXml(data);
+                });
+    }
+
+    function cleanUp() {
+        $('#propertiesData').children().remove();
+        properties = [];
+        categories = [];
+        prefixes = [];
+    }
+
+
+    function fillPropertiesFromXml(data) {
+        cleanUp();
+        var propertySetTitle = data.documentElement.getAttribute('title');
+        var propertyElements = data.getElementsByTagName('property');
+
+        for (var i = 0; i < propertyElements.length; i++) {
+
+            var prop = new MyProperty();
+
+            prop.category = propertyElements[i].getAttribute('category');
+            var index = prop.category.indexOf('>');
+            prop.prefix = index != -1 ? prop.category.substr(0, index) : null;
+
+            prop.name = propertyElements[i].getAttribute('name');
+            prop.htmlStr = getPropertyHtmlStr(propertyElements[i]);
+
+            prop.type = propertyElements[i].getAttribute('type');
+
+            properties.push(prop);
+
+            // add every new category to category list
+            if (categories.indexOf(prop.category) == -1)
+                categories.push(prop.category);
+
+            // add every new prefix to prefix list
+            if (prefixes.indexOf(prop.prefix) == -1)
+                prefixes.push(prop.prefix);
+        }
+
+        for (var j = 0; j < prefixes.length; j++) {
+            createCategories(prefixes[j], propertySetTitle);
+        }
+        bindEvents();
+    }
+
+
+    function getPropertyHtmlStr(propertyXml) {
+        var visible = shetab.common.Convert.toBoolean(propertyXml.getAttribute('visible'));
+        if (!visible)
+            return '';
+
+        var type = propertyXml.getAttribute('type');
+        var title = propertyXml.getAttribute('title');
+        var name = propertyXml.getAttribute('name');
+        var canCustom = shetab.common.Convert.toBoolean(propertyXml.getAttribute('canCustom'));
+        var readonly = shetab.common.Convert.toBoolean(propertyXml.getAttribute('readonly'));
+        var canNull = shetab.common.Convert.toBoolean(propertyXml.getAttribute('canNull'));
+        var canDefault = shetab.common.Convert.toBoolean(propertyXml.getAttribute('canDefault'));
+        var itemElements = propertyXml.getElementsByTagName('listItem');
+
+
+        var template = '<div id="' + htmlEncode(name) + '" class="item ' +
+                (readonly ? 'readonly' : '') + ' ' +
+                (((type == 'boolean') || (!canCustom)) ? 'showListOnClick ' : '') +
+                ((type == 'font') ? 'expandable' : '') + '"' +
+                '>' +
+                '<div class="titleValueWrapper ' + ((type == 'font') ? 'font ' : '') + '">' +
+                '<div class="title">' + htmlEncode(title) + '</div>' +
+                '<div class="value"><div class="comboBox canCustom main ' +
+                ((type == 'font') ? 'font' : '') +
+                ((type == 'color') ? 'color ' : '') + '"' +
+                '>';
+
+        if (type == 'color') {
+            template += '<input type="text" class="color {styleElement:\'' + htmlEncode(name) + '_ColorTarget\' ,required:false} itemInputText" ' +
+                    (canCustom ? '' : 'readonly="readonly"') +
+                    (readonly ? 'readonly="readonly"' : '') +
+                    ' spellcheck="false" onchange="setColorProperty(this)"> ' +
+                    '<input class="colourPlaceHolder" id="' + htmlEncode(name) + '_ColorTarget" readonly="readonly">';
+        }
+
+        else if (type == 'font') {
+            template += '<input type="text" class="customableFont itemInputText" '
+                    + (canCustom ? '' : 'readonly="readonly"') + ' spellcheck="false">';
+        }
+
+        else {
+            template += '<input type="text" class="itemInputText"'
+                    + (canCustom ? '' : 'readonly="readonly"') + ' spellcheck="false">';
+        }
+
+        template += '<div class="icon"></div>' +
+                '<div class="list">';
+
+        template += createListItems(itemElements, canNull, canDefault, canCustom, type);
+
+        template += '</div>' + //closing for 'list' tag
+                '</div>' + //closing for 'comboBox' tag
+                '</div>' + //closing for 'value' tag
+                '</div>'; // closing for 'titleValueWrapper' tag
+
+        if (type == 'font' && canCustom) {
+            template += '<div class="fontPropertiesWrapper extendSection">' +
+                    '<div class="fontPropertyNameTitle title">Name</div>' +
+                    '<div class="fontPropertyNameValue value">' +
+                    '<div class="comboBox canCustom ">' +
+                    '<input type="text" class="fontName" spellcheck="false">' +
+                    '<div class="icon"></div>' +
+                    '<div class="list">';
+
+            template += createFontExtensionListFromArray(fonts);
+            template += createFontExtensionListFromArray(localFonts);
+
+            template += '</div>'; // closing for 'list' of font names
+            template += '</div>'; // closing for 'comboBox' of font names
+            template += '</div>'; // closing for 'fontPropertyNameValue'
+
+            template += '<div class="fontPropertySizeTitle title">Size</div>' +
+                    '<div class="fontPropertySizeValue value"><div class="comboBox canCustom font">' +
+                    '<input type="text" class="fontSize" spellcheck="false">' +
+                    '<div class="icon">&#xf078;</div>' +
+                    '<div class="list">';
+
+            template += createFontExtensionListFromArray(fontSizes);
+
+            template += '</div>'; // closing for 'list' of font names
+            template += '</div>'; // closing for 'comboBox' of font names
+            template += '</div>'; // closing for 'fontPropertySizeValue'
+
+            template += '<div class="fontPropertyBold">' +
+                    '<input type="checkbox" id="' + htmlEncode(name) + '_bold" class="bold" >' +
+                    '<label for="' + htmlEncode(name) + '_bold">b</label></div>';
+
+            template += '<div class="fontPropertyItalic">' +
+                    '<input type="checkbox" id="' + htmlEncode(name) + '_italic" class="italic" >' +
+                    '<label for="' + htmlEncode(name) + '_italic">i</label></div>';
+
+            template += '<div class="fontPropertyUnderline">' +
+                    '<input type="checkbox" id="' + htmlEncode(name) + '_underline" class="underline" >' +
+                    '<label for="' + htmlEncode(name) + '_underline">u</label></div>';
+
+            template += '</div>'; // closing for 'fontPropertiesWrapper'
+        }
+
+        template += '</div>'; // closing for 'item' tag
+
+        return template;
+    }
+
+    function createListItems(itemElements, canNull, canDefault, canCustom, type) {
+        var ret = '';
+        var listItemTemplate = '<div data-value="elementValue" class="listItem">' +
+                '<img src="elementImage">' +
+                '<div class="listItemTitle">elementText</div></div>';
+
+        var tempListItemTemplate = '';
+        var itemElementText = '';
+        var itemElementImage = '';
+        var itemElementValue = '';
+
+        ret += (canNull ?
+                '<div data-value="" class="listItem"><img src="">' +
+                        '<div class="listItemTitle">Null</div></div>'
+                : '') +
+                (canDefault ?
+                        '<div data-value="default" class="listItem"><img src="">' +
+                                '<div class="listItemTitle">default</div></div>'
+                        : '');
+
+        if (type == 'boolean') {
+            ret += '<div data-value="true" class="listItem">' +
+                    '<img src="">' +
+                    '<div class="listItemTitle">True</div></div>';
+
+            ret += '<div data-value="false" class="listItem">' +
+                    '<img src="">' +
+                    '<div class="listItemTitle">False</div></div>';
+
+            return ret;
+        }
+
+        if (type == 'color') {
+
+            var htmlStr = '<div data-value="%c" class="listItem">' +
+                    '<img src="" style="background-color:%c; height: 20px;width: 20px;"><div class="listItemTitle">%d</div></div>';
+
+            for (var l = 0; l < itemElements.length; l++) {
+                tempListItemTemplate = htmlStr;
+                itemElementText = itemElements[l].getAttribute('title');
+                itemElementValue = shetab.common.Xml.getElementText(itemElements[l]);
+
+                tempListItemTemplate = tempListItemTemplate.replace(/%c/gi, htmlEncode(itemElementValue));
+                tempListItemTemplate = tempListItemTemplate.replace(/%d/gi, htmlEncode(itemElementText));
+
+                ret += tempListItemTemplate;
+            }
+
+            if (canCustom) {
+                var defaultColorItems = '<div data-value="%c" class="listItem">' +
+                        '<img src="" style="background-color:%c;height: 20px;width: 20px;"><div class="listItemTitle">%c</div></div>';
+                for (var i = 0; i < colors.length; i++) {
+                    ret += defaultColorItems.replace(/%c/gi, htmlEncode(colors[i]));
+                }
+            }
+
+            return ret;
+        }
+
+        for (var k = 0; k < itemElements.length; k++) {
+            tempListItemTemplate = listItemTemplate;
+            itemElementText = itemElements[k].getAttribute('title');
+            itemElementImage = itemElements[k].getAttribute('imageUrl');
+            itemElementValue = htmlEncode(shetab.common.Xml.getElementText(itemElements[k]));
+
+            tempListItemTemplate = tempListItemTemplate.replace(/elementValue/gi, htmlEncode(itemElementValue));
+            tempListItemTemplate = tempListItemTemplate.replace(/elementImage/gi, htmlEncode(itemElementImage));
+            tempListItemTemplate = tempListItemTemplate.replace(/elementText/gi, htmlEncode(itemElementText));
+
+            ret += tempListItemTemplate;
+        }
+
+        return ret;
+    }
+
+    function createFontExtensionListFromArray(array) {
+        var ret = '';
+        var htmlTemplate = '<div data-value="%c" class="listItem">' +
+                '<img src=""><div class="listItemTitle">%c</div></div>';
+        for (var i = 0; i < array.length; i++) {
+            ret += htmlTemplate.replace(/%c/gi, htmlEncode(array[i]));
+        }
+        return ret;
+    }
+
+    function createCategories(prefix, propertySetTitle) {
+        var categoryTemplate = '<div class="category">' +
+                '<div class="categoryTitle">' +
+                '<span class="text">%a</span></div>' +
+                '<div class="items">';
+
+        var ret = '<div class="propertySet">' +
+                '<div class="propertySetTitle open">' +
+                (htmlEncode(((prefix != null) ? prefix : propertySetTitle ))) +
+                '</div>' +
+                '<div class="propertySetContents">';
+
+
+        for (var i = 0; i < categories.length; i++) {
+            var index = categories[i].indexOf('>');
+            var catName = index != -1 ? categories[i].substr(index + 1) : categories[i];
+            var catPrefix = index != -1 ? categories[i].substr(0, index) : null;
+
+            if (catPrefix != prefix)
+                continue;
+            var categoryHtml = categoryTemplate.replace(/%a/gi, htmlEncode(catName));
+
+            for (var j = 0; j < properties.length; j++) {
+
+                if (properties[j].category == categories[i]) {
+                    categoryHtml += properties[j].htmlStr;
+                }
+            }
+            categoryHtml += '</div>'; // closing tag for 'items'
+            categoryHtml += '</div>'; // closing tag for 'category'
+            ret += categoryHtml;
+        }
+
+        ret += '</div>' + // closing for 'propertySetContents'
+                '</div>'; // closing for 'propertySet'
+
+        $('#propertiesData').append(ret);
+    }
+
+    function closeAllTempSliders(target) {
+        //close all comboBoxes
+        $('.comboBox').each(function () {
+            if ((target != null && shetab.common.Html.isDescendant(this, target)) || this == target)
+                return;
+            $(this).children('.list').slideUp('fast');
+        });
+
+        //close all expandable items
+        $('.expandable').each(function () {
+            if ((target != null && shetab.common.Html.isDescendant(this, target)) || this == target)
+                return;
+            $(this).removeClass('open');
+            $(this).children('.extendSection').slideUp('fast');
+        });
+    }
+
+
+    function bindEvents() {
+        var body = $('body');
+        var dragHandle = $('#dragHandle');
+
+        dragHandle.mousedown(function (ev) {
+            ev.preventDefault();
+            var leftCol = $('.titleValueWrapper > .title');
+
+            body.mousemove(function (e) {
+                if (e.clientX <= 30 || e.clientX >= (window.innerWidth - 70)) {
+                    return;
+                }
+                $(this).css({ cursor:'e-resize' });
+                leftCol.css({ minWidth:(e.clientX), maxWidth:(e.clientX) });
+                dragHandle.css({ left:(e.clientX - 1) });
+            });
+        });
+
+        body.mouseup(function () {
+            $(this).unbind('mousemove').css({ cursor:'default' });
+            $('.focused').removeClass('focused');
+        });
+
+        $('.propertySetTitle').click(function (e) {
+            $(this).toggleClass('open').toggleClass('close');
+            $(this).siblings('.propertySetContents').slideToggle('fast');
+        });
+
+        $('.categoryTitle .text').click(function () {
+            $(this).parent().siblings('.items').slideToggle('fast').toggleClass('open');
+            $(this).parent().toggleClass('open');
+        });
+
+
+        var comboBoxes = $('.comboBox');
+
+        comboBoxes.click(function (e) {
+            if (this.classList.contains('color') && $(e.target).is('input'))
+                return;
+
+            if (this.classList.contains('main') &&
+                    $(this).closest('.item')[0].classList.contains('expandable') &&
+                    $(e.target).is('input')) {
+                $(this).closest('.item').toggleClass('open');
+                $(this).closest('.item').find('.extendSection').slideToggle('fast');
+                return;
+            }
+            if ($(e.target).is('input') && !$(this).closest('.item')[0].classList.contains('showListOnClick')) {
+                return;
+            }
+            $(this).children('.list').slideToggle('fast');
+
+        });
+
+        comboBoxes.hover(function () {
+            $(this).toggleClass('hover');
+        });
+
+        $('.expandable .titleValueWrapper .title').click(function (e) {
+            $(this).closest('.item').toggleClass('open');
+            $(this).closest('.item').find('.extendSection').slideToggle('fast');
+        });
+
+
+        var listItem = $('.listItem');
+
+        listItem.click(function () {
+            var $this = $(this);
+            var propertyName = $(this).closest('.item').attr('id');
+            if (typeof($this.parent().siblings('.itemInputText'))[0] != "undefined") {
+                var value = getTextValueFromPropertyValue(this.dataset.value);
+
+                if (typeof(value) == 'string' && value.indexOf('<font') != -1)
+                    value = shetab.common.Font.parseFromXml(htmlDecode(value));
+
+                if ($(this).closest('.comboBox')[0].classList.contains('color'))
+                    $(this).parent().siblings('.colourPlaceHolder').css({ backgroundColor:value });
+
+                setPropertyValue(propertyName, value);
+            }
+
+            else {
+                $(this).closest('.list').siblings('input').val(this.dataset.value);
+                setPropertyValue(propertyName, getPropertyValueFromTextValue(this));
+            }
+
+            $this.siblings().removeClass('selectedItem');
+            $this.addClass('selectedItem');
+        });
+
+        listItem.hover(function () {
+            $(this).toggleClass('hover');
+        });
+
+        $('.item.readonly .icon').unbind('click');
+        $('.item.readonly input[type="text"]').unbind('click');
+
+
+        setTimeout(function () {
+            jscolor.init();
+        }, 0);
+
+        $('input[type="text"],input[type="checkbox"]').not('.color').change(function () {
+            var propertyName = shetab.common.Convert.htmlDecode($(this).closest('.item').attr('id'));
+            setPropertyValue(propertyName, getPropertyValueFromTextValue(this));
+        });
+
+    }
+
+
+});
+
+</script>
+<style>
+
+</style>
+</head>
+<body>
+<div id="propertiesData">
+
+</div>
+
+<div id="dragHandle">
+</div>
+<!-- shetabExtend will be used for jscolor plugin as transparency slider -->
+<div id="shetabExtend" style="position: absolute; display: none; bottom: 0; top: 120px;">
+    <label for="alphaSlider" style="float: left; font-family: sans-serif; font-size: 9pt;
+            padding-left: 5px; padding-right: 5px; line-height: 28px;">
+        Transparency:</label>
+    <input id="alphaSlider" type="range" max="100" min="0" value="50">
+</div>
+<!--<script type="text/javascript" src="jscolor/jscolor.js"></script>-->
+</body>
+</html>

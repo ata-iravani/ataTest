@@ -1,0 +1,103 @@
+<seModule id="{41a84711-d80b-4bad-af9f-af8a802f4053}" title="Sample Module" category="utility" description="" fileUrl="default.html" previewUrl="" iconUrl="" type="typical" placeholderId="mainView">
+  <propertyBagSchema>
+    <propertySets>
+      <propertySet id="circle" title="Circle Property">
+        <properties>
+          <property name="backgroundColor" title="Background Color" category="common" type="color" canCustom="true" canNull="false" canDefault="false" readonly="false" visible="true">
+            <listItems>
+              <listItem title="Black" imageUrl="">#000000</listItem>
+              <listItem title="White" imageUrl="">#FFFFFF</listItem>
+              <listItem title="Blue" imageUrl="">#0000FF</listItem>
+            </listItems>
+            <initValue>#FF00FF</initValue>
+          </property>
+          <property name="hasButton" title="Has Button" category="common" type="boolean" canCustom="false" canNull="false" canDefault="false" readonly="false" visible="true">
+            <listItems>
+            </listItems>
+            <initValue>true</initValue>
+          </property>
+          <property name="width" title="Width" category="individual" type="text" canCustom="false" canNull="false" canDefault="false" readonly="false" visible="true">
+            <listItems>
+              <listItem title="200 px" imageUrl="">200px</listItem>
+              <listItem title="100 px" imageUrl="">100px</listItem>
+              <listItem title="50 px" imageUrl="">50px</listItem>
+            </listItems>
+            <initValue>50px</initValue>
+          </property>
+          <property name="height" title="Height" category="individual" type="text" canCustom="true" canNull="false" canDefault="false" readonly="false" visible="true">
+            <listItems>
+              <listItem title="200 px" imageUrl="">200px</listItem>
+              <listItem title="100 px" imageUrl="">100px</listItem>
+              <listItem title="50 px" imageUrl="">50px</listItem>
+            </listItems>
+            <initValue>100px</initValue>
+          </property>
+          <property name="boxName" title="Box Name" category="individual" type="text" canCustom="true" canNull="true" canDefault="false" readonly="false" visible="true">
+            <listItems>
+              <listItem title="My Box 1" imageUrl="">My Box 1</listItem>
+              <listItem title="My Box 2" imageUrl="">My Box 2</listItem>
+            </listItems>
+            <initValue>My Box 1</initValue>
+          </property>
+          <property name="mainFont" title="Main Font" category="common" type="font" canCustom="true" canNull="false" canDefault="false" readonly="false" visible="true">
+            <listItems>
+                <listItem title="font set1">&lt;font name="Tahoma" size="15pt" bold="true" italic="false" underline="false" strikeOut="false"/&gt; </listItem>
+                <listItem title="font set2">&lt;font name="Arial" size="10pt" bold="false" italic="false" underline="true" strikeOut="false"/&gt; </listItem>
+            </listItems>
+            <initValue>&lt;font name="Tahoma" size="15pt" bold="true" italic="false" underline="false" strikeOut="false"/&gt; </initValue>
+          </property>
+        </properties>
+      </propertySet>
+      <propertySet id="rectangle" title="Rectangle Property">
+        <properties>
+          <property name="hasButton" title="Has Button" category="category 1" type="boolean" canCustom="false" canNull="false" canDefault="false" readonly="false" visible="true">
+            <listItems>
+            </listItems>
+            <initValue>true</initValue>
+          </property>
+          <property name="marginLeft" title="Margin Left" category="category 2" type="text" canCustom="true" canNull="false" canDefault="false" readonly="false" visible="true">
+            <listItems>
+              <listItem title="200 px" imageUrl="">200px</listItem>
+              <listItem title="100 px" imageUrl="">100px</listItem>
+              <listItem title="50 px" imageUrl="">50px</listItem>
+            </listItems>
+            <initValue>200px</initValue>
+          </property>
+          <property name="backgroundColor" title="Background Color" category="category 1" type="color" canCustom="true" canNull="false" canDefault="false" readonly="false" visible="true">
+            <listItems>
+              <listItem title="Black" imageUrl="">#000000</listItem>
+              <listItem title="White" imageUrl="">#FFFFFF</listItem>
+              <listItem title="Blue" imageUrl="">#0000FF</listItem>
+            </listItems>
+            <initValue>#00FFFF</initValue>
+          </property>
+          <property name="caption" title="Caption" category="category 2" type="text" canCustom="true" canNull="true" canDefault="false" readonly="false" visible="true">
+            <listItems>
+              <listItem title="My Box 1" imageUrl="">My Box 1</listItem>
+              <listItem title="My Box 2" imageUrl="">My Box 2</listItem>
+            </listItems>
+            <initValue></initValue>
+          </property>
+          <property name="captionFont" title="Caption Font" category="category 1" type="font" canCustom="true" canNull="false" canDefault="false" readonly="false" visible="true">
+            <listItems>
+                <listItem title="My Font Set">&lt;font name="Tahoma" size="10pt" bold="true" italic="true" underline="true" strikeOut="false"/&gt;</listItem>
+            </listItems>
+            <initValue>&lt;font name="Tahoma" size="10pt" bold="true" italic="true" underline="true" strikeOut="false"/&gt;</initValue>
+          </property>
+        </properties>
+      </propertySet>
+      <propertySet id="main" title="Main Property">
+        <property name="hasShadow" title="Has Shadow" category="category 11" type="boolean" canCustom="false" canNull="false" canDefault="false" readonly="false" visible="true">
+          <listItems>
+          </listItems>
+          <initValue></initValue>
+        </property>
+        <property name="gridFont" title="Grid Font" category="category 1" type="font" canCustom="true" canNull="false" canDefault="false" readonly="false" visible="true">
+          <listItems>
+          </listItems>
+          <initValue></initValue>
+        </property>
+      </propertySet>
+    </propertySets>
+  </propertyBagSchema>
+</seModule>

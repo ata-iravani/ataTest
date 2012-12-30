@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<seCreatorConfiguration>
+    <resources baseCulture="en-US">
+    </resources>
+
+    <modules>
+        <module url="Skins/Creator/Module.xml" />
+        <module url="Modules/ProjectPanelContainer/Module.xml" />
+        <module url="Modules/PropertyPanel/Module.xml" />
+        <module url="Modules/SidebarPanel/Module.xml" />
+        <module url="Modules/SidebarPanelContainer/Module.xml" />
+    </modules>
+
+    <playerModuleEntities>
+    </playerModuleEntities>
+
+    <startupModuleEntities>
+        <startupModuleEntity url="ModuleEntities/CreatorSkin/ModuleEntity.xml" />
+        <startupModuleEntity url="ModuleEntities/ProjectPanelContainer/ModuleEntity.xml" />
+        <startupModuleEntity url="ModuleEntities/PropertyPanel/ModuleEntity.xml" />
+        <startupModuleEntity url="ModuleEntities/SidebarPanel/ModuleEntity.xml" />
+        <startupModuleEntity url="ModuleEntities/SidebarPanelContainer/ModuleEntity.xml" />
+    </startupModuleEntities>
+    <Pages>
+        <About File="About\AboutPage.dll" Type="Dynamic" ModuleParam="AboutPage"
+               Title="@(Creator:CommandResources,ShowAboutShetabEbookCreatorWindow)" Size="0,0" CaptionBar="0"/>
+        <SplashScreen File="SplashScreen.png" Type="Image"/>
+        <ProjectWizard File="ProjectWizard\ProjectWizard.dll" Effect="None" Type="Navigate" ModuleParam="MainWindow"/>
+        <Start File="StartPage\StartPage.dll" Type="Navigate" Effect="None"/>
+        <Options File="Options\OptionsPage.dll" Type="Dynamic" ModuleParam="OptionsPage" Size="0,0" CaptionBar="0"/>
+    </Pages>
+    <ProjectExplorer IconSize="20,20"/>
+    <ShortcutKeys>
+        <ShortcutKey CommandName="BuildMedia" Alt="false" Control="true" VirtualKey="B"/>
+        <ShortcutKey CommandName="EditFile" Control="true" VirtualKey="E"/>
+        <ShortcutKey CommandName="NewTopic" Control="true" VirtualKey="N"/>
+        <ShortcutKey CommandName="NewTopicFromFile" Shift="true" Control="true" VirtualKey="N"/>
+        <ShortcutKey CommandName="ShowOpenProjectWindow" Control="true" VirtualKey="O"/>
+        <ShortcutKey CommandName="ShowProjectPropertiesWindow" VirtualKey="F7"/>
+        <ShortcutKey CommandName="ShowRecursivePropertiesWindow" Control="true" VirtualKey="F4"/>
+        <ShortcutKey CommandName="RenameSelection" VirtualKey="F2"/>
+        <ShortcutKey CommandName="SaveProject" Control="true" VirtualKey="S"/>
+        <ShortcutKey CommandName="ShowCommandBuilderWindow" VirtualKey="F8"/>
+        <ShortcutKey CommandName="RunProject" Control="true" VirtualKey="F5"/>
+    </ShortcutKeys>
+    <Menus>
+        <Menu Name="NewTopic">
+            <Item Name="NewSubTopic" ShowShortkey="1"/>
+            <Item Name="NewSubTopicFromFile" ShowShortkey="1"/>
+            <Item Name="NewSubTopicFromFolder" ShowShortkey="1"/>
+            <Item Name="NewSubTopicFromCurrentPage" ShowShortkey="1"/>
+            <Separator/>
+            <Item Name="NewTopic" ShowShortkey="1"/>
+            <Item Name="NewTopicFromFile" ShowShortkey="1"/>
+            <Item Name="NewTopicFromCurrentPage" ShowShortkey="1"/>
+            <Separator/>
+            <Item Name="NewSubTopicFromBook" ShowShortkey="1"/>
+        </Menu>
+        <Menu Name="Index_Normal">
+            <Item Name="OpenSelection"/>
+            <Separator/>
+            <Item Name="DeleteSelection"/>
+            <Item Name="RenameSelection"/>
+            <Separator/>
+            <Item Name="Refresh"/>
+        </Menu>
+        <Menu Name="Contents_None">
+            <Item Name="Refresh"/>
+        </Menu>
+        <Menu Name="Contents_Normal">
+            <Item Name="NewSubTopic"/>
+            <Item Name="NewSubTopicFromFile"/>
+            <Item Name="NewSubTopicFromFolder"/>
+            <Item Name="NewSubTopicFromCurrentPage"/>
+            <Separator/>
+            <Item Name="CutSelection"/>
+            <Item Name="CopySelection"/>
+            <Item Name="Paste"/>
+            <Separator/>
+            <Item Name="DeleteSelection"/>
+            <Item Name="RemoveTopicLink"/>
+            <Item Name="RenameSelection"/>
+            <Separator/>
+            <Item Name="ShowSortChildrenWindow"/>
+            <Separator/>
+            <Item Name="SetHomePageFromSelection"/>
+            <Separator/>
+            <Item Name="CopyAddress"/>
+            <Item Name="LocateFile"/>
+            <Separator/>
+            <Item Name="ShowRecursivePropertiesWindow"/>
+            <Item Name="ShowPropertiesWindow"/>
+        </Menu>
+        <Menu Name="Contents_NotLoadedBook">
+            <Item Name="ReloadBook"/>
+            <Separator/>
+            <Item Name="CutSelection"/>
+            <Item Name="CopySelection"/>
+            <Item Name="DeleteSelection"/>
+        </Menu>
+        <Menu Name="Contents_Drag">
+            <Item Name="MoveToLastChild"/>
+            <Item Name="MoveToPreviousSibling"/>
+            <Item Name="MoveToNextSibling"/>
+            <Separator/>
+            <Item Name="CopyToLastChild"/>
+            <Item Name="CopyToPreviousSibling"/>
+            <Item Name="CopyToNextSibling"/>
+            <Separator/>
+            <Item Name="Cancel"/>
+        </Menu>
+        <Menu Name="ProjectExplorer_Drag">
+            <Item Name="MoveSelection"/>
+            <Item Name="CopySelection"/>
+            <Separator/>
+            <Item Name="Cancel"/>
+        </Menu>
+        <Menu Name="ProjectExplorer_None">
+            <Item Name="Refresh"/>
+        </Menu>
+        <Menu Name="ProjectExplorer_Project">
+            <Item Name="RunProject"/>
+            <Separator/>
+            <Item Name="ShowAddNewBookWindow"/>
+            <Item Name="ShowAddExistingBookWindow"/>
+            <Separator/>
+            <Item Name="ShowBuildMediaWindow"/>
+            <Separator/>
+            <Item Name="OpenProjectFolder"/>
+            <Item Name="OpenMediaFolder"/>
+            <Separator/>
+            <Item Name="LocateFile"/>
+            <Separator/>
+            <Item Name="RepairProject"/>
+            <Item Name="Refresh"/>
+            <Separator/>
+            <Item Name="ShowProjectPropertiesWindow"/>
+        </Menu>
+        <Menu Name="ProjectExplorer_Book">
+            <Item Name="DeleteSelection"/>
+            <Separator/>
+            <Item Name="LocateFile"/>
+            <Separator/>
+            <Item Name="SetRootContentsBook"/>
+            <Separator/>
+            <Item Name="Refresh"/>
+            <Separator/>
+            <Item Name="ShowPropertiesWindow"/>
+        </Menu>
+        <Menu Name="ProjectExplorer_Folder">
+            <Item Name="CutSelection"/>
+            <Item Name="CopySelection"/>
+            <Item Name="Paste"/>
+            <Separator/>
+            <Item Name="DeleteSelection"/>
+            <Item Name="RenameSelection"/>
+            <Separator/>
+            <Item Name="AddFile"/>
+            <Item Name="AddFolder"/>
+            <Item Name="NewFolder"/>
+            <Separator/>
+            <Item Name="LocateFile"/>
+            <Separator/>
+            <Item Name="ShowRecursivePropertiesWindow"/>
+        </Menu>
+        <Menu Name="ProjectExplorer_File">
+            <Item Name="CutSelection"/>
+            <Item Name="CopySelection"/>
+            <Item Name="Paste"/>
+            <Separator/>
+            <Item Name="DeleteSelection"/>
+            <Item Name="RenameSelection"/>
+            <Separator/>
+            <Item Name="SetHomePageFromSelection"/>
+            <Separator/>
+            <Item Name="CopyAddress"/>
+            <Item Name="LocateFile"/>
+            <Separator/>
+            <Item Name="ShowRecursivePropertiesWindow"/>
+            <Item Name="ShowPropertiesWindow"/>
+        </Menu>
+        <Menu Name="ProjectExplorer_Page">
+            <Item Name="SetHomePageFromSelection"/>
+            <Separator/>
+            <Item Name="CopyAddress"/>
+            <Item Name="LocateFile"/>
+            <Separator/>
+            <Item Name="ShowShiftPageNumberWindow"/>
+            <Separator/>
+            <Item Name="ShowPropertiesWindow"/>
+        </Menu>
+        <Menu Name="Viewer">
+            <Item Name="NavigateBack"/>
+            <Item Name="NavigateForward"/>
+            <Separator/>
+            <Item Name="CutSelection"/>
+            <Item Name="CopySelection"/>
+            <Item Name="Paste"/>
+            <Separator/>
+            <Item Name="SelectAll"/>
+            <Separator/>
+            <Item Name="NewTopicFromCurrentPage"/>
+            <Item Name="NewSubTopicFromCurrentPage"/>
+            <Item Name="SetPageTitleFromSelection"/>
+            <Separator/>
+            <Item Name="PlayMedia"/>
+            <Item Name="PauseMedia"/>
+            <Separator/>
+            <Item Name="ZoomIn"/>
+            <Item Name="ZoomOut"/>
+            <Item Name="ZoomActualSize"/>
+            <Separator/>
+            <Item Name="ExportFile"/>
+            <Separator/>
+            <Item Name="ShowPrintPreview"/>
+            <Item Name="ShowPrintWindow"/>
+        </Menu>
+        <Menu Name="ReaderCommandList">
+            <Item Text="@(Creator:Resources,DocumentMenu)">
+                <Item Name="PageDisplay"/>
+                <Item Name="AddToFavorites"/>
+                <Item Name="CopyAddress"/>
+                <Item Name="DisplayOnePage"/>
+                <Item Name="DisplayTwoPage"/>
+                <Item Name="ExportFile"/>
+                <Item Name="Refresh"/>
+                <Item Name="ShowFindWindow"/>
+            </Item>
+            <Item Text="@(Creator:Resources,NavigationMenu)">
+                <Item Name="NavigateBlank"/>
+                <Item Name="NavigateDocument"/>
+                <Item Name="NavigateForward"/>
+                <Item Name="NavigateBack"/>
+                <Item Name="NavigateNextTopic"/>
+                <Item Name="NavigatePreviousTopic"/>
+                <Item Name="NavigateNextPage"/>
+                <Item Name="NavigatePreviousPage"/>
+                <Item Name="NavigateHome"/>
+                <Separator/>
+                <Item Name="CurrentTopicId"/>
+                <Item Name="CurrentRootTopicId"/>
+            </Item>
+            <Item Text="@(Creator:Resources,MainFrameMenu)">
+                <Item Name="Show"/>
+                <Item Name="Position"/>
+                <Item Name="Size"/>
+                <Item Name="MaxSize"/>
+                <Item Name="MinSize"/>
+                <Item Name="ToggleFullScreen"/>
+                <Item Name="FullScreen"/>
+                <Item Name="ToggleFullView"/>
+                <Item Name="FullView"/>
+                <Item Name="SkinVisible"/>
+            </Item>
+            <Item Text="@(Creator:Resources,WindowsMenu)">
+                <Item Name="ShowContentsWindow"/>
+                <Item Name="ShowIndexWindow"/>
+                <Item Name="ShowFavoritesWindow"/>
+                <Item Name="ShowSearchWindow"/>
+                <Item Name="ShowHelpWindow"/>
+                <Separator/>
+                <Item Name="ToggleMarkupWindowVisible"/>
+                <Item Name="MarkupWindowVisible"/>
+                <Item Name="ToggleCommentWindowVisible"/>
+                <Item Name="CommentWindowVisible"/>
+                <Item Name="FocusToCommentText"/>
+                <Item Name="HideCommentWindow"/>
+                <Separator/>
+                <Item Name="ToggleNavigationPane"/>
+                <Item Name="NavigationPaneVisible"/>
+                <Item Name="NavigationPaneLock"/>
+                <Item Name="NavigationPaneSize"/>
+                <Item Name="NavigationPaneAutoHide"/>
+                <Separator/>
+                <Item Name="SetBarVisible"/>
+                <Item Name="ToggleBarVisible"/>
+                <Separator/>
+                <Item Name="IsShortcutMenuEnabled"/>
+                <Item Name="ShowAboutWindow"/>
+                <Item Name="ShowAboutEngineWindow"/>
+            </Item>
+            <Item Text="@(Creator:Resources,MediaMenu)">
+                <Item Name="PlaySound"/>
+                <Item Name="SoundVolume"/>
+                <Item Name="PauseMedia"/>
+                <Item Name="PlayMedia"/>
+                <Item Name="StopMedia"/>
+                <Item Name="NextMedia"/>
+                <Item Name="PreviousMedia"/>
+                <Item Name="Mute"/>
+                <Item Name="ToggleMute"/>
+                <Item Name="TogglePlayMedia"/>
+            </Item>
+            <Item Text="@(Creator:Resources,MiscMenu)">
+                <Item Name="ToggleEffect3d"/>
+                <Item Name="Effect3d"/>
+                <Item Name="ContentsViewLink"/>
+                <Separator/>
+                <Item Name="Index"/>
+                <Item Name="Search"/>
+                <Item Name="QuickSearch"/>
+                <Item Name="HighlightSearch"/>
+                <Separator/>
+                <Item Name="OpenUrl"/>
+                <Item Name="UnregisterSoftLock"/>
+                <Item Name="Exit"/>
+            </Item>
+            <Item Text="@(Creator:Resources,ZoomMenu)">
+                <Item Name="ZoomActualSize"/>
+                <Item Name="ZoomFitPage"/>
+                <Item Name="ZoomFitWidth"/>
+                <Item Name="ZoomIn"/>
+                <Item Name="ZoomOut"/>
+            </Item>
+            <Item Text="@(Creator:Resources,SelectionMenu)">
+                <Item Name="CopySelection"/>
+                <Item Name="DeleteSelection"/>
+                <Item Name="CutSelection"/>
+                <Item Name="OpenSelection"/>
+                <Item Name="Paste"/>
+                <Item Name="NewFolder"/>
+                <Item Name="MoveToPreviousSibling"/>
+                <Item Name="MoveToNextSibling"/>
+            </Item>
+            <Item Text="@(Reader:CommandResources,ShowPrintWindow)">
+                <Item Name="ShowPageSetupWindow"/>
+                <Item Name="ShowPrintPreview"/>
+                <Item Name="ShowPrintWindow"/>
+            </Item>
+            <Item Text="@(Creator:Resources,SkinMenu)">
+                <Item Name="SkinFile"/>
+                <Item Name="SkinDesignSize"/>
+                <Separator/>
+                <Item Name="SkinClientLocation"/>
+                <Item Name="SkinClientSize"/>
+                <Item Name="SkinClientVisible"/>
+            </Item>
+            <Item Text="@(Creator:Resources,CommentingMenu)">
+                <Item Name="SelectArrowTool"/>
+                <Item Name="SelectHandTool"/>
+                <Item Name="SelectRectangleTool"/>
+                <Item Name="SelectTextBoxTool"/>
+                <Item Name="SelectPencilTool"/>
+                <Item Name="SelectStickyNoteTool"/>
+                <Item Name="SelectUnderlineTextTool"/>
+                <Item Name="SelectCrossOutTextTool"/>
+                <Item Name="SelectHighlightTextTool"/>
+                <Item Name="SelectHighlightTextRedTool"/>
+                <Item Name="SelectHighlightTextGreenTool"/>
+                <Item Name="SendSelectionToBack"/>
+                <Item Name="BringSelectionToFront"/>
+            </Item>
+        </Menu>
+    </Menus>
+</seCreatorConfiguration>

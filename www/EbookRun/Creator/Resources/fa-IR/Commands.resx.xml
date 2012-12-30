@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="NavigatePageLabel" xml:space="preserve">
+    <value>‫رفتن به صفحه توسط برچسب صفحه</value>
+  </data>
+  <data name="NavigateDocument" xml:space="preserve">
+    <value>‫رفتن به صفحه</value>
+  </data>
+  <data name="Effect3d" xml:space="preserve">
+    <value>‫جلوه‌های ویژه</value>
+  </data>
+  <data name="PageDisplay" xml:space="preserve">
+    <value>‫تعداد صفحه‌ی نمایش</value>
+  </data>
+  <data name="RunPageCommands" xml:space="preserve">
+    <value>‫اجرای فرمان‌های صفحه‌ها</value>
+  </data>
+  <data name="HighlightSearch" xml:space="preserve">
+    <value>‫رنگ کردن کلمه‌های جستجو شده</value>
+  </data>
+  <data name="ShowSplashScreen" xml:space="preserve">
+    <value>‫نمایش صفحه‌ی قبل از شروع</value>
+  </data>
+  <data name="HighlightKeywords" xml:space="preserve">
+    <value>‫رنگ گردن ‌کلمه‌ها</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>‫نمایش پنجره‌ی اصلی</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>‫مکان پنجره‌ی اصلی</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>‫اندازه‌ی پنجره‌ی اصلی</value>
+  </data>
+  <data name="MaxSize" xml:space="preserve">
+    <value>بیش‌ترین ‫اندازه‌ی پنجره‌ی اصلی</value>
+  </data>
+  <data name="MinSize" xml:space="preserve">
+    <value>کم‌ترین ‫اندازه‌ی پنجره‌ی اصلی</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>‫تمام صفحه</value>
+  </data>
+  <data name="FullView" xml:space="preserve">
+    <value>‫تمام نمایش</value>
+  </data>
+  <data name="NavigationPaneVisible" xml:space="preserve">
+    <value>‫نمایش پنجره‌ی کنترل</value>
+  </data>
+  <data name="NavigationPaneLock" xml:space="preserve">
+    <value>‫قفل کردن پنجره‌ی کنترل</value>
+  </data>
+  <data name="NavigationPaneSize" xml:space="preserve">
+    <value>‫اندازه‌ی پنجره‌ی کنترل</value>
+  </data>
+  <data name="NavigationPaneAutoHide" xml:space="preserve">
+    <value>خودکار مخفی شدن پنجره‌ی کنترل</value>
+  </data>
+  <data name="MarkupWindowVisible" xml:space="preserve">
+    <value>‫نمایش پنجره‌ی علامت گذاری</value>
+  </data>
+  <data name="CommentWindowVisible" xml:space="preserve">
+    <value>‫نمایش پنجره‌ی یادداشت</value>
+  </data>
+  <data name="SetBarVisible" xml:space="preserve">
+    <value>‫نمایش یک نوار مشخص</value>
+  </data>
+  <data name="Mute" xml:space="preserve">
+    <value>‫بی صدا</value>
+  </data>
+  <data name="SoundVolume" xml:space="preserve">
+    <value>‫بلندی صدا</value>
+  </data>
+  <data name="PlaySound" xml:space="preserve">
+    <value>‫پخش صدای مشخص شده</value>
+  </data>
+  <data name="OpenUrl" xml:space="preserve">
+    <value>‫باز کردن وب سایت یا فایل خارجی</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>‫نمایه</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>‫جستجو</value>
+  </data>
+  <data name="SkinClientLocation" xml:space="preserve">
+    <value>‫مکان پنجره‌ی درون پوسته</value>
+  </data>
+  <data name="SkinClientSize" xml:space="preserve">
+    <value>‫اندازه پنجره‌ی درون پوسته</value>
+  </data>
+  <data name="SkinClientVisible" xml:space="preserve">
+    <value>‫نمایش پنجره‌ی درون پوسته</value>
+  </data>
+  <data name="SkinFile" xml:space="preserve">
+    <value>‫فایل پوسته</value>
+  </data>
+  <data name="SkinDesignSize" xml:space="preserve">
+    <value>‫اندازه‌ی طراحی پوسته</value>
+  </data>
+  <data name="FrameVisible" xml:space="preserve">
+    <value>‫نمایش کادر</value>
+  </data>
+  <data name="ShowNewProjectWindow" xml:space="preserve">
+    <value>پروژه جدید‏</value>
+  </data>
+  <data name="ShowOpenProjectWindow" xml:space="preserve">
+    <value>باز کردن پروژه‏;Ctrl+O</value>
+  </data>
+  <data name="OpenProjectFolder" xml:space="preserve">
+    <value>باز کردن پوشه پروژه...‏</value>
+  </data>
+  <data name="ShowAddExistingBookWindow" xml:space="preserve">
+    <value>اضافه کردن کتاب موجود...‏</value>
+  </data>
+  <data name="ReloadBook" xml:space="preserve">
+    <value>پیدا کردن کتاب حذف شده</value>
+  </data>
+  <data name="LocateFile" xml:space="preserve">
+    <value>بازکردن پوشه‌ی گزینه در ویندوز</value>
+  </data>
+  <data name="ShowAboutShetabEbookCreatorWindow" xml:space="preserve">
+    <value>درباره‌ شتاب چندرسانه‌ساز</value>
+  </data>
+  <data name="ShowProjectExplorer" xml:space="preserve">
+    <value>پروژه</value>
+  </data>
+  <data name="EditFile" xml:space="preserve">
+    <value>‫ویرایش فایل;Ctrl+E</value>
+  </data>
+  <data name="NavigateStartPage" xml:space="preserve">
+    <value>صفحه شروع</value>
+  </data>
+  <data name="RunProject" xml:space="preserve">
+    <value>‫اجرای پروژه;Ctrl+F5</value>
+  </data>
+  <data name="ShowRecursivePropertiesWindow" xml:space="preserve">
+    <value>‫مشخصات همه‌ی زیر گزینه‌ها;Ctrl+F4</value>
+  </data>
+  <data name="SaveProject" xml:space="preserve">
+    <value>ذخیره پروژه;Ctrl+S</value>
+  </data>
+  <data name="CloseProject" xml:space="preserve">
+    <value>بستن پروژه</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>انصراف</value>
+  </data>
+  <data name="MoveToLastChild" xml:space="preserve">
+    <value>انتقال به گزینه زیری</value>
+  </data>
+  <data name="CopyToLastChild" xml:space="preserve">
+    <value>کپی به گزینه زیری</value>
+  </data>
+  <data name="CopyToNextSibling" xml:space="preserve">
+    <value>کپی به بعدی</value>
+  </data>
+  <data name="CopyToPreviousSibling" xml:space="preserve">
+    <value>کپی به قبلی</value>
+  </data>
+  <data name="ShowBuildMediaWindow" xml:space="preserve">
+    <value>جادوگر رسانه</value>
+  </data>
+  <data name="BuildMedia" xml:space="preserve">
+    <value>ساختن رسانه;Ctrl+B</value>
+  </data>
+  <data name="ShowBuildIndexWindow" xml:space="preserve">
+    <value>ساختن شاخص جستجو...‏</value>
+  </data>
+  <data name="SortChildren" xml:space="preserve">
+    <value>مرتب کردن گزینه</value>
+  </data>
+  <data name="SortChildrenDescending" xml:space="preserve">
+    <value>مرتب کردن نزولی گزینه</value>
+  </data>
+  <data name="SortChildrenRecursive" xml:space="preserve">
+    <value>مرتب کردن گزینه و همه زیرگزینه‌ها</value>
+  </data>
+  <data name="SortChildrenDescendingRecursive" xml:space="preserve">
+    <value>مرتب کردن نزولی گزینه و همه زیرگزینه‌ها</value>
+  </data>
+  <data name="ShowProjectPropertiesWindow" xml:space="preserve">
+    <value>‫مشخصات پروژه...;F7</value>
+  </data>
+  <data name="NewSubTopic" xml:space="preserve">
+    <value>‫زیر موضوع جدید</value>
+  </data>
+  <data name="NewTopic" xml:space="preserve">
+    <value>موضوع جدید;Ctrl+N</value>
+  </data>
+  <data name="NewSubTopicFromFile" xml:space="preserve">
+    <value>زیر موضوع جدید از فایل‌ها...‏</value>
+  </data>
+  <data name="NewTopicFromFile" xml:space="preserve">
+    <value>موضوع جدید از فایل‌ها...‏;Ctrl+Shift+N</value>
+  </data>
+  <data name="NewSubTopicFromFolder" xml:space="preserve">
+    <value>زیر موضوع جدید از یک پوشه‌ی موجود‌...‏</value>
+  </data>
+  <data name="OpenMediaFolder" xml:space="preserve">
+    <value>باز کردن پوشه رسانه...‏</value>
+  </data>
+  <data name="SetPageTitleFromSelection" xml:space="preserve">
+    <value>متن انتخاب شده عنوان صفحه شود</value>
+  </data>
+  <data name="ShowAddNewBookWindow" xml:space="preserve">
+    <value>اضافه کردن کتاب جدید...‏</value>
+  </data>
+  <data name="NewSubTopicFromBook" xml:space="preserve">
+    <value>‫اضافه کردن موضوع‌های کتاب دیگر...</value>
+  </data>
+  <data name="ShowSortChildrenWindow" xml:space="preserve">
+    <value>مرتب کردن...‏</value>
+  </data>
+  <data name="NewTopicFromCurrentPage" xml:space="preserve">
+    <value>موضوع جدید از صفحه جاری</value>
+  </data>
+  <data name="NewSubTopicFromCurrentPage" xml:space="preserve">
+    <value>زیر موضوع جدید از صفحه جاری</value>
+  </data>
+  <data name="StartShetabQuizCreator" xml:space="preserve">
+    <value>شتاب تست ساز</value>
+  </data>
+  <data name="AddFile" xml:space="preserve">
+    <value>اضافه کردن فایل موجود...‏</value>
+  </data>
+  <data name="AddFolder" xml:space="preserve">
+    <value>اضافه کردن پوشه موجود...‏</value>
+  </data>
+  <data name="ShowSortChildrenDescendingWindow" xml:space="preserve">
+    <value>مرتب کردن معکوس...‏</value>
+  </data>
+  <data name="SetHomePageFromSelection" xml:space="preserve">
+    <value>صغحه‌ی شروع پروژه شود</value>
+  </data>
+  <data name="OpenShetabEbookCreatorHelp" xml:space="preserve">
+    <value>خودآموز استفاده از شتاب چندرسانه‌ساز</value>
+  </data>
+  <data name="ShowShiftPageNumberWindow" xml:space="preserve">
+    <value>تصحیح شماره صفحه...</value>
+  </data>
+  <data name="ShowCommandBuilderWindow" xml:space="preserve">
+    <value>‫ساختن فرمان...;Ctrl+F8</value>
+  </data>
+  <data name="SetRootContentsBook" xml:space="preserve">
+    <value>این کتاب ریشه‌ی درخت محتویات شود</value>
+  </data>
+  <data name="RepairProject" xml:space="preserve">
+    <value>ذخیره و تعمیر پروژه
+</value>
+  </data>
+  <data name="ToggleBarVisible" xml:space="preserve">
+    <value>نمایش یک نوار مشخص</value>
+  </data>
+  <data name="ShowNewProjectWizardWindow" xml:space="preserve">
+    <value>جادوگر پروژه</value>
+  </data>
+  <data name="AutoSave" xml:space="preserve">
+    <value>ذخیره خودکار</value>
+  </data>
+  <data name="OpenLastProjectOnStartup" xml:space="preserve">
+    <value>باز کردن آخرین پروژه در هنگام اجرا</value>
+  </data>
+  <data name="WorkspaceFolder" xml:space="preserve">
+    <value>پوشه‌ی فضای کاری</value>
+  </data>
+  <data name="IsShortcutMenuEnabled" xml:space="preserve">
+    <value>فعال بودن منوی راست کلیک</value>
+  </data>
+  <data name="StartShetabSkinCreator" xml:space="preserve">
+    <value>شتاب پوسته ساز</value>
+  </data>
+  <data name="AutoCheckUpdate" xml:space="preserve">
+    <value>بررسی خودکار نگارش جدید در سایت</value>
+  </data>
+  <data name="RemoveTopicLink" xml:space="preserve">
+    <value>حذف لینک موضوع</value>
+  </data>
+</root>

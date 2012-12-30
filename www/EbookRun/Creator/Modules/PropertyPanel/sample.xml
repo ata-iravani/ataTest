@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<propertySet id="main">
+    <properties>
+        <property name="" text="" category=""
+                  type="text|number|boolean|color|font|file"
+                  canCustom="true|false"
+                  canNull="true|false"
+                  canDefault="true|false"
+                  visible="true|false"
+                  fileFilter="image|sound|video|all">
+            <listItems>
+                <listItem title="" imageUrl="">value</listItem>
+                <listItem title="" imageUrl="">value</listItem>
+            </listItems>
+            <initValue>value</initValue>
+        </property>
+    </properties>
+</propertySet>
+-->
+
+<propertySet id="main" title="Module Property">
+    <properties>
+        <property name="themeName" title="Theme Name" category="Category"
+                  type="text"
+                  canCustom="false"
+                  canNull="false"
+                  canDefault="false"
+                  readonly="false"
+                  visible="true"
+                  fileFilter="">
+            <listItems>
+                <listItem Text="Violet_and_Blue" imageUrl="">violet_and_Blue</listItem>
+                <listItem Text="Inscription" imageUrl="">inscription</listItem>
+                <listItem Text="metal_Honeycomb" imageUrl="">metal_Honeycomb</listItem>
+                <listItem Text="space" imageUrl="">space</listItem>
+                <listItem Text="yellow" imageUrl="">yellow</listItem>
+                <listItem Text="red" imageUrl="">red</listItem>
+            </listItems>
+            <initValue>violet_and_Blue</initValue>
+        </property>
+        <property name="fooSize" title="Foo Size" category="Category"
+                  type="number"
+                  canCustom="true"
+                  canNull="false"
+                  canDefault="false"
+                  readonly="false"
+                  visible="true"
+                  fileFilter="">
+            <listItems>
+                <listItem Text="10" imageUrl="">10</listItem>
+                <listItem Text="11" imageUrl="">11</listItem>
+                <listItem Text="12" imageUrl="">12</listItem>
+                <listItem Text="13" imageUrl="">13</listItem>
+                <listItem Text="14" imageUrl="">14</listItem>
+                <listItem Text="15" imageUrl="">15</listItem>
+            </listItems>
+            <initValue>value</initValue>
+        </property>
+        <property name="animate" title="animate" category="Category"
+                  type="boolean"
+                  canCustom="false"
+                  canNull="false"
+                  canDefault="false"
+                  readonly="false"
+                  visible="true"
+                  fileFilter="">
+            <listItems>
+            </listItems>
+            <initValue>value</initValue>
+        </property>
+        <property name="backgroundColor" title="Background Color" category="Category"
+                  type="color"
+                  canCustom="true"
+                  canNull="true"
+                  canDefault="false"
+                  readonly="false"
+                  visible="true"
+                  fileFilter="">
+            <listItems>
+                <listItem Text="custom Color 1" imageUrl="">#ff00f0</listItem>
+                <listItem Text="custom Color 2" imageUrl="">#0000f0</listItem>
+            </listItems>
+            <initValue>value</initValue>
+        </property>
+        <property name="mainFont" title="Main Font" category="Category"
+                  type="font"
+                  canCustom="true"
+                  canNull="true"
+                  canDefault="false"
+                  readonly="false"
+                  visible="true"
+                  fileFilter="">
+            <listItems>
+                <listItem Text="custom font 1" imageUrl="">&lt;font name="tahoma" size="10" bold="true" italic="true" underline="false"/&gt;</listItem>
+                <listItem Text="custom font 2" imageUrl="">&lt;font name="tahoma" size="10" bold="true" italic="true" underline="false"/&gt;</listItem>
+            </listItems>
+            <initValue>value</initValue>
+        </property>
+        <property name="animate2" title="animate 2" category="Category 2"
+                  type="boolean"
+                  canCustom="false"
+                  canNull="false"
+                  canDefault="false"
+                  readonly="true"
+                  visible="true"
+                  fileFilter="">
+            <listItems>
+            </listItems>
+            <initValue>value</initValue>
+        </property>
+        <property name="secondaryFont" title="Secondary Font" category="Category 3"
+                  type="font"
+                  canCustom="true"
+                  canNull="true"
+                  canDefault="false"
+                  readonly="false"
+                  visible="true"
+                  fileFilter="">
+            <listItems>
+            </listItems>
+            <initValue>value</initValue>
+        </property>
+    </properties>
+</propertySet>
+

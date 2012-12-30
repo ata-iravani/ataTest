@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LicenseInfo" xml:space="preserve">
+    <value>%3 - Key ID: %1 - Owner: %2</value>
+  </data>
+  <data name="FileHasError" xml:space="preserve">
+    <value>** File could not be open **</value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Not any file has been selected.</value>
+  </data>
+  <data name="ColumnWord" xml:space="preserve">
+    <value>Word</value>
+  </data>
+  <data name="PdfPageItem" xml:space="preserve">
+    <value>Page %1</value>
+  </data>
+  <data name="PdfPageItemTitle" xml:space="preserve">
+    <value>Page %1 (%2)</value>
+  </data>
+  <data name="InvalidImageSize" xml:space="preserve">
+    <value>Your selected image is [3] * [4]. You must select an image in size of [1] * [2] !</value>
+  </data>
+  <data name="Nothing" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="ShetabEbookCreatorTitle" xml:space="preserve">
+    <value>Shetab  eBook Creator</value>
+  </data>
+  <data name="DemoEdition" xml:space="preserve">
+    <value>Trial</value>
+  </data>
+  <data name="KeyNotFound" xml:space="preserve">
+    <value>Could not find hardware key, please connect it and try again.</value>
+  </data>
+  <data name="ShetabEbookCreatorTitleParam" xml:space="preserve">
+    <value>Shetab  eBook Creator - %1</value>
+  </data>
+  <data name="StandardEdition" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="ProfessionalEdition" xml:space="preserve">
+    <value>Professional</value>
+  </data>
+  <data name="ExeModeEnum" xml:space="preserve">
+    <value>Don’t create executable file
+Create executable file and attach to main package file
+Create executable file separately</value>
+  </data>
+  <data name="Random" xml:space="preserve">
+    <value>Random</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Calculating" xml:space="preserve">
+    <value>Calculating...</value>
+  </data>
+  <data name="DoYouWantConvertProject" xml:space="preserve">
+    <value>The project you are opening was created in a previous version. Do you want to convert it?</value>
+  </data>
+  <data name="MediaWiz_SoftLockTitle" xml:space="preserve">
+    <value>License Control and Media Protection</value>
+  </data>
+  <data name="MediaWiz_SoftLockTitle2" xml:space="preserve">
+    <value>Specify how you want to protect and manage license of your product.</value>
+  </data>
+  <data name="MediaWiz_SoftLockLicenseTitle" xml:space="preserve">
+    <value>SoftLock Protection Key</value>
+  </data>
+  <data name="MediaWiz_SoftLockLicenseTitle2" xml:space="preserve">
+    <value>Select SoftLock protection key file to protect your media.</value>
+  </data>
+  <data name="InvalidGuidFormat" xml:space="preserve">
+    <value>Your identifier is not correct!</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Book</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="PromptSaveProject" xml:space="preserve">
+    <value>Do you want to save change to “%1”?</value>
+  </data>
+  <data name="Topic" xml:space="preserve">
+    <value>Topic</value>
+  </data>
+  <data name="DoYouWantRemoveItem2" xml:space="preserve">
+    <value>Are you sure you want to remove the “%1” item?</value>
+  </data>
+  <data name="ItemNotShowNotSelect" xml:space="preserve">
+    <value>Warning: This component will never be installed, because you uncheck default option and also hide it, so no one can select it to install.
+
+Do you want to continue?</value>
+  </data>
+  <data name="MediaWiz_OptionsTitle" xml:space="preserve">
+    <value>Media Options</value>
+  </data>
+  <data name="MediaWiz_OptionsTitle2" xml:space="preserve">
+    <value>Specify how build your media.</value>
+  </data>
+  <data name="MediaWiz_RedistTitle" xml:space="preserve">
+    <value>Components</value>
+  </data>
+  <data name="MediaWiz_RedistTitle2" xml:space="preserve">
+    <value>Select components you want to install with your media.</value>
+  </data>
+  <data name="MediaWiz_ProgressTitle" xml:space="preserve">
+    <value>Building Media</value>
+  </data>
+  <data name="MediaWiz_ProgressTitle2" xml:space="preserve">
+    <value>Build Started. Please wait...</value>
+  </data>
+  <data name="MediaWiz_FolderTitle" xml:space="preserve">
+    <value>Media Folder</value>
+  </data>
+  <data name="MediaWiz_FolderTitle2" xml:space="preserve">
+    <value>Select your media folder.</value>
+  </data>
+  <data name="MediaWiz_MediaLabelTitle" xml:space="preserve">
+    <value>Media Name</value>
+  </data>
+  <data name="MediaWiz_MediaLabelTitle2" xml:space="preserve">
+    <value>Select your media name</value>
+  </data>
+  <data name="ShiftPageNumberTitle" xml:space="preserve">
+    <value>Page Number Correction</value>
+  </data>
+  <data name="OutOfRange" xml:space="preserve">
+    <value>Out of range</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="ColumnTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="SplashTypes" xml:space="preserve">
+    <value>None
+Standard
+File (Silverlight, Flash, WPF, HTML, Image)</value>
+  </data>
+  <data name="DoYouWantRemoveAll" xml:space="preserve">
+    <value>Are you sure you want to remove all items?</value>
+  </data>
+  <data name="IndexModeEnum" xml:space="preserve">
+    <value>Disable search capability
+Enable search capability on Media (All Files)
+Enable search capability on Media (Changed Files Only)</value>
+  </data>
+  <data name="BuildTypeEnum" xml:space="preserve">
+    <value>Single package – Create one package for all books
+Multiple packages – Create separate package for each book
+Don’t pack – Don’t package any book</value>
+  </data>
+  <data name="IconSetSelectorCaption" xml:space="preserve">
+    <value>Select Icon</value>
+  </data>
+  <data name="EncryptionMethodEnum" xml:space="preserve">
+    <value>Don’t encrypt;WinZip AES 128-bit;WinZip AES 192-bit;WinZip AES 256-bit;Shetab Internal</value>
+  </data>
+  <data name="ProtectionMethodEnum" xml:space="preserve">
+    <value>None
+Prompt Password
+Shetab SoftLock</value>
+  </data>
+  <data name="ShetabLcLicensePageCaption" xml:space="preserve">
+    <value>Shetab SoftLock Settings</value>
+  </data>
+  <data name="ColumnDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ProjectPropertiesCaption" xml:space="preserve">
+    <value>Project Properties</value>
+  </data>
+  <data name="BookAlreadyExist" xml:space="preserve">
+    <value>The book is already exists in the project.
+
+Book name:%1
+ID:%2
+File=%3</value>
+  </data>
+  <data name="BookAlreadyExistsInContents" xml:space="preserve">
+    <value>“%1” book is already exists in the content.</value>
+  </data>
+  <data name="ItemMustSet" xml:space="preserve">
+    <value>Please fill blank fields!</value>
+  </data>
+  <data name="FileNotExistInAnyBook" xml:space="preserve">
+    <value>The file does not exist in any book, please copy it to data folder of a book and try again.
+Path: ‪%1</value>
+  </data>
+  <data name="DemoExceeded" xml:space="preserve">
+    <value>Your project has more than %1 files or one of it's PDF file has greater than %1 pages.
+Trial version has limited up to %1 of files and each PDF file could not have more than %1 pages.
+Please follow the limitation and correct your project.</value>
+  </data>
+  <data name="CantCopyItemHere" xml:space="preserve">
+    <value>Can not insert items here!</value>
+  </data>
+  <data name="InvalidIconFile" xml:space="preserve">
+    <value>Invalid icon file!</value>
+  </data>
+  <data name="PromptCancelMediaBuilder" xml:space="preserve">
+    <value>Are you sure you want to cancel?</value>
+  </data>
+  <data name="CantRemoveCriticalRedist" xml:space="preserve">
+    <value>“%1” is a critical component, are you sure you want to remove it?</value>
+  </data>
+  <data name="CantDeleteFile" xml:space="preserve">
+    <value>Could not delete file!.
+File: %1
+Message:%2</value>
+  </data>
+  <data name="NotSameBookId" xml:space="preserve">
+    <value>The selected book is not match. Please select the correct book.
+File=%1</value>
+  </data>
+  <data name="FolderNotEmpty" xml:space="preserve">
+    <value>Folder is not empty. Please select an empty folder!
+%1</value>
+  </data>
+  <data name="DefaultSkinNotSelected" xml:space="preserve">
+    <value>You must select a default skin!</value>
+  </data>
+  <data name="EventTypeEnum" xml:space="preserve">
+    <value>Normal
+On Page Open
+On Page Close
+On Media Finish</value>
+  </data>
+  <data name="ReleaseTimeEnum" xml:space="preserve">
+    <value>0;1;2;3;4;5;6;7;8;9;10;</value>
+  </data>
+  <data name="DoYouWantDeleteFonts" xml:space="preserve">
+    <value>Are you sure you want to delete the “%1” font?</value>
+  </data>
+  <data name="DoYouWantRemoveBook" xml:space="preserve">
+    <value>Are you sure you want to remove the “%1” book from the project?</value>
+  </data>
+  <data name="MultipleBookSelected" xml:space="preserve">
+    <value>Multiple book have been selected</value>
+  </data>
+  <data name="NavigationPanePositionEnum" xml:space="preserve">
+    <value>Head
+Tail</value>
+  </data>
+  <data name="DefaultTopic" xml:space="preserve">
+    <value>New Topic</value>
+  </data>
+  <data name="ContentsLayoutEnum" xml:space="preserve">
+    <value>Default
+Left to Right
+Right to Left</value>
+  </data>
+  <data name="OverwritePageTitle" xml:space="preserve">
+    <value>Do you want to rename page title from “%2” to “%1”.</value>
+  </data>
+  <data name="MediaBuilderReport_UnicodeFlash" xml:space="preserve">
+    <value>F	</value>
+  </data>
+  <data name="NewProject_NameTitle" xml:space="preserve">
+    <value>Project Information</value>
+  </data>
+  <data name="NewProject_NameTitle2" xml:space="preserve">
+    <value>Fill the project information.</value>
+  </data>
+  <data name="NewProjectWiz_FolderTitle" xml:space="preserve">
+    <value>Project Location</value>
+  </data>
+  <data name="NewProjectWiz_FolderTitle2" xml:space="preserve">
+    <value>Select new project folder.</value>
+  </data>
+  <data name="DefaultProjectName" xml:space="preserve">
+    <value>My Product Name</value>
+  </data>
+  <data name="DefaultCompanyName" xml:space="preserve">
+    <value>My Company Name</value>
+  </data>
+  <data name="DefaultBookName" xml:space="preserve">
+    <value>My Book Name</value>
+  </data>
+  <data name="CantCopyToAnotherBook" xml:space="preserve">
+    <value>Can not copy item to another book!</value>
+  </data>
+  <data name="ProjectPage_GeneralFolder" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="ProjectPage_Security" xml:space="preserve">
+    <value>Protection</value>
+  </data>
+  <data name="PlayersEnum" xml:space="preserve">
+    <value>Default
+General Browser
+Image Viewer
+Media Player
+PDF Viewer
+WPF Player</value>
+  </data>
+  <data name="ProjectPage_Logo" xml:space="preserve">
+    <value>Splash Screen</value>
+  </data>
+  <data name="ProjectPage_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="CantMoveFile" xml:space="preserve">
+    <value>Could not move file!.
+Source: %1
+Destination: %2
+Message: %3</value>
+  </data>
+  <data name="ProjectPage_TreeFormat" xml:space="preserve">
+    <value>Contents Tree</value>
+  </data>
+  <data name="ProjectPage_InterfaceFolder" xml:space="preserve">
+    <value>Interface</value>
+  </data>
+  <data name="BookFileBrowserTitle" xml:space="preserve">
+    <value>Select the location of the following file in your project.
+%1</value>
+  </data>
+  <data name="SelectMediaFolder" xml:space="preserve">
+    <value>Please select media location.</value>
+  </data>
+  <data name="ProjectPage_Mainframe" xml:space="preserve">
+    <value>Main Window</value>
+  </data>
+  <data name="ProjectPage_Fonts" xml:space="preserve">
+    <value>Fonts</value>
+  </data>
+  <data name="TotalErrorWarning" xml:space="preserve">
+    <value>Final Result: %1 Error(s), %2 Warning(s).</value>
+  </data>
+  <data name="ProjectPage_ReadMe" xml:space="preserve">
+    <value>Read Me</value>
+  </data>
+  <data name="ProjectPage_CommandLine" xml:space="preserve">
+    <value>Command Line</value>
+  </data>
+  <data name="ProjectPage_Misc" xml:space="preserve">
+    <value>Miscellaneous</value>
+  </data>
+  <data name="ProjectPage_License" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="ProjectPage_Skins" xml:space="preserve">
+    <value>Skins</value>
+  </data>
+  <data name="ColumnRedistribute" xml:space="preserve">
+    <value>Components</value>
+  </data>
+  <data name="MediaBuilderReport_CommitFinished" xml:space="preserve">
+    <value>File copy finished successfully .</value>
+  </data>
+  <data name="ProjectPage_Advanced" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="ProjectPage_CustomCommands" xml:space="preserve">
+    <value>Custom Commands</value>
+  </data>
+  <data name="ItemPropertiesCaption" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="MultipleItemPropertiesCaption" xml:space="preserve">
+    <value>Properties (%1)</value>
+  </data>
+  <data name="CommandBuilderPageTitle" xml:space="preserve">
+    <value>Command Builder</value>
+  </data>
+  <data name="RedistAdvancedCaption" xml:space="preserve">
+    <value>Component's Advanced Settings</value>
+  </data>
+  <data name="NewBookPageTitle" xml:space="preserve">
+    <value>Add New Book</value>
+  </data>
+  <data name="LinkNotFound" xml:space="preserve">
+    <value>(Path not found)</value>
+  </data>
+  <data name="MediaBuilderReport_CopyError" xml:space="preserve">
+    <value>Could not remove file!
+Folder path: “%1”
+Message: “%3”</value>
+  </data>
+  <data name="MediaBuilderReport_BookAdded" xml:space="preserve">
+    <value>The "%1" book added to meida.</value>
+  </data>
+  <data name="MediaBuilderReport_BookNotAdded" xml:space="preserve">
+    <value>Could not add book "%1" to media!</value>
+  </data>
+  <data name="MediaBuilderReport_BuildStarted" xml:space="preserve">
+    <value>Build Started "%1"...</value>
+  </data>
+  <data name="MediaBuilderReport_IndexError" xml:space="preserve">
+    <value>An error occurred during creating search catalog.</value>
+  </data>
+  <data name="MediaBuilderReport_LabelTooLong" xml:space="preserve">
+    <value>Length of your media name is greater than 32 characters; Only 32 of characters will be shown in windows!</value>
+  </data>
+  <data name="PublicSerialNumberNotSet" xml:space="preserve">
+    <value>You must enter a public serial number that can be registered in any number of computers.</value>
+  </data>
+  <data name="MediaBuilderReport_CopyFile" xml:space="preserve">
+    <value>File copied: %1</value>
+  </data>
+  <data name="SoftLockLicenseNotSet" xml:space="preserve">
+    <value>The Shetab SoftLock protection key file not found. Please specify Shetab SoftLock protection key file and try again.</value>
+  </data>
+  <data name="MediaBuilderReport_SoftLock" xml:space="preserve">
+    <value>Applying Shetab SoftLock Protection…</value>
+  </data>
+  <data name="MediaBuilderReport_CreateHtml" xml:space="preserve">
+    <value>Html files created.</value>
+  </data>
+  <data name="MediaBuilderReport_RemoveFolder" xml:space="preserve">
+    <value>Media folder Removed: "%1"</value>
+  </data>
+  <data name="MediaBuilderReport_CantRemoveFolder" xml:space="preserve">
+    <value>Could not remove folder!</value>
+  </data>
+  <data name="MediaBuilderReport_Demo" xml:space="preserve">
+    <value>You don’t allow publish and distribute meida created with trial edition!</value>
+  </data>
+  <data name="MediaBuilderReport_CopyFiles" xml:space="preserve">
+    <value>Copying files...</value>
+  </data>
+  <data name="MediaBuilderReport_EffectNotSupported" xml:space="preserve">
+    <value>Your file have special visual effects but your Shetab Multimedia eBook Creator is not a professional version. You can not use these visual effects.
+File: “%1”</value>
+  </data>
+  <data name="MediaBuilderStatus_COPYFILE" xml:space="preserve">
+    <value>Copying file: %1</value>
+  </data>
+  <data name="MediaBuilderReport_AddSkins" xml:space="preserve">
+    <value>The following skin(s) added to the media:</value>
+  </data>
+  <data name="MediaBuilderReport_ArabicNotSupported" xml:space="preserve">
+    <value>The language of project is Arabic, but this edition of Shetab eBook Creator does not support Arabic language. Please contact Shetab Corporation to enable Arabic language.</value>
+  </data>
+  <data name="MediaBuilderStatus_DeleteFolder" xml:space="preserve">
+    <value>Removing folder: %1</value>
+  </data>
+  <data name="MediaBuilderStatus_Finish" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="MediaBuilderStatus_CreateHtmlFile" xml:space="preserve">
+    <value>Building Html files...</value>
+  </data>
+  <data name="MediaBuilderStatus_BuildExe" xml:space="preserve">
+    <value>Building executable file...</value>
+  </data>
+  <data name="MediaBuilderReport_BuildAppExe" xml:space="preserve">
+    <value>Executable file Created.</value>
+  </data>
+  <data name="ColumnFileName" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="ColumnId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ProjectExplorer" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="ColumnCommand" xml:space="preserve">
+    <value>Command</value>
+  </data>
+  <data name="ContentsFormatSample" xml:space="preserve">
+    <value>Sample 12345</value>
+  </data>
+  <data name="DocumentMenu" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="SkinMenu" xml:space="preserve">
+    <value>Skin</value>
+  </data>
+  <data name="WindowsMenu" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="MediaMenu" xml:space="preserve">
+    <value>Media (Sound and Video)</value>
+  </data>
+  <data name="MiscMenu" xml:space="preserve">
+    <value>Miscellaneous</value>
+  </data>
+  <data name="ZoomMenu" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="NavigationMenu" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
+  <data name="SelectionMenu" xml:space="preserve">
+    <value>Selection</value>
+  </data>
+  <data name="CommentingMenu" xml:space="preserve">
+    <value>Comment &amp; Markup</value>
+  </data>
+  <data name="MainFrameMenu" xml:space="preserve">
+    <value>Main Window</value>
+  </data>
+  <data name="ContentsRoot" xml:space="preserve">
+    <value>Tree Contents Root</value>
+  </data>
+  <data name="Parametric" xml:space="preserve">
+    <value>Parametric</value>
+  </data>
+  <data name="Property" xml:space="preserve">
+    <value>Property</value>
+  </data>
+  <data name="StartupMenu" xml:space="preserve">
+    <value>Startup</value>
+  </data>
+  <data name="MediaBuilderReport_SkinAdded" xml:space="preserve">
+    <value>Skin "%1" added successfully.</value>
+  </data>
+  <data name="MediaBuilderReport_AddPlugins" xml:space="preserve">
+    <value>The following plugins(s) added to the media:</value>
+  </data>
+  <data name="MediaBuilderReport_PluginAdded" xml:space="preserve">
+    <value>Plugin "%1" added successfully.</value>
+  </data>
+  <data name="DefaultBookDataFolder" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="HelpUrl" xml:space="preserve">
+    <value>http://www.shetabtech.com/english/multimediacreator</value>
+  </data>
+  <data name="CantApplyOnThisItem" xml:space="preserve">
+    <value>This operation can not be apply on selected item(s).</value>
+  </data>
+  <data name="ShetabCopyright" xml:space="preserve">
+    <value>Copyright © 2001-2011 Shetab Corporation. All rights reserved.</value>
+  </data>
+  <data name="ShetabSkinCreatorUrl" xml:space="preserve">
+    <value>http://apps.shetabtech.com/ebookSkinCreator4/SkinCreator.xbap</value>
+  </data>
+  <data name="VisibilityEnum" xml:space="preserve">
+    <value>Default
+Show
+Hide</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company Name:</value>
+  </data>
+  <data name="CustomerNumber" xml:space="preserve">
+    <value>Customer Number:</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Serial Number:</value>
+  </data>
+  <data name="SimpleEdition" xml:space="preserve">
+    <value>Simple</value>
+  </data>
+  <data name="CreatorLicenseeEdition" xml:space="preserve">
+    <value>Edition:</value>
+  </data>
+  <data name="CreatorLicenseeId" xml:space="preserve">
+    <value>CustomerNumber:</value>
+  </data>
+  <data name="CreatorLicenseeName" xml:space="preserve">
+    <value>CustomerName:</value>
+  </data>
+  <data name="CreatorLicenseeTokenId" xml:space="preserve">
+    <value>SerialNumber:</value>
+  </data>
+  <data name="CreatorVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="RecentProjects" xml:space="preserve">
+    <value>Recent Projects</value>
+  </data>
+  <data name="GeneralSection" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="UpdateText" xml:space="preserve">
+    <value>Please Download Last Version</value>
+  </data>
+  <data name="DownloadPageUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DownloadPageUrlTrial" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PadFileUrl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PadFileUrlTrial" xml:space="preserve">
+    <value>http://www.shetab.com/farsi/_layouts/shetab/shetabsite/padview.aspx?ProductId=5</value>
+  </data>
+  <data name="DoYouWantRemoveProjectLink" xml:space="preserve">
+    <value>Could not find this project file, do you want to remove its link from recent projects?
+Project File: {0}</value>
+  </data>
+  <data name="IconSizeEnum" xml:space="preserve">
+    <value>Big
+Small</value>
+  </data>
+  <data name="NoneTree" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="StandardTree" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>( Browse... )</value>
+  </data>
+  <data name="Build" xml:space="preserve">
+    <value>Build</value>
+  </data>
+</root>

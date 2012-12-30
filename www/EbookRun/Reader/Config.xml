@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<seConfiguration>
+  <resources baseCulture="en-US">
+  </resources>
+  
+  <modules>
+      <module url="Modules/ClientBox/Module.xml"/>
+      <module url="Modules/ContentsPanelContainer/Module.xml"/>
+      <module url="Modules/FavoritesPanelContainer/Module.xml"/>
+      <module url="Modules/IndexPanelContainer/Module.xml"/>
+      <module url="Modules/MainViewContainer/Module.xml"/>
+      <module url="Modules/ModuleController/Module.xml"/>
+      <module url="Modules/NavigationPanel/Module.xml"/>
+      <module url="Modules/NavigationPanelContainer/Module.xml"/>
+      <module url="Modules/SampleModule/Module.xml"/>
+      <module url="Modules/SearchPanelContainer/Module.xml"/>
+      <module url="Modules/ImageViewer/Module.xml"/>
+	  <module url="Modules/PDFViewer/Module.xml"/>
+	  <module url="Modules/VideoPlayer/Module.xml"/>
+  </modules>
+
+  <playerModuleEntities>
+    <playerModuleEntity url="ModuleEntities/ImageViewer/ModuleEntity.xml"/>
+	<playerModuleEntity url="ModuleEntities/PDFViewer/ModuleEntity.xml"/>
+	<playerModuleEntity url="ModuleEntities/VideoPlayer/ModuleEntity.xml"/>
+  </playerModuleEntities>
+  
+  <startupModuleEntities>
+    <startupModuleEntity url="ModuleEntities/ClientBox/ModuleEntity.xml"/>
+    <startupModuleEntity url="ModuleEntities/ContentsPanelContainer/ModuleEntity.xml"/>
+    <startupModuleEntity url="ModuleEntities/FavoritesPanelContainer/ModuleEntity.xml"/>
+    <startupModuleEntity url="ModuleEntities/IndexPanelContainer/ModuleEntity.xml"/>
+    <startupModuleEntity url="ModuleEntities/MainViewContainer/ModuleEntity.xml"/>
+    <startupModuleEntity url="ModuleEntities/ModuleController/ModuleEntity.xml"/>
+    <startupModuleEntity url="ModuleEntities/NavigationPanel/ModuleEntity.xml"/>
+    <startupModuleEntity url="ModuleEntities/NavigationPanelContainer/ModuleEntity.xml"/>
+    <startupModuleEntity url="ModuleEntities/SampleModule/ModuleEntity.xml"/>
+    <startupModuleEntity url="ModuleEntities/SearchPanelContainer/ModuleEntity.xml"/>
+  </startupModuleEntities>
+  
+  <Pages>
+    <About File="About\default.html" Type="Custom" Size="651,328" Title="@(CommandResources,ShowAboutWindow)" CaptionBar="0" />
+    <AboutEngine File="AboutEngine.htm" Type="Custom" Size="500,275" Title="@(CommandResources,ShowAboutEngineWindow)" CaptionBar="1" />
+    <SplashScreen File="SplashScreen.png" Type="Custom" />
+    <Help File="Help\Help.htm" Type="Navigate"/>
+  </Pages>
+  <components>
+    <component name="CEF" folder="CEF 1.963.439" fileName="libcef.dll"/>
+    <component name="FlashPlayer" folder="FlashPlayer 11.1.r102" fileName="NPSWF32.dll"/>
+    <component name="PdfLibrary" folder="PDF Library 9.9" fileName="AdobePDFL.dll"/>
+    <component name="Silverlight" folder="Silverlight 5.0.61118.0" fileName="npctrl.dll"/>
+  </components>
+  <fonts>
+    <font>
+    </font>
+  </fonts>
+  <ShortcutKeys>
+    <ShortcutKey CommandName="ToggleNavigationPane" Control="true" VirtualKey="T" />
+    <ShortcutKey CommandName="CopySelection" Control="true" VirtualKey="C" />
+    <ShortcutKey CommandName="CutSelection" Control="true" VirtualKey="X" />
+    <ShortcutKey CommandName="Paste" Control="true" VirtualKey="V" />
+    <ShortcutKey CommandName="Refresh" VirtualKey="F5" />
+    <ShortcutKey CommandName="RenameSelection" VirtualKey="F2" />
+    <ShortcutKey CommandName="NavigateBack" Alt="true" VirtualKey="LEFT" />
+    <ShortcutKey CommandName="NavigateBack" VirtualKey="BROWSER_BACK" />
+    <ShortcutKey CommandName="NavigateForward" Alt="true" VirtualKey="RIGHT" />
+    <ShortcutKey CommandName="NavigateForward" VirtualKey="BROWSER_FORWARD" />
+    <ShortcutKey CommandName="NavigateHome" Alt="true" VirtualKey="HOME" />
+    <ShortcutKey CommandName="NavigateNextTopic" Alt="true" VirtualKey="DOWN" />
+    <ShortcutKey CommandName="NavigatePreviousTopic" Alt="true" VirtualKey="UP" />
+    <ShortcutKey CommandName="ShowPrintWindow" Control="true" VirtualKey="P" />
+    <ShortcutKey CommandName="ShowPropertiesWindow" VirtualKey="F4" />
+    <ShortcutKey CommandName="Restart" Control="true" Shift="true" VirtualKey="R" />
+    <ShortcutKey CommandName="ShowContentsWindow" Control="true" Alt="true" VirtualKey="F1" />
+    <ShortcutKey CommandName="ShowIndexWindow" Control="true" Alt="true" VirtualKey="F2" />
+    <ShortcutKey CommandName="ShowFavoritesWindow" Alt="true" VirtualKey="C" />
+    <ShortcutKey CommandName="ShowFavoritesWindow" VirtualKey="BROWSER_FAVORITES" />
+    <ShortcutKey CommandName="ShowSearchWindow" VirtualKey="F3" />
+    <ShortcutKey CommandName="ShowFindWindow" Control="true" VirtualKey="F" />
+    <ShortcutKey CommandName="ShowHelpWindow" VirtualKey="F1" />
+    <ShortcutKey CommandName="Test1" Control="true" Shift="true" VirtualKey="1" />
+    <ShortcutKey CommandName="Test2" Control="true" Shift="true" VirtualKey="3" />
+    <ShortcutKey CommandName="ToggleDebugMode" Control="true" Shift="true" VirtualKey="D" />
+    <ShortcutKey CommandName="ToggleFullScreen" VirtualKey="F11" />
+    <ShortcutKey CommandName="ToggleFullView" Control="true" VirtualKey="ENTER" />
+    <ShortcutKey CommandName="ZoomActualSize" Control="true" VirtualKey="1" />
+    <ShortcutKey CommandName="ZoomFitPage" Control="true" VirtualKey="0" />
+    <ShortcutKey CommandName="ZoomFitWidth" Control="true" VirtualKey="2" />
+    <ShortcutKey CommandName="ZoomIn" Control="true" VirtualKey="ADD" />
+    <ShortcutKey CommandName="ZoomOut" Control="true" VirtualKey="SUBTRACT" />
+    <ShortcutKey CommandName="UnregisterSoftLock" Control="true" Shift="true" VirtualKey="U" />
+    <ShortcutKey CommandName="ShowDeveloperTools" Control="true" Shift="true" VirtualKey="I" />
+  </ShortcutKeys>
+  <SingleFiles>
+    <Independent>
+      <File Path="EffectSets" />
+      <File Path="Fonts" />
+      <File Path="EbookReader.xml" />
+      <File Path="Commands.xml" />
+      <File Path="Resources" />
+      <File Path="{ReaderExeFolder}\Effector.dll" />
+      <File Path="{ReaderExeFolder}\ViewLib.dll" />
+      <File Path="{ReaderExeFolder}\EbookReader.exe" />
+      <File Path="{ReaderExeFolder}\Shetab.Ebook.Interop.WpfControl.dll" />
+      <File Path="{ReaderExeFolder}\ShetabEbookHelperWPF.dll" />
+      <File Path="{ReaderExeFolder}\WpfManager.dll" />
+      <File Path="{ReaderExeFolder}\ShetabPacker.dll" />
+      <File Path="{ReaderExeFolder}\Interop.JRO.dll" />
+      <File Path="{ReaderExeFolder}\Interop.ADODB.dll" />
+      <File Path="{ReaderExeFolder}\CefEasyBrowser.dll"/>
+      <File Path="{ReaderExeFolder}\System.Windows.Interactivity.dll"/>
+      <File Path="{ReaderExeFolder}\Microsoft.Expression.Interactions.dll"/>
+    </Independent>
+    <Release>
+      <File Path="{ReaderExeFolder}\d3dx9_32.dll" />
+      <File Path="{ReaderExeFolder}\Microsoft.VC90.CRT.manifest" />
+      <File Path="{ReaderExeFolder}\msvcm90.dll" />
+      <File Path="{ReaderExeFolder}\msvcp90.dll" />
+      <File Path="{ReaderExeFolder}\msvcr90.dll" />
+    </Release>
+    <Debug>
+      <File Path="{ReaderExeFolder}\d3dx9d_32.dll" />
+    </Debug>
+  </SingleFiles>
+  <Bars>
+    <ContainerBar Name="MainClientContainer" Container="MainFrameContainer" Dock="Center" />
+    <ContainerBar Name="ViewContainer" Container="MainClientContainer" Dock="Center" />
+    <ContainerBar Name="NavigationPaneContainer" Container="MainClientContainer" Dock="Left" Width="300" Visible="0">
+      <Animate>
+        <Show Effect="Slide" Position="Lead" Duration="200"></Show>
+      </Animate>
+    </ContainerBar>
+    <ContainerBar Name="ContentsContainer" Container="NavigationPaneContainer" Dock="Center" />
+    <ContainerBar Name="IndexContainer" Container="NavigationPaneContainer" Dock="Center" />
+    <ContainerBar Name="FavoritesContainer" Container="NavigationPaneContainer" Dock="Center" />
+    <ClientBar Name="ContentsHost" Container="ContentsContainer" Dock="Center" />
+    <ClientBar Name="IndexHost" Container="IndexContainer" Dock="Center" />
+    <ClientBar Name="FavoritesHost" Container="FavoritesContainer" Dock="Center" />
+    <ClientBar Name="ViewHost" Container="ViewContainer" Dock="Center" />
+    <CustomBar Name="NavigationPaneResizeBar" Container="NavigationPaneContainer" Width="5" Dock="Right" Visible="1" ResizeBar="NavigationPaneContainer" />
+    <ContainerBar Name="NavigationPaneControlsContainer" Container="NavigationPaneContainer" Height="35" Dock="Bottom" />
+    <CustomBar Name="SpaceBar" Container="NavigationPaneControlsContainer" Height="7" Dock="Top" />
+    <CustomBar Name="NavigationPaneAutoHideBar" Container="NavigationPaneControlsContainer" Width="40" Dock="Trail">
+      <Elements>
+        <Button Name="ToggleNavigationPaneAutoHide" Location="18,0" Anchor="Trail,Top" ShowTip="1" />
+      </Elements>
+    </CustomBar>
+    <ToolBar Name="NavigationPaneControls" Container="NavigationPaneControlsContainer" Height="25" Location="0,0" Width="250" Dock="Lead" ShowTextBeside="true">
+      <Elements>
+        <Button Name="ShowContentsWindow" DisplayStyle="ImageAndText" />
+        <Button Name="ShowIndexWindow" DisplayStyle="ImageAndText" />
+        <Button Name="ShowFavoritesWindow" DisplayStyle="ImageAndText" />
+      </Elements>
+    </ToolBar>
+    <ToolBar Name="FavoritesBar" Container="FavoritesContainer" Dock="Top" Height="20" ShowTextBeside="1" ShowTip="1">
+      <Elements>
+        <Button Name="AddToFavorites" DisplayStyle="Image" />
+        <Button Name="NewFolder" DisplayStyle="Image" />
+        <Separator />
+        <Button Name="MoveToPreviousSibling" DisplayStyle="Image" />
+        <Button Name="MoveToNextSibling" DisplayStyle="Image" />
+        <Button Name="RenameSelection" DisplayStyle="Image" />
+        <Button Name="DeleteSelection" DisplayStyle="Image" />
+      </Elements>
+    </ToolBar>
+    <CustomBar Name="PdfBar" Container="ViewContainer" Viewer="PdfViewer" Width="200" Height="23" Dock="Bottom">
+      <Elements>
+        <Edit Name="PageNumberBox" Location="70,3" Size="35,17" Anchor="" Align="Center" ShowTip="1" />
+        <Text Name="PageCountBox" Location="110,3" Size="90,17" Anchor="" Align="Left" ShowTip="1" />
+        <Button Location="28,0" Name="NavigatePreviousPage" ImageFile="@DefaultPdfBar_PreviousPage" Anchor="" ShowTip="1" />
+        <Button Location="48,0" Name="NavigateNextPage" ImageFile="@DefaultPdfBar_NextPage" Anchor="" ShowTip="1" />
+        <Button Location="148,0" Name="DisplayOnePage" ImageFile="@DefaultPdfBar_OnePage" Anchor="Right" ShowTip="1" />
+        <Button Location="170,0" Name="DisplayTwoPage" ImageFile="@DefaultPdfBar_TwoPage" Anchor="Right" ShowTip="1" />
+      </Elements>
+    </CustomBar>
+    <ToolBar Name="MarkupBar" Title="MarkupBar" Container="ViewPane" Viewer="ImageViewer,PdfViewer" Height="23" Dock="Top" ShowTip="1">
+      <Elements>
+        <Button Name="SelectArrowTool" DisplayStyle="Image" />
+        <Button Name="SelectHandTool" DisplayStyle="Image" />
+        <Separator />
+        <Button Name="SelectStickyNoteTool" DisplayStyle="Image" />
+        <Separator />
+        <Button Name="SelectHighlightTextTool" DisplayStyle="Image" />
+        <Button Name="SelectHighlightTextRedTool" DisplayStyle="Image" />
+        <Button Name="SelectHighlightTextGreenTool" DisplayStyle="Image" />
+        <Button Name="SelectTextTipTool" DisplayStyle="Image" />
+        <Separator />
+        <Button Name="SelectUnderlineTextTool" DisplayStyle="Image" />
+        <Button Name="SelectCrossOutTextTool" DisplayStyle="Image" />
+        <Separator />
+        <Button Name="SelectPencilTool" DisplayStyle="Image" />
+        <Button Name="SelectRectangleTool" DisplayStyle="Image" />
+        <Button Name="SelectTextBoxTool" DisplayStyle="Image" />
+        <Separator />
+        <Button Name="ToggleCommentWindowVisible" DisplayStyle="Image" />
+        <Button Name="ShowPropertiesWindow" DisplayStyle="Image" />
+        <Separator />
+        <Button Name="DeleteSelection" DisplayStyle="Image" />
+      </Elements>
+    </ToolBar>
+    <CustomBar Name="CommentBar" Container="ViewPane" Size="400,100" Dock="Bottom">
+      <Elements>
+        <Button Name="HideCommentWindow" Location="389,2" DisplayStyle="Image" ImageFile="@DefaultSmallClose" Anchor="Right" ShowTip="1"></Button>
+        <Text Name="CommentTime" Location="280,0" Size="110,15" Anchor="Right" ShowTip="1">
+          <Font Name="Tahoma" Size="6" />
+        </Text>
+        <Text Name="CommentAuthor" Location="170,0" Size="100,15" Anchor="Right" Align="Right" ShowTip="1">
+          <Font Name="Tahoma" Size="6" />
+        </Text>
+        <Text Name="CommentSubject" Location="0,0" Size="100,15" Anchor="Left" Align="Left" ShowTip="1">
+          <Font Name="Tahoma" Size="6" Bold="1" />
+        </Text>
+        <Edit Name="CommentText" Location="0,15" Size="400,80" Anchor="Left,Right,Bottom,Top" Align="Left" ShowTip="1" Multiline="1" />
+      </Elements>
+    </CustomBar>
+  </Bars>
+  <Menus>
+    <Menu Name="Comments">
+      <Item Name="BringSelectionToFront" />
+      <Item Name="SendSelectionToBack" />
+      <Separator />
+      <Item Name="DeleteSelection" />
+      <Separator />
+      <Item Name="ToggleCommentWindowVisible" />
+      <Separator />
+      <Item Name="ShowPropertiesWindow" />
+    </Menu>
+    <Menu Name="Favorites">
+      <Item Name="MoveToPreviousSibling" ShowShortkey="0" />
+      <Item Name="MoveToNextSibling" ShowShortkey="0" />
+      <Separator />
+      <Item Name="CutSelection" ShowShortkey="0" />
+      <Item Name="CopySelection" ShowShortkey="0" />
+      <Item Name="Paste" ShowShortkey="0" />
+      <Separator />
+      <Item Name="NewFolder" ShowShortkey="0" />
+      <Separator />
+      <Item Name="RenameSelection" ShowShortkey="0" />
+      <Item Name="DeleteSelection" ShowShortkey="0" />
+    </Menu>
+    <Menu Name="Standard">
+      <Item Text="@(Resources,File)">
+        <Item Name="ShowPageSetupWindow" ShowShortkey="1" />
+        <Item Name="ShowPrintWindow" ShowShortkey="1" />
+        <Item Name="ShowPrintPreview" ShowShortkey="1" />
+        <Separator />
+        <Item Name="ExportFile" ShowShortkey="1" />
+        <Separator />
+        <Item Name="Exit" ShowShortkey="1" />
+      </Item>
+      <Item Text="@(Resources,Edit)">
+        <Item Name="CutSelection" ShowShortkey="1" />
+        <Item Name="CopySelection" ShowShortkey="1" />
+        <Item Name="Paste" ShowShortkey="1" />
+        <Item Name="DeleteSelection" ShowShortkey="1" />
+        <Separator />
+        <Item Name="CopyAddress" ShowShortkey="1" />
+        <Separator />
+        <Item Name="ShowFindWindow" ShowShortkey="1" />
+      </Item>
+      <Item Text="@(Resources,View)">
+        <Item Text="@(Resources,Go)">
+          <Item Name="NavigateBack" ShowShortkey="1" />
+          <Item Name="NavigateForward" ShowShortkey="1" />
+          <Separator />
+          <Item Name="NavigatePreviousTopic" ShowShortkey="1" />
+          <Item Name="NavigateNextTopic" ShowShortkey="1" />
+          <Separator />
+          <Item Name="NavigateHome" ShowShortkey="1" />
+        </Item>
+        <Item Text="@(Resources,Window)">
+          <Item Name="ShowContentsWindow" ShowShortkey="1" />
+          <Item Name="ShowIndexWindow" ShowShortkey="1" />
+          <Item Name="ShowSearchWindow" ShowShortkey="1" />
+          <Item Name="ShowFavoritesWindow" ShowShortkey="1" />
+          <Separator />
+          <Item Name="ToggleMarkupWindowVisible" ShowShortkey="1" />
+          <Item Name="ToggleCommentWindowVisible" ShowShortkey="1" />
+        </Item>
+        <Separator />
+        <Item Name="ToggleEffect3d" ShowShortkey="1" />
+        <Separator />
+        <Item Name="ToggleFullScreen" ShowShortkey="1" />
+        <Item Name="ToggleFullView" ShowShortkey="1" />
+        <Separator />
+        <Item Name="ToggleNavigationPane" ShowShortkey="1" />
+        <Separator />
+        <Item Name="Refresh" ShowShortkey="1" />
+      </Item>
+      <Item Text="@(Resources,Size)">
+        <Item Name="ZoomIn" ShowShortkey="1" />
+        <Item Name="ZoomOut" ShowShortkey="1" />
+        <Item Name="ZoomActualSize" ShowShortkey="1" />
+        <Item Name="ZoomFitPage" ShowShortkey="1" />
+        <Item Name="ZoomFitWidth" ShowShortkey="1" />
+        <Separator />
+        <Item Name="DisplayOnePage" ShowShortkey="1" />
+        <Item Name="DisplayTwoPage" ShowShortkey="1" />
+      </Item>
+      <Item Text="@(Resources,Help)">
+        <Item Name="ShowHelpWindow" Text="" ShowShortkey="1" />
+        <Separator />
+        <Item Name="ShowAboutEngineWindow" Text="" ShowShortkey="1" />
+        <Item Name="ShowAboutWindow" Text="" ShowShortkey="1" />
+      </Item>
+    </Menu>
+    <Menu Name="Viewer">
+      <Item Name="NavigateBack" />
+      <Item Name="NavigateForward" />
+      <Separator />
+      <Item Name="PlayMedia" />
+      <Item Name="PauseMedia" />
+      <Separator />
+      <Item Name="CopySelection" />
+      <Item Name="CutSelection" />
+      <Item Name="Paste" />
+      <Separator />
+      <Item Name="SelectAll" />
+      <Separator />
+      <Item Name="ZoomIn" />
+      <Item Name="ZoomOut" />
+      <Item Name="ZoomActualSize" />
+      <Separator />
+      <Item Name="AddToFavorites" />
+      <Item Name="ShowMarkupWindow" />
+      <Item Name="ToggleMarkupWindowVisible" />
+      <Item Name="ToggleCommentWindowVisible" />
+      <Separator />
+      <Item Name="ToggleFullView" />
+      <Separator />
+      <Item Name="ExportFile" />
+      <Separator />
+      <Item Name="ShowPrintPreview" />
+      <Item Name="ShowPrintWindow" />
+      <Separator />
+      <Item Name="ShowAboutEngineWindow" />
+    </Menu>
+  </Menus>
+</seConfiguration>

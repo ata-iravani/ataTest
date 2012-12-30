@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SearchQuery" xml:space="preserve">
+    <value>جستجو...</value>
+  </data>
+  <data name="NewFolder" xml:space="preserve">
+    <value>پوشه‌ی جدید</value>
+  </data>
+  <data name="LocateTopic" xml:space="preserve">
+    <value>پیدا کردن موضوع در محتویات</value>
+  </data>
+  <data name="NavigateHome" xml:space="preserve">
+    <value>صفحه شروع;Alt + Home</value>
+  </data>
+  <data name="ShowContentsWindow" xml:space="preserve">
+    <value>محتویات;Alt+Ctrl+F1</value>
+  </data>
+  <data name="ShowIndexWindow" xml:space="preserve">
+    <value>نمایه;Alt+Ctrl+F2</value>
+  </data>
+  <data name="ShowFavoritesWindow" xml:space="preserve">
+    <value>برگزیده‌ها;Alt + C</value>
+  </data>
+  <data name="NavigateBack" xml:space="preserve">
+    <value>بازگشت;Alt + فلش چپ</value>
+  </data>
+  <data name="NavigateForward" xml:space="preserve">
+    <value>جلو;Alt + فلش راست</value>
+  </data>
+  <data name="ShowSearchWindow" xml:space="preserve">
+    <value>جستجو;F3</value>
+  </data>
+  <data name="NavigateBlank" xml:space="preserve">
+    <value>صفحه‌ی خالی</value>
+  </data>
+  <data name="NavigatePreviousTopic" xml:space="preserve">
+    <value>موضوع قبلی;‫فلش بالا + Alt</value>
+  </data>
+  <data name="NavigateNextTopic" xml:space="preserve">
+    <value>موضوع بعدی;‫فلش پایین+ Alt</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>‫بزرگتر;+ + Ctrl</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>‫کوچکتر;- + Ctrl</value>
+  </data>
+  <data name="ZoomActualSize" xml:space="preserve">
+    <value>‫اندازه اصلی;Ctrl + 1</value>
+  </data>
+  <data name="StopMedia" xml:space="preserve">
+    <value>توقف رسانه</value>
+  </data>
+  <data name="TogglePlayMedia" xml:space="preserve">
+    <value>پخش/مکث رسانه</value>
+  </data>
+  <data name="ToggleFullScreen" xml:space="preserve">
+    <value>‫تمام صفحه;F11</value>
+  </data>
+  <data name="ToggleFullView" xml:space="preserve">
+    <value>‫تمام نمایش;Ctrl+Enter</value>
+  </data>
+  <data name="ShowAboutWindow" xml:space="preserve">
+    <value>‫درباره‌ی @(Properties,ProductName)</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>‫بازخوانی;F5</value>
+  </data>
+  <data name="ZoomFitPage" xml:space="preserve">
+    <value>‫اندازه صفحه;Ctrl + 0</value>
+  </data>
+  <data name="Test1" xml:space="preserve">
+    <value>Test1</value>
+  </data>
+  <data name="Zoom200" xml:space="preserve">
+    <value>‫2 برابر اندازه اصلی</value>
+  </data>
+  <data name="Zoom50" xml:space="preserve">
+    <value>نصف اندازه اصلی</value>
+  </data>
+  <data name="CopyAddress" xml:space="preserve">
+    <value>‫‏کپی آدرس</value>
+  </data>
+  <data name="ToggleMute" xml:space="preserve">
+    <value>بی صدا</value>
+  </data>
+  <data name="ShowOptionsWindow" xml:space="preserve">
+    <value>امکانات</value>
+  </data>
+  <data name="ToggleNavigationPaneVisible" xml:space="preserve">
+    <value>پنجره کنترل;Ctrl+T</value>
+  </data>
+  <data name="DeleteSelection" xml:space="preserve">
+    <value>‫حذف;Del</value>
+  </data>
+  <data name="RenameSelection" xml:space="preserve">
+    <value>‫تغییر نام;F2</value>
+  </data>
+  <data name="VolumeSlider" xml:space="preserve">
+    <value>بلندی صدا</value>
+  </data>
+  <data name="MediaSlider" xml:space="preserve">
+    <value>موقعیت رسانه</value>
+  </data>
+  <data name="PauseMedia" xml:space="preserve">
+    <value>مکث رسانه</value>
+  </data>
+  <data name="PlayMedia" xml:space="preserve">
+    <value>پخش رسانه</value>
+  </data>
+  <data name="CopySelection" xml:space="preserve">
+    <value>کپی;Ctrl+C</value>
+  </data>
+  <data name="ShowPrintWindow" xml:space="preserve">
+    <value>چاپ;Ctrl+P</value>
+  </data>
+  <data name="ShowPageSetupWindow" xml:space="preserve">
+    <value>تنظیمات صفحه...</value>
+  </data>
+  <data name="ShowPrintPreview" xml:space="preserve">
+    <value>پیش‌نمایش چاپ...</value>
+  </data>
+  <data name="ShowFindWindow" xml:space="preserve">
+    <value>جستجو در این صفحه...‏;Ctrl+F</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>انتخاب همه</value>
+  </data>
+  <data name="MoveSelection" xml:space="preserve">
+    <value>انتقال</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>خروج;Alt+F4</value>
+  </data>
+  <data name="CutSelection" xml:space="preserve">
+    <value>برش;Ctrl+X</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>چسباندن;Ctrl+V</value>
+  </data>
+  <data name="ZoomFitWidth" xml:space="preserve">
+    <value>جا دادن عرض صفحه;Ctrl + 2‎</value>
+  </data>
+  <data name="MediaTimer" xml:space="preserve">
+    <value>زمان رسانه</value>
+  </data>
+  <data name="NavigatePreviousPage" xml:space="preserve">
+    <value>صفحه قبلی</value>
+  </data>
+  <data name="NavigateNextPage" xml:space="preserve">
+    <value>صفحه بعدی</value>
+  </data>
+  <data name="QuickSearch" xml:space="preserve">
+    <value>جستجو</value>
+  </data>
+  <data name="OpenShetabWebsite" xml:space="preserve">
+    <value>وب سایت شتاب تک</value>
+  </data>
+  <data name="ToggleEffect3dEnabled" xml:space="preserve">
+    <value>جلوه‌های ويژه روشن باشد</value>
+  </data>
+  <data name="DisplayOnePage" xml:space="preserve">
+    <value>یک صفحه‌ای</value>
+  </data>
+  <data name="DisplayTwoPage" xml:space="preserve">
+    <value>دو صفحه‌ای</value>
+  </data>
+  <data name="OpenSelection" xml:space="preserve">
+    <value>باز کردن</value>
+  </data>
+  <data name="ExportFile" xml:space="preserve">
+    <value>استخراج فایل</value>
+  </data>
+  <data name="UnregisterSoftLock" xml:space="preserve">
+    <value>حذف عمل ثبت;Ctrl+Shift+U</value>
+  </data>
+  <data name="MoveToNextSibling" xml:space="preserve">
+    <value>انتقال به پایین</value>
+  </data>
+  <data name="MoveToPreviousSibling" xml:space="preserve">
+    <value>انتقال به بالا</value>
+  </data>
+  <data name="AddToFavorites" xml:space="preserve">
+    <value>افزودن به برگزیده‌ها</value>
+  </data>
+  <data name="PageNumberBox" xml:space="preserve">
+    <value>شماره صفحه</value>
+  </data>
+  <data name="PageCountBox" xml:space="preserve">
+    <value>تعداد صفحه‌ها</value>
+  </data>
+  <data name="SelectRectangleTool" xml:space="preserve">
+    <value>کشیدن مستطیل</value>
+  </data>
+  <data name="SelectPencilTool" xml:space="preserve">
+    <value>کشیدن با قلم</value>
+  </data>
+  <data name="ShowPropertiesWindow" xml:space="preserve">
+    <value>‫مشخصات;F4</value>
+  </data>
+  <data name="SendSelectionToBack" xml:space="preserve">
+    <value>انتقال به پشت</value>
+  </data>
+  <data name="BringSelectionToFront" xml:space="preserve">
+    <value>انتقال به جلو</value>
+  </data>
+  <data name="SelectStickyNoteTool" xml:space="preserve">
+    <value>گذاشتن نکته</value>
+  </data>
+  <data name="ShowCommentListWindow" xml:space="preserve">
+    <value>یادداشت‌ها</value>
+  </data>
+  <data name="CommentSubject" xml:space="preserve">
+    <value>موضوع یادداشت</value>
+  </data>
+  <data name="CommentText" xml:space="preserve">
+    <value>متن یادداشت</value>
+  </data>
+  <data name="CommentTime" xml:space="preserve">
+    <value>تاریخ یادداشت</value>
+  </data>
+  <data name="CommentAuthor" xml:space="preserve">
+    <value>نویسنده یادداشت</value>
+  </data>
+  <data name="SelectTextBoxTool" xml:space="preserve">
+    <value>نوشتن متن روی صفحه</value>
+  </data>
+  <data name="ToggleMarkupWindowVisible" xml:space="preserve">
+    <value>ابزار علامت گذاری</value>
+  </data>
+  <data name="ToggleCommentWindowVisible" xml:space="preserve">
+    <value>یادداشت</value>
+  </data>
+  <data name="HideCommentWindow" xml:space="preserve">
+    <value>بستن پنجره‌ی یادداشت</value>
+  </data>
+  <data name="SelectHighlightTextTool" xml:space="preserve">
+    <value>کشیدن با ماژیک</value>
+  </data>
+  <data name="SelectHighlightTextRedTool" xml:space="preserve">
+    <value>کشیدن با ماژیک قرمز</value>
+  </data>
+  <data name="SelectHighlightTextGreenTool" xml:space="preserve">
+    <value>کشیدن با ماژیک سبز</value>
+  </data>
+  <data name="SelectTextTipTool" xml:space="preserve">
+    <value>گذاشتن متن پاورقی</value>
+  </data>
+  <data name="SelectUnderlineTextTool" xml:space="preserve">
+    <value>خط کشیدن زیر متن</value>
+  </data>
+  <data name="SelectCrossOutTextTool" xml:space="preserve">
+    <value>خط کشیدن روی متن</value>
+  </data>
+  <data name="FocusToCommentText" xml:space="preserve">
+    <value>برو روی متن یادداشت</value>
+  </data>
+  <data name="SelectArrowTool" xml:space="preserve">
+    <value>انتخاب متن</value>
+  </data>
+  <data name="SelectHandTool" xml:space="preserve">
+    <value>دست</value>
+  </data>
+  <data name="ShowHelpWindow" xml:space="preserve">
+    <value>‫راهنمای استفاده;F1</value>
+  </data>
+  <data name="ToggleDebugMode" xml:space="preserve">
+    <value>حالت خطا یابی;Ctrl+Shift+D</value>
+  </data>
+  <data name="ShowDocumentInfo" xml:space="preserve">
+    <value>مشخصات سند</value>
+  </data>
+  <data name="ExportFiles" xml:space="preserve">
+    <value>استخراج فایل‌ها</value>
+  </data>
+  <data name="ShowAboutEngineWindow" xml:space="preserve">
+    <value>زیرساخت برنامه</value>
+  </data>
+  <data name="NextMedia" xml:space="preserve">
+    <value>رسانه‌ی بعدی</value>
+  </data>
+  <data name="PreviousMedia" xml:space="preserve">
+    <value>رسانه‌ی قبلی</value>
+  </data>
+  <data name="ToggleNavigationPaneAutoHide" xml:space="preserve">
+    <value>مخفی کردن خودکار</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>امکانات</value>
+  </data>
+  <data name="IsDebugMode" xml:space="preserve">
+    <value>فعال شدن حالت عیب‌یابی</value>
+  </data>
+  <data name="IsEffect3dEnabled" xml:space="preserve">
+    <value>استفاده از جلوه‌های سه‌بعدی</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>بزرگ کردن پنجره</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>کوچک کردن پنجره</value>
+  </data>
+</root>

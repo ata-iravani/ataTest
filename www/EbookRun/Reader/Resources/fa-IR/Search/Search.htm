@@ -1,0 +1,210 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML dir=rtl><HEAD><TITLE>نتیجه جستجو در {ProductName}</TITLE>
+<META http-equiv=Content-Language content=fa>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<STYLE type="text/css">
+
+SPAN.PageLocation {
+	COLOR: #008000
+}
+SPAN.PageTitle {
+	
+}
+SPAN.ResultPages {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+SPAN.PageStats {
+	COLOR: #ff00ff
+}
+SPAN.TotalStats {
+	COLOR: #808000
+}
+SPAN.PageSentences {
+	COLOR: #555555
+}
+SPAN.SearchQuery {
+	FONT-WEIGHT: bold
+}
+BODY {
+	; FONT-FAMILY: Tahoma
+}
+.Left {
+	width: 659px;
+	height: 159px;
+	white-space: nowrap;
+	text-align: left;
+}
+.Tile {
+	background-image: url('Search_files/Tile.png');
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+.BottomTile {
+	background-image: url('Search_files/BottomTile.png');
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+</STYLE>
+
+<SCRIPT type="text/jscript" language=javascript>
+function DoSearch()
+{
+	//update highlisgt command
+	UpdateHighlighSearch();
+	
+	//update search query
+	var query = SearchQuery.value;
+	if (MatchWholeWorld.checked==true)
+	{
+		var doubleQ = RegExp('"', "g");
+		query = query.replace(doubleQ,'');
+		query = '"' + query + '"';
+	}
+	
+	//send search command to ShetabEbook
+	var command = "shetabebook://Command=Search;SearchQuery=%1;";
+	command = command.replace(/%1/g,query);
+	navigate(command);
+}
+
+function SearchQueryKeyDown()
+{
+	if (window.event.keyCode==13)
+	{
+		DoSearch();
+	}
+}
+
+function OnLoadBody()
+{
+	SetSearchQueryFocus();
+}
+
+function SetSearchQueryFocus()
+{
+	SearchQuery.focus();
+}
+
+function UpdateHighlighSearch()
+{
+	var command = "shetabebook://HighlightSearch=%1;";
+	var value = HighlighSearch.checked ? 1 : 0;
+	command = command.replace(/%1/g,value);
+	navigate(command);
+}
+
+function HighlighSearchChanged()
+{
+	UpdateHighlighSearch();
+}
+
+
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.3020" name=GENERATOR></HEAD>
+<BODY bottomMargin=0 leftMargin=0 topMargin=0 onload=OnLoadBody(); rightMargin=0 style="background-color: #A9DDF5; height: 50px;">
+<table height="20" align="center" cellpadding="0" cellspacing="0" style="width: 80%"><tr>
+	<td style="height: 50px"></td></tr></table>
+
+<TABLE id=table3 cellSpacing=0 cellPadding=0 border=0 style="font-family: tahoma; font-size: x-small; height: 159; width: 80%; " align="center" class="Tile">
+  <TBODY>
+  <TR>
+    <TD style="background-image: url('Search_files/Left.png'); background-repeat: no-repeat; background-position: left top">
+	<table style="width: 700" align="right" cellpadding="0" cellspacing="0">
+		<tr>
+			<td>
+			<img alt="" src="Search_files/Right.png" width="39"></td>
+			<td style="vertical-align: top; padding-top: 40px">
+			<INPUT onkeypress=SearchQueryKeyDown(); 
+      style="FONT-SIZE: x-small; FONT-FAMILY: Tahoma" tabIndex=0 size=40 
+      value="{SearchQuery}" name=SearchQuery><br><br><FONT face=Tahoma><INPUT style="FONT-SIZE: x-small; FONT-FAMILY: Tahoma" onclick=DoSearch(); type=button value=جستجو name=SearchButton></FONT>
+			</td>
+			<td noWrap style="padding-right: 20px; width: 100%; vertical-align: top; padding-top: 40px;">
+			<FONT face=Tahoma><SPAN style="FONT-SIZE: x-small"><INPUT 
+      type=checkbox value=ON name=MatchWholeWorld></SPAN></FONT><FONT 
+      color=#000000><SPAN style="FONT-SIZE: x-small">عین عبارت</SPAN></FONT><FONT 
+      face=Tahoma><SPAN style="FONT-SIZE: x-small"><BR><FONT color=#000000><INPUT 
+      onclick=HighlighSearchChanged(); type=checkbox value=ON 
+      name=HighlighSearch {HighlightSearchValue}>رنگ کردن 
+      </FONT></SPAN></FONT><FONT color=#000000><SPAN 
+      style="FONT-SIZE: x-small">کلمه‌ها در متن</SPAN></FONT>
+			</td>
+		</tr>
+	</table>
+	  </TD>
+      </TR>
+  <TR>
+    <TD>
+
+<table id=NoResultSection style="display:{NoResultSectionDisplay}; width: 100%; font-family: tahoma; font-size: x-small; background-color: #FFFFFF;" cellpadding="0" align="center" cellspacing="0">
+	<tr>
+		<td colspan="3" style="padding-right: 20px; height: 200;">
+
+		<P><SPAN lang=fa>نتیجه 
+			</span>  در <B>{ProductName}</B><P>
+		<B>&nbsp;هیچ موردی برای - {SearchQuery} - پیدا نشد.</B>
+
+		
+		</td>
+	</tr>
+	<tr class="BottomTile">
+		<td style="width: 39; height: 159" class="BottomTile">
+
+		<img alt="" height="159" src="Search_files/RightBottom.png" width="39"></td>
+		<td style="width: 90%; height: 159" class="BottomTile">
+
+		&nbsp;</td>
+		<td style="border-width: 0; width: 39; height: 159; text-align: left;" dir="ltr" valign="bottom" class="BottomTile">
+
+		<img alt="" height="159" src="Search_files/LeftBottom.png" width="39"></td>
+	</tr>
+</table>
+
+	  </TD>
+      </TR>
+  <TR>
+    <TD>
+
+<table id=ResultSection style="display:{ResultSectionDisplay}; width: 100%; font-family: tahoma; font-size: x-small; background-color: #FFFFFF; " cellpadding="0" align="center" cellspacing="0">
+	<tr style="padding-right: 10px; padding-left: 10px">
+		<td style="border-width: 0" colspan="3">
+
+<P><SPAN lang=fa>نتیجه 
+</span> <span style="">جستجو</span> در <B>
+<span style="">{ProductName}</span></B></P>
+<P style=""><B>ebook_totalstats</B></P>
+<TABLE id=table2 cellSpacing=0 width="100%" style="border: 1px solid #0066CC; font-family: tahoma; font-size: x-small;">
+  <TBODY>
+  <TR>
+    <TD style="border: 0 solid #0066CC;" bgColor=#eaeaff height=25>
+      <P align=left><SPAN lang=fa>نتیجه</SPAN> 
+      <B>ebook_startpage - ebook_endpage</B><SPAN lang=fa> از 
+      </SPAN><B>ebook_totalcount</B> صفحه<SPAN lang=fa> برای </SPAN><SPAN 
+      class=SearchQuery>ebook_searchquery</SPAN></P></TD></TR></TBODY></TABLE>
+<P style="">ebook_resultset</P>
+<P><SPAN lang=fa style="">صفحات نتیجه</SPAN><span style="">:&nbsp;</span>ebook_prevpage<FONT color=#800000><span style="">
+</span> </FONT><FONT 
+color=#cc3300><SPAN style="font-size: x-small" >ebook_resultpages</SPAN></FONT><FONT 
+color=#800000><span > </span> </FONT>
+ebook_nextpage</P>
+<P dir=ltr>&nbsp;</P></td>
+	</tr>
+	<tr class="BottomTile" style="margin-bottom: 40px">
+		<td style="border-width: 0; width: 39px; height: 159;" class="BottomTile">
+
+		<img alt="" height="159" src="Search_files/RightBottom.png" width="39"></td>
+		<td style="width: 90%; height: 159;" class="BottomTile">
+
+		&nbsp;</td>
+		<td style="border-width: 0; width: 39; height: 159; text-align: left;" dir="ltr" valign="bottom" class="BottomTile">
+
+		<img alt="" height="159" src="Search_files/LeftBottom.png" width="39"></td>
+	</tr>
+</table>
+
+	  </TD>
+      </TR>
+    </TBODY></TABLE>
+    <table height="20" align="center" cellpadding="0" cellspacing="0" style="width: 80%"><tr>
+	<td style="height: 50"></td></tr></table>
+</BODY></HTML>

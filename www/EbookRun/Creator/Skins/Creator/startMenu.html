@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script src="js/jquery-1.7.2.js"></script>
+<script src="js/ShetabEbookCreatorAgent.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        seCreatorApp.init("shetab.creator.startMenu");
+    });
+</script>
+<style type="text/css">
+body {
+    margin: 0;
+}
+
+#startMenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 450px;
+    height: 550px;
+    border: 1px solid rgba(0,0,0,0.8);
+    border-radius: 8px;
+}
+
+#startMenuBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 450px;
+    height: 550px;
+    background: rgb(17, 129, 200); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzExODFjOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMwJSIgc3RvcC1jb2xvcj0iIzAwNTA4MSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM0JSIgc3RvcC1jb2xvcj0iIzAwNTA4MSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijg3JSIgc3RvcC1jb2xvcj0iIzAwNTA4MSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDVjOTciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, rgba(17, 129, 200, 1) 0%, rgba(0, 80, 129, 1) 30%, rgba(0, 80, 129, 1) 34%, rgba(0, 80, 129, 1) 87%, rgba(0, 92, 151, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(17, 129, 200, 1)), color-stop(30%, rgba(0, 80, 129, 1)), color-stop(34%, rgba(0, 80, 129, 1)), color-stop(87%, rgba(0, 80, 129, 1)), color-stop(100%, rgba(0, 92, 151, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(17, 129, 200, 1) 0%, rgba(0, 80, 129, 1) 30%, rgba(0, 80, 129, 1) 34%, rgba(0, 80, 129, 1) 87%, rgba(0, 92, 151, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(17, 129, 200, 1) 0%, rgba(0, 80, 129, 1) 30%, rgba(0, 80, 129, 1) 34%, rgba(0, 80, 129, 1) 87%, rgba(0, 92, 151, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(17, 129, 200, 1) 0%, rgba(0, 80, 129, 1) 30%, rgba(0, 80, 129, 1) 34%, rgba(0, 80, 129, 1) 87%, rgba(0, 92, 151, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(17, 129, 200, 1) 0%, rgba(0, 80, 129, 1) 30%, rgba(0, 80, 129, 1) 34%, rgba(0, 80, 129, 1) 87%, rgba(0, 92, 151, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#1181c8', endColorstr = '#005c97', GradientType = 0); /* IE6-8 */
+    border: 1px solid black;
+    border-radius: 8px;
+    opacity: 0.8;
+}
+
+#buttonColumn {
+    position: absolute;
+    top: 30px;
+    bottom: 35px;
+    left: 5px;
+    width: 223px;
+}
+
+#recentColumn {
+    position: absolute;
+    top: 30px;
+    bottom: 35px;
+    right: 7px;
+    width: 213px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #828790;
+}
+
+    /*-----------Item Styles-------------*/
+#buttonColumn > div {
+    height: 50px;
+    width: 200px;
+    float: left;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.data {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: -50px;
+    border: 0px solid #4EA5DA;
+    border-top-color: #CDECFF;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+}
+
+.text {
+    margin-left: 7px;
+    color: white;
+    font-family: Tahoma;
+    font-size: 10pt;
+}
+
+.image {
+    height: 40px;
+    width: 40px;
+    margin-left: 3px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+}
+
+.hoverBackground {
+    opacity: 0;
+    width: 100%;
+    height: 50px;
+    background: rgb(255, 255, 255); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM3JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQyJSIgc3RvcC1jb2xvcj0iI2MxZTlmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYzJSIgc3RvcC1jb2xvcj0iI2UwZjNmYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMGYzZmIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(193, 233, 249, 1) 42%, rgba(224, 243, 251, 1) 63%, rgba(224, 243, 251, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(37%, rgba(255, 255, 255, 1)), color-stop(42%, rgba(193, 233, 249, 1)), color-stop(63%, rgba(224, 243, 251, 1)), color-stop(100%, rgba(224, 243, 251, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(193, 233, 249, 1) 42%, rgba(224, 243, 251, 1) 63%, rgba(224, 243, 251, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(193, 233, 249, 1) 42%, rgba(224, 243, 251, 1) 63%, rgba(224, 243, 251, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(193, 233, 249, 1) 42%, rgba(224, 243, 251, 1) 63%, rgba(224, 243, 251, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 37%, rgba(193, 233, 249, 1) 42%, rgba(224, 243, 251, 1) 63%, rgba(224, 243, 251, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#e0f3fb', GradientType = 0); /* IE6-8 */
+
+}
+
+#buttonColumn > div.separator {
+    border: none;
+    height: 2px;
+    width: 200px;
+    margin-left: 5px;
+    background: rgb(2, 44, 71); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIyMiUiIHN0b3AtY29sb3I9IiMwMjJjNDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI0MiUiIHN0b3AtY29sb3I9IiMxNjZkYTUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, rgba(2, 44, 71, 1) 22%, rgba(22, 109, 165, 1) 42%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(22%, rgba(2, 44, 71, 1)), color-stop(42%, rgba(22, 109, 165, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(2, 44, 71, 1) 22%, rgba(22, 109, 165, 1) 42%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(2, 44, 71, 1) 22%, rgba(22, 109, 165, 1) 42%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(2, 44, 71, 1) 22%, rgba(22, 109, 165, 1) 42%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(2, 44, 71, 1) 22%, rgba(22, 109, 165, 1) 42%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#022c47', endColorstr = '#166da5', GradientType = 0); /* IE6-8 */
+
+}
+
+    /*-----------Hover Styles-------------*/
+
+#buttonColumn > div.se-hover .hoverBackground {
+    opacity: 0.3;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+}
+
+#buttonColumn > div.se-hover {
+    border: 1px solid #4EA5DA;
+    border-top-color: #CDECFF;
+    border-radius: 5px;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+}
+
+#buttonColumn > div.se-hover .image {
+    margin-left: 12px;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+}
+
+#buttonColumn > div.se-disabled {
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+    opacity: 0.32;
+}
+
+    /*-----------Button Styles-------------*/
+#se_NavigateStartPage .image {
+    background-image: url("images/StartMenu/StartPage.png");
+}
+
+#se_ShowNewProjectWindow .image {
+    background-image: url("images/StartMenu/NewProject.png");
+}
+
+#se_ShowOpenProjectWindow .image {
+    background-image: url("images/StartMenu/OpenProject.png");
+}
+
+#se_SaveProject .image {
+    background-image: url("images/StartMenu/SaveProject.png");
+}
+
+#se_ShowPrintWindow .image {
+    background-image: url("images/StartMenu/Print.png");
+}
+
+#se_ShowPrintPreview .image {
+    background-image: url("images/StartMenu/PrintPreview.png");
+}
+
+#se_ShowPageSetupWindow .image {
+    background-image: url("images/StartMenu/PageSetting.png");
+}
+
+#se_ShowAboutShetabEbookCreatorWindow .image {
+    background-image: url("images/StartMenu/About.png");
+    background-size: contain;
+}
+
+#se_CloseProject .image {
+    background-image: url("images/StartMenu/CloseProject.png");
+}
+
+    /*-----------Button Styles-------------*/
+.bottomButton {
+    position: absolute;
+    height: 34px;
+    width: 78px;
+    bottom: 0;
+    opacity: 1;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+
+.bottomButton .normal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("images/StartMenu/bottomButtonNormal.png");
+}
+
+.bottomButton .hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("images/StartMenu/bottomButtonHover.png");
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+    opacity: 0;
+}
+
+.bottomButton .textPlaceHolder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: -webkit-box;
+    -webkit-box-align: center;
+}
+
+.bottomButton .textPlaceHolder .text {
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+.bottomButton.se-hover .normal {
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+    opacity: 0;
+}
+
+.bottomButton.se-hover .hover {
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+    opacity: 1;
+}
+
+.bottomButton.se-disabled {
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+    opacity: 0.3;
+}
+
+#se_Exit {
+    right: 25px;
+}
+
+#se_ShowOptionsWindow {
+    right: 110px;
+}
+
+#recentProjectsTitle{
+    position: absolute;
+    top:9px;
+    left:230px;
+    color:white;
+    font-size: 10pt;
+}
+</style>
+</head>
+<body>
+<div id="startMenuBackground"></div>
+<div id="startMenu">
+    <div id="recentProjectsTitle">Recent Projects</div>
+    <div id="buttonColumn">
+        <div id="se_NavigateStartPage">
+            <div class="hoverBackground"></div>
+            <div class="data">
+                <div class="image"></div>
+                <div class="text">Start Page</div>
+            </div>
+        </div>
+        <div id="se_ShowNewProjectWindow">
+            <div class="hoverBackground"></div>
+            <div class="data">
+                <div class="image"></div>
+                <div class="text">New Project</div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div id="se_ShowOpenProjectWindow">
+            <div class="hoverBackground"></div>
+            <div class="data">
+                <div class="image"></div>
+                <div class="text">Open Project</div>
+            </div>
+        </div>
+        <div id="se_SaveProject">
+            <div class="hoverBackground"></div>
+            <div class="data">
+                <div class="image"></div>
+                <div class="text">Save Project</div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div id="se_ShowPrintWindow">
+            <div class="hoverBackground"></div>
+            <div class="data">
+                <div class="image"></div>
+                <div class="text">Print</div>
+            </div>
+        </div>
+        <div id="se_ShowPrintPreview">
+            <div class="hoverBackground"></div>
+            <div class="data">
+                <div class="image"></div>
+                <div class="text">Print Preview</div>
+            </div>
+        </div>
+        <div id="se_ShowPageSetupWindow">
+            <div class="hoverBackground"></div>
+            <div class="data">
+                <div class="image"></div>
+                <div class="text">Print Setup</div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div id="se_ShowAboutShetabEbookCreatorWindow">
+            <div class="hoverBackground"></div>
+            <div class="data">
+                <div class="image"></div>
+                <div class="text">About</div>
+            </div>
+        </div>
+        <div id="se_CloseProject">
+            <div class="hoverBackground"></div>
+            <div class="data">
+                <div class="image"></div>
+                <div class="text">Close Project</div>
+            </div>
+        </div>
+    </div>
+    <div id="recentColumn"></div>
+    <div id="se_Exit" class="bottomButton">
+        <div class="hover"></div>
+        <div class="normal"></div>
+        <div class="textPlaceHolder">
+            <div class="text">Exit</div>
+        </div>
+    </div>
+    <div id="se_ShowOptionsWindow" class="bottomButton">
+        <div class="hover"></div>
+        <div class="normal"></div>
+        <div class="textPlaceHolder">
+            <div class="text">Options</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

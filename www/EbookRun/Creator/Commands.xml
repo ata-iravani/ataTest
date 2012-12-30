@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<seApi>
+
+  <!--Engine API-->
+  <system name="creator">
+    <type name="CreatorCore" inhert="SEApp">
+      <command name="removeTopicLink" />
+      <command name="showNewProjectWindow" image="new"></command>
+      <command name="showBuildMediaWindow" image="buildMediaWizard"></command>
+      <command name="showBuildIndexWindow"></command>
+      <command name="showOpenProjectWindow" image="open"></command>
+      <command name="showRecursivePropertiesWindow" image="recursiveProperties"></command>
+      <command name="showProjectPropertiesWindow" image="projectProperties"></command>
+      <command name="showAddNewBookWindow"></command>
+      <command name="showAddExistingBookWindow"></command>
+      <command name="showProjectExplorer" image="projectExplorer"></command>
+      <command name="showAboutShetabEbookCreatorWindow"></command>
+      <command name="showSortChildrenWindow"></command>
+      <command name="showSortChildrenDescendingWindow"></command>
+      <command name="showShiftPageNumberWindow"></command>
+      <command name="showCommandBuilderWindow"></command>
+      <command name="toggleCommonTaskPaneVisible"></command>
+      <command name="openShetabEbookCreatorHelp"></command>
+      <command name="saveProject" image="save"></command>
+      <command name="closeProject"></command>
+      <command name="locateFile"></command>
+      <command name="editFile"></command>
+      <command name="newTopic"></command>
+      <command name="newTopicFromFile"></command>
+      <command name="newTopicFromCurrentPage"></command>
+      <command name="newSubTopic"></command>
+      <command name="newSubTopicFromFile"></command>
+      <command name="newSubTopicFromBook"></command>
+      <command name="newSubTopicFromFolder"></command>
+      <command name="newSubTopicFromCurrentPage"></command>
+      <command name="reloadBook"></command>
+      <command name="runProject" image="start"></command>
+      <command name="navigateStartPage" image="startPage"></command>
+      <command name="openProjectFolder"></command>
+      <command name="openMediaFolder"></command>
+      <command name="sortChildren" image="sort"></command>
+      <command name="sortChildrenRecursive" image="sort"></command>
+      <command name="sortChildrenDescending" image="sortDesc"></command>
+      <command name="sortChildrenDescendingRecursive" image="sortDesc"></command>
+      <command name="setPageTitleFromSelection"></command>
+      <command name="setHomePageFromSelection"></command>
+      <command name="startShetabQuizCreator"></command>
+      <command name="startShetabSkinCreator"></command>
+      <command name="addFile"></command>
+      <command name="addFolder"></command>
+      <command name="setRootContentsBook"></command>
+      <command name="buildMedia"></command>
+      <command name="showAdvancedPropertiesWindow"></command>
+      <command name="showAdvancedPropertiesWindowRecursive"></command>
+      <command name="showEffectsPropertiesWindow"></command>
+      <command name="showEffectsPropertiesWindowRecursive"></command>
+      <command name="showSoundPropertiesWindow"></command>
+      <command name="showSoundPropertiesWindowRecursive"></command>
+      <command name="repairProject"></command>
+      <property name="localFontNames" type="string,array" mode="get" testValue="Arial#$$;Geneva#$$;Sans-Serif#$$;Tahoma#$$;Times New Roman#$$;Verdana"></property>
+      <property name="taskPanelVisible" type="boolean" mode="getset"></property>
+      <property name="recentProjects" type="xml" mode="get" valueList="&lt;recentProjects&gt;&#xD;&#xA;  &lt;recentProject name='' url='' iconUrl=''/&gt;&#xD;&#xA;  &lt;recentProject name='' url='' iconUrl=''/&gt;&#xD;&#xA;&lt;/recentProjects&gt;"></property>
+      <method name="getCreatorResource" type="string">
+        <param name="resourceFile" type="string" />
+        <param name="resourceKey" type="string" />
+      </method>
+      <method name="openProject" type="void">
+        <param name="file" type="string"></param>
+      </method>
+      <method name="getPromptNewProjectFolder" type="string" testValue="@initFolder">
+        <param name="initFolder" type="string" isOptional="true"></param>
+        <description>Browse and prompt user to select new project file. Return "" if user cancel the operation.</description>
+      </method>
+      <method name="getDefaultNewProjectFolder" type="string">
+        <param name="projectName" type="string"></param>
+        <description>Return default project folder for ProjectName.</description>
+      </method>
+      <method name="getPromptText" type="string">
+        <param name="initText" type="string" IsOptional="true"></param>
+        <param name="title" type="string" IsOptional="true"></param>
+        <param name="multiline" type="string" IsOptional="true"></param>
+        <param name="cancelValue" type="string" IsOptional="true"></param>
+        <description>Return cancelValue if user cancel the operation.</description>
+      </method>
+      <property name="allCultures" type="xml" mode="getset" valueList="&lt;Languages&gt;&lt;Language Name=&quot;en&quot; DisplayName=&quot;English&quot; EnglishName=&quot;English&quot; AvailableInReader=&quot;0|1&quot;/&gt;&lt;/Languages&gt;"></property>
+      <method name="createAction" type="string" valueList="&lt;Link&gt;">
+        <param name="pluginId" type="string"></param>
+        <param name="bookId" type="string" IsOptional="true">
+          <description>Will create in Default Book if not set.</description>
+        </param>
+        <param name="targetFolder" type="string" IsOptional="true">
+          <description>Will create in Default Book if not set. It should be a folder inside Data folder of a book in project.</description>
+        </param>
+        <description>Create action and return Link to action file.</description>
+      </method>
+      <method name="getActions" type="xml" valueList="&lt;Languages&gt;&lt;Language Name=&quot;en&quot; DisplayName=&quot;English&quot; EnglishName=&quot;English&quot; AvailableInReader=&quot;0|1&quot;/&gt;&lt;/Languages&gt;">
+        <param name="bookId" type="string" IsOptional="true">
+          <description>if BookId not set then actions of all books will return.</description>
+        </param>
+      </method>
+      <method name="createProject" type="void">
+        <param name="param" type="xml">
+          <description>See CreateProjectParam.xml.</description>
+        </param>
+        <description>Create project in project folder of CreateProjectParam.xml.</description>
+      </method>
+      <method name="setTopicLink" type="void">
+        <param name="topicId" type="string" valueList="&lt;{GUID}&gt;"></param>
+        <param name="link" type="string" valueList="&lt;Link&gt;"></param>
+        <description>set Link to topicId.</description>
+      </method>
+      <property name="isTrialEdition" type="boolean" mode="get" testValue="true"/>
+      <property name="autoSave" type="boolean" mode="getset" />
+      <property name="openLastProjectOnStartup" type="boolean" mode="getset"/>
+      <property name="workspaceFolder" type="string" mode="getset" valueList="{Folder}" testValue="c:\\Shetab eBook" />
+      <property name="creatorLicenseeTokenId" type="string" mode="get" testValue="Test Token Id"/>
+      <property name="creatorLicenseeId" type="string" mode="get" testValue="Test User Id"/>
+      <property name="creatorLicenseeName" type="string" mode="get" testValue="Test User"/>
+      <property name="creatorLicenseeEdition" type="string" mode="get" testValue="Test Edition" />
+      <property name="creatorVersion" type="string" mode="get" testValue="0.0.0.0" />
+      <property name="creatorDownloadPageUrl" type="string" mode="get" testValue="http://www.shetabtech.com" />
+      <property name="creatorPadFileUrl" type="string" mode="get" testValue="http://www.shetabtech.com" />
+      <property name="autoCheckUpdate" type="string" mode="getset" />
+      <!--Used in Menu-->
+      <command name="copyToLastChild" cgAgent="skip" />
+      <command name="copyToPreviousSibling" cgAgent="skip" />
+      <command name="copyToNextSibling" cgAgent="skip" />
+      <command name="moveToLastChild" cgAgent="skip" />
+      <command name="cancel" cgAgent="skip" />
+    </type>
+  </system>
+
+  <!--Agent API-->
+  <system name="creatorAgent">
+    <type name="CreatorAgent">
+      <method name="fireProjectChanged" type="void">
+      </method>
+    </type>
+  </system>
+</seApi>
